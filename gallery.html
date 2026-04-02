@@ -10,46 +10,62 @@
 
 <style>
 
-/* CATEGORY CARDS */
+/* CATEGORY */
 .gallery-categories{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:10px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
 margin-bottom:20px;
 }
 
 .gallery-btn{
 background:#065f46;
-padding:10px;
-border-radius:10px;
-text-align:center;
+padding:6px 12px;
+border-radius:20px;
 cursor:pointer;
-font-size:14px;
+font-size:13px;
 }
 
+.gallery-btn.active,
 .gallery-btn:hover{
 background:#22c55e;
 color:black;
 }
 
-/* IMAGE GRID */
+/* SEARCH */
+#gallerySearch{
+width:100%;
+padding:8px;
+border-radius:8px;
+border:none;
+margin-bottom:15px;
+background:#065f46;
+color:white;
+}
+
+/* GRID */
 .gallery-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
 gap:10px;
 }
 
-.gallery-grid img{
+.gallery-item{
+position:relative;
+}
+
+.gallery-item img{
 width:100%;
 height:150px;
 object-fit:cover;
 border-radius:10px;
 cursor:pointer;
-transition:0.3s;
 }
 
-.gallery-grid img:hover{
-transform:scale(1.05);
+.caption{
+font-size:12px;
+margin-top:4px;
+color:#bbf7d0;
 }
 
 /* LIGHTBOX */
@@ -64,20 +80,36 @@ display:none;
 align-items:center;
 justify-content:center;
 z-index:2000;
+flex-direction:column;
 }
 
 .lightbox img{
 max-width:90%;
-max-height:80%;
+max-height:70%;
 border-radius:10px;
 }
+
+.lightbox-info{
+margin-top:10px;
+text-align:center;
+}
+
+.nav-btn{
+position:absolute;
+top:50%;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+.prev{left:20px;}
+.next{right:20px;}
 
 .close{
 position:absolute;
 top:20px;
 right:30px;
 font-size:30px;
-color:white;
 cursor:pointer;
 }
 
@@ -93,39 +125,53 @@ cursor:pointer;
 
 <h1>Photo Gallery</h1>
 
+<input type="text" id="gallerySearch" placeholder="Search photos...">
+
 <!-- CATEGORY -->
 <div class="gallery-categories">
 
-<div class="gallery-btn" onclick="showCategory('gis')">GIS Work</div>
-<div class="gallery-btn" onclick="showCategory('school')">School</div>
-<div class="gallery-btn" onclick="showCategory('college')">College</div>
-<div class="gallery-btn" onclick="showCategory('club')">Club</div>
-<div class="gallery-btn" onclick="showCategory('university')">University</div>
-<div class="gallery-btn" onclick="showCategory('me')">Ekramul's Photo</div>
+<div class="gallery-btn active" onclick="filterGallery('all',this)">All</div>
+<div class="gallery-btn" onclick="filterGallery('gis',this)">GIS</div>
+<div class="gallery-btn" onclick="filterGallery('school',this)">School</div>
+<div class="gallery-btn" onclick="filterGallery('college',this)">College</div>
+<div class="gallery-btn" onclick="filterGallery('club',this)">Club</div>
+<div class="gallery-btn" onclick="filterGallery('university',this)">University</div>
+<div class="gallery-btn" onclick="filterGallery('me',this)">Me</div>
 
 </div>
 
 <!-- GALLERY -->
 <div id="gallery" class="gallery-grid">
 
-<!-- GIS -->
-<img src="images/gis1.jpg" data-category="gis" onclick="openImg(this)">
-<img src="images/gis2.jpg" data-category="gis" onclick="openImg(this)">
+<div class="gallery-item" data-category="gis" data-title="Land Cover Map" data-date="2025">
+<img src="images/gis1.jpg" onclick="openLightbox(this)">
+<div class="caption">GIS Work (2025)</div>
+</div>
 
-<!-- SCHOOL -->
-<img src="images/school1.jpg" data-category="school" onclick="openImg(this)">
+<div class="gallery-item" data-category="school" data-title="School Life" data-date="2015">
+<img src="images/school1.jpg" onclick="openLightbox(this)">
+<div class="caption">School (2015)</div>
+</div>
 
-<!-- COLLEGE -->
-<img src="images/college1.jpg" data-category="college" onclick="openImg(this)">
+<div class="gallery-item" data-category="college" data-title="College Time" data-date="2018">
+<img src="images/college1.jpg" onclick="openLightbox(this)">
+<div class="caption">College (2018)</div>
+</div>
 
-<!-- CLUB -->
-<img src="images/club1.jpg" data-category="club" onclick="openImg(this)">
+<div class="gallery-item" data-category="club" data-title="Club Activity" data-date="2022">
+<img src="images/club1.jpg" onclick="openLightbox(this)">
+<div class="caption">Club (2022)</div>
+</div>
 
-<!-- UNIVERSITY -->
-<img src="images/university1.jpg" data-category="university" onclick="openImg(this)">
+<div class="gallery-item" data-category="university" data-title="KU Campus" data-date="2024">
+<img src="images/university1.jpg" onclick="openLightbox(this)">
+<div class="caption">University (2024)</div>
+</div>
 
-<!-- PERSONAL -->
-<img src="images/me1.jpg" data-category="me" onclick="openImg(this)">
+<div class="gallery-item" data-category="me" data-title="Ekramul" data-date="2025">
+<img src="images/me1.jpg" onclick="openLightbox(this)">
+<div class="caption">Personal</div>
+</div>
 
 </div>
 
@@ -133,30 +179,74 @@ cursor:pointer;
 
 <!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox">
-<span class="close" onclick="closeImg()">✖</span>
-<img id="lightbox-img">
+
+<span class="close" onclick="closeLightbox()">✖</span>
+
+<span class="nav-btn prev" onclick="changeImg(-1)">❮</span>
+<span class="nav-btn next" onclick="changeImg(1)">❯</span>
+
+<img id="lightImg">
+
+<div class="lightbox-info">
+<h3 id="imgTitle"></h3>
+<p id="imgDate"></p>
+</div>
+
 </div>
 
 <div id="footer"></div>
 
 <script>
 
-/* CATEGORY FILTER */
-function showCategory(cat){
-let imgs=document.querySelectorAll("#gallery img");
+let currentIndex=0;
+let images=[...document.querySelectorAll(".gallery-item img")];
 
-imgs.forEach(img=>{
-img.style.display=(cat==="all" || img.dataset.category===cat)?"block":"none";
+/* FILTER */
+function filterGallery(cat,btn){
+document.querySelectorAll(".gallery-btn").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+
+document.querySelectorAll(".gallery-item").forEach(item=>{
+item.style.display=(cat==="all"||item.dataset.category===cat)?"block":"none";
 });
 }
 
+/* SEARCH */
+document.getElementById("gallerySearch").addEventListener("keyup",function(){
+let v=this.value.toLowerCase();
+document.querySelectorAll(".gallery-item").forEach(item=>{
+let t=item.dataset.title.toLowerCase();
+item.style.display=t.includes(v)?"block":"none";
+});
+});
+
 /* LIGHTBOX */
-function openImg(el){
+function openLightbox(img){
+let items=[...document.querySelectorAll(".gallery-item img")];
+currentIndex=items.indexOf(img);
+
+showImage();
 document.getElementById("lightbox").style.display="flex";
-document.getElementById("lightbox-img").src=el.src;
 }
 
-function closeImg(){
+function showImage(){
+let items=[...document.querySelectorAll(".gallery-item")];
+let item=items[currentIndex];
+
+document.getElementById("lightImg").src=item.querySelector("img").src;
+document.getElementById("imgTitle").innerText=item.dataset.title;
+document.getElementById("imgDate").innerText=item.dataset.date;
+}
+
+function changeImg(dir){
+currentIndex+=dir;
+let items=document.querySelectorAll(".gallery-item");
+if(currentIndex<0) currentIndex=items.length-1;
+if(currentIndex>=items.length) currentIndex=0;
+showImage();
+}
+
+function closeLightbox(){
 document.getElementById("lightbox").style.display="none";
 }
 
