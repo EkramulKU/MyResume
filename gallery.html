@@ -8,30 +8,19 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-#search{
-width:100%;padding:10px;margin-bottom:15px;
-background:#065f46;color:white;border:none;border-radius:8px;
-}
-
-.categories{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;}
-.cat-btn{padding:5px 10px;background:#064e3b;border-radius:15px;cursor:pointer;}
-
-.grid{
+.gallery-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:10px;
 }
 
-.grid img{
-width:100%;height:150px;object-fit:cover;border-radius:10px;cursor:pointer;
-}
-
-.lightbox{
-position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.9);
-display:none;align-items:center;justify-content:center;flex-direction:column;
+.gallery-grid img{
+width:100%;
+border-radius:10px;
+cursor:pointer;
 }
 </style>
+
 </head>
 
 <body>
@@ -39,121 +28,40 @@ display:none;align-items:center;justify-content:center;flex-direction:column;
 <div id="header"></div>
 
 <div class="container">
-
 <h1>Photo Gallery</h1>
-
-<input type="text" id="search" placeholder="Search...">
-
-<div id="categories" class="categories"></div>
-<div id="gallery" class="grid"></div>
-
+<div id="gallery" class="gallery-grid"></div>
 </div>
 
-<div id="lightbox" class="lightbox">
-<img id="lightImg">
-<p id="caption"></p>
-<p id="date"></p>
-<span onclick="closeLightbox()">✖</span>
-</div>
+<div id="footer"></div>
 
 <script>
 
-let allData=[];
-let currentCategory="all";
+fetch("data.json")
+.then(res=>res.json())
+.then(data=>{
 
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQUxbJF3z6jVTMniOo9HOUKqIFSIfPufZgxppyWNQWMhewBmNuWX55kC-TlMeayX9dq1txsa-iLCER4/pub?output=csv")
-.then(r=>r.text())
-.then(d=>{
-
-let rows=d.split("\n").slice(1);
-let categories=new Set();
-
-rows.forEach(row=>{
-
-let c=row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-
-if(c[1].trim()!=="Gallery") return;
-
-let obj={
-category:c[2],
-img:c[4],
-title:c[5],
-date:c[0]
-};
-
-allData.push(obj);
-categories.add(obj.category);
-});
-
-/* CATEGORY */
-let catDiv=document.getElementById("categories");
-
-let allBtn=document.createElement("div");
-allBtn.innerText="All";
-allBtn.className="cat-btn";
-allBtn.onclick=()=>{currentCategory="all";render();}
-catDiv.appendChild(allBtn);
-
-categories.forEach(cat=>{
-let btn=document.createElement("div");
-btn.innerText=cat;
-btn.className="cat-btn";
-btn.onclick=()=>{currentCategory=cat;render();}
-catDiv.appendChild(btn);
-});
-
-render();
-
-});
-
-/* RENDER */
-function render(){
 let container=document.getElementById("gallery");
-container.innerHTML="";
 
-let list=allData.filter(a=>currentCategory==="all" || a.category===currentCategory);
+data.gallery.forEach(g=>{
 
-list.forEach(a=>{
 let img=document.createElement("img");
+img.src=g.image;
 
-img.src=a.img;
 img.onclick=()=>{
-lightbox.style.display="flex";
-lightImg.src=a.img;
-caption.innerText=a.title;
-date.innerText=a.date;
+alert(g.title + " (" + g.date + ")");
 };
 
 container.appendChild(img);
-});
-}
 
-/* SEARCH */
-document.getElementById("search").addEventListener("keyup",function(){
-let v=this.value.toLowerCase();
-let list=allData.filter(a=>a.title.toLowerCase().includes(v));
-renderSearch(list);
 });
 
-function renderSearch(list){
-gallery.innerHTML="";
-list.forEach(a=>{
-let img=document.createElement("img");
-img.src=a.img;
-img.onclick=()=>{
-lightbox.style.display="flex";
-lightImg.src=a.img;
-caption.innerText=a.title;
-date.innerText=a.date;
-};
-gallery.appendChild(img);
 });
-}
 
-function closeLightbox(){
-lightbox.style.display="none";
-}
+</script>
 
+<script>
+fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
 </script>
 
 </body>
