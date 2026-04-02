@@ -3,123 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Published News</title>
+<title>Articles</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
-
-/* SEARCH */
-#search{
-width:100%;
-padding:10px;
-margin-bottom:15px;
-background:#065f46;
-color:white;
-border:none;
-border-radius:8px;
-}
-
-/* CATEGORY */
-.categories{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-bottom:15px;
-}
-
-.cat-btn{
-padding:6px 12px;
-background:#064e3b;
-border-radius:20px;
-cursor:pointer;
-font-size:13px;
-}
-
-.cat-btn:hover{
-background:#22c55e;
-color:black;
-}
-
-/* GRID */
-.article-grid{
+#articles{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:18px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
 }
 
 .card{
 background:#065f46;
-border-radius:12px;
+border-radius:10px;
 overflow:hidden;
 cursor:pointer;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
 }
 
 .card img{
 width:100%;
-height:160px;
+height:150px;
 object-fit:cover;
 }
 
 .card-body{
-padding:12px;
+padding:10px;
 }
-
-.meta{
-font-size:12px;
-color:#bbf7d0;
-}
-
-/* MODAL */
-.modal{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.9);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:2000;
-}
-
-.modal-box{
-width:90%;
-max-width:800px;
-padding:20px;
-border-radius:10px;
-color:white;
-max-height:90vh;
-overflow-y:auto;
-}
-
-.close{
-position:absolute;
-top:15px;
-right:25px;
-font-size:25px;
-cursor:pointer;
-}
-
-.modal-box img{
-width:100%;
-margin:10px 0;
-border-radius:10px;
-}
-
-.links a{
-display:inline-block;
-margin-right:10px;
-color:#bbf7d0;
-text-decoration:underline;
-}
-
 </style>
-
 </head>
 
 <body>
@@ -127,206 +38,68 @@ text-decoration:underline;
 <div id="header"></div>
 
 <div class="container">
-
 <h1>Published News / Article</h1>
 
-<input type="text" id="search" placeholder="Search articles...">
+<div id="articles"></div>
 
-<div id="categories" class="categories"></div>
-
-<div id="articles" class="article-grid"></div>
-
-</div>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div id="modalBox" class="modal-box">
-
-<span class="close" onclick="closeModal()">✖</span>
-
-<p id="m-cat"></p>
-<h2 id="m-title"></h2>
-<p id="m-writer"></p>
-<p id="m-date"></p>
-
-<img id="m-img">
-
-<p id="m-content"></p>
-
-<div class="links">
-<a id="m-source" target="_blank">Source</a>
-<a id="m-archive" target="_blank">Archive</a>
-</div>
-
-</div>
 </div>
 
 <div id="footer"></div>
 
 <script>
 
-let allData=[];
-let currentCategory="all";
+/* GOOGLE SHEET JSON */
+const sheetID = "1l1PH3AmTPBBXB2mWuAyHVV6XnvKOeIUHrgkvSejAr5o";
+const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
 
-/* FETCH DATA */
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQIboxF5X3guD1aJoSDYTunwVQukZLITCnFTQgEg5ED-QxdEAyL3lJbI_ukw6F8gXNPPwO5Ghz5-eYN/pub?output=csv")
+fetch(url)
 .then(res=>res.text())
 .then(data=>{
 
-/* SAFE ROW SPLIT (বাংলা + newline fix) */
-let rows = data.split(/\r?\n(?=(?:[^"]*"[^"]*")*[^"]*$)/).slice(1);
+let json = JSON.parse(data.substr(47).slice(0,-2));
+let rows = json.table.rows;
 
-let categories=new Set();
+let container = document.getElementById("articles");
 
-rows.forEach(row=>{
+rows.forEach(r=>{
 
-let c = row.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/);
+let c = r.c;
 
-if(c.length < 5) return;
+if(!c[0]) return;
 
-/* IMAGE FIX */
-let img=c[2];
+let category = c[0]?.v || "";
+let paper = c[1]?.v || "";
+let img = c[2]?.v || "";
+let title = c[3]?.v || "";
+let content = c[4]?.v || "";
+let date = c[6]?.v || "";
+
+/* FIX DRIVE IMAGE */
 if(img.includes("open?id=")){
-img=img.replace("open?id=","uc?export=view&id=");
+img = img.replace("open?id=","uc?export=view&id=");
 }
 
-/* OBJECT */
-let obj={
-category:c[0],
-paper:c[1],
-img:img,
-title:c[3],
-content:c[4],
-tag:c[5],
-date:c[6],
-source:c[7],
-writer:c[8],
-archive:c[9]
-};
-
-allData.push(obj);
-categories.add(obj.category);
-
-});
-
-/* CATEGORY BUTTON */
-let catDiv=document.getElementById("categories");
-
-let allBtn=document.createElement("div");
-allBtn.innerText="All";
-allBtn.className="cat-btn";
-allBtn.onclick=()=>{currentCategory="all";render();}
-catDiv.appendChild(allBtn);
-
-categories.forEach(cat=>{
-let btn=document.createElement("div");
-btn.innerText=cat;
-btn.className="cat-btn";
-btn.onclick=()=>{currentCategory=cat;render();}
-catDiv.appendChild(btn);
-});
-
-render();
-
-});
-
-/* RENDER */
-function render(){
-let container=document.getElementById("articles");
-container.innerHTML="";
-
-let list=allData.filter(a=>{
-return currentCategory==="all" || a.category===currentCategory;
-});
-
-list.forEach(a=>{
-let div=document.createElement("div");
+let div = document.createElement("div");
 div.className="card";
 
-div.onclick=()=>openModal(a);
-
 div.innerHTML=`
-<img src="${a.img || 'https://via.placeholder.com/300'}">
+<img src="${img}">
 <div class="card-body">
-<h3>${a.title}</h3>
-<div class="meta">${a.paper} | ${a.date}</div>
+<h3>${title}</h3>
+<p>${paper} | ${date}</p>
 </div>
 `;
 
 container.appendChild(div);
-});
-}
 
-/* SEARCH */
-document.getElementById("search").addEventListener("keyup",function(){
-let v=this.value.toLowerCase();
-let list=allData.filter(a=>a.title.toLowerCase().includes(v));
-renderSearch(list);
 });
 
-function renderSearch(list){
-let container=document.getElementById("articles");
-container.innerHTML="";
-
-list.forEach(a=>{
-let div=document.createElement("div");
-div.className="card";
-div.onclick=()=>openModal(a);
-
-div.innerHTML=`
-<img src="${a.img}">
-<div class="card-body">
-<h3>${a.title}</h3>
-<div class="meta">${a.paper} | ${a.date}</div>
-</div>
-`;
-
-container.appendChild(div);
 });
-}
-
-/* MODAL */
-function openModal(a){
-
-let box=document.getElementById("modalBox");
-
-/* CATEGORY COLOR */
-let color="#f97316";
-if(a.category.toLowerCase()=="campus") color="#0ea5e9";
-if(a.category.toLowerCase()=="environment") color="#065f46";
-if(a.category.toLowerCase()=="country") color="#7c3aed";
-if(a.category.toLowerCase()=="khulna") color="#92400e";
-
-box.style.background=color;
-
-m-cat.innerText=`${a.category} (${a.paper})`;
-m-title.innerText=a.title;
-m-writer.innerText="By: "+a.writer;
-m-date.innerText=a.date;
-m-img.src=a.img;
-m-content.innerText=a.content;
-
-m-source.href=a.source;
-m-archive.href=a.archive;
-
-modal.style.display="flex";
-}
-
-function closeModal(){
-modal.style.display="none";
-}
-
 </script>
 
-<!-- HEADER FOOTER -->
 <script>
-fetch("./header.html")
-.then(r=>r.text())
-.then(d=>document.getElementById("header").innerHTML=d);
-
-fetch("./footer.html")
-.then(r=>r.text())
-.then(d=>document.getElementById("footer").innerHTML=d);
+fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
 </script>
 
 </body>
