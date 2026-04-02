@@ -65,16 +65,19 @@ color:#bbf7d0;
 font-size:14px;
 }
 
-/* MODAL */
+/* 🔥 MODAL FIXED */
 .modal{
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.9);
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
 display:none;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+z-index:9999;
 }
 
 .modal img{
@@ -86,6 +89,8 @@ margin-bottom:10px;
 .modal-caption{
 color:white;
 font-size:16px;
+text-align:center;
+z-index:10000;
 }
 
 .close{
@@ -95,6 +100,7 @@ right:30px;
 font-size:30px;
 color:white;
 cursor:pointer;
+z-index:10000;
 }
 
 </style>
@@ -118,7 +124,7 @@ cursor:pointer;
 </div>
 
 <!-- MODAL -->
-<div id="modal" class="modal">
+<div id="modal" class="modal" onclick="outsideClick(event)">
 <span class="close" onclick="closeImg()">✖</span>
 <img id="modalImg">
 <div id="modalCaption" class="modal-caption"></div>
@@ -131,7 +137,7 @@ cursor:pointer;
 const spaceId = "ca2wujfe3emd";
 const accessToken = "e44CFNyOf4TaY2Qnze4Vr18ny7EGnPR9XYH-9oemanQ";
 
-/* 🔥 DEFAULT CATEGORY (MANUAL) */
+/* DEFAULT CATEGORY */
 let defaultCategories = [
 "Club","Campus","GIS","School","College","Ekramul's Photo"
 ];
@@ -151,7 +157,7 @@ assetMap[a.sys.id] = "https:" + a.fields.file.url;
 let all=[];
 let categories=new Set();
 
-/* add default first */
+/* default add */
 defaultCategories.forEach(c=>categories.add(c));
 
 items.forEach(i=>{
@@ -174,14 +180,13 @@ categories.add(category);
 /* CATEGORY BUTTON */
 let catDiv=document.getElementById("categories");
 
-/* ALL BUTTON */
 let allBtn=document.createElement("div");
 allBtn.innerText="All";
 allBtn.className="cat-btn";
 allBtn.onclick=()=>render(all);
 catDiv.appendChild(allBtn);
 
-/* SORT CATEGORY */
+/* dynamic category */
 [...categories].sort().forEach(c=>{
 let btn=document.createElement("div");
 btn.innerText=c;
@@ -232,16 +237,31 @@ container.appendChild(div);
 
 }
 
-/* MODAL */
+/* MODAL OPEN */
 function openImg(src,caption){
 modal.style.display="flex";
 modalImg.src=src;
 modalCaption.innerText=caption;
 }
 
+/* CLOSE */
 function closeImg(){
 modal.style.display="none";
 }
+
+/* 🔥 CLICK OUTSIDE CLOSE */
+function outsideClick(e){
+if(e.target.id==="modal"){
+closeImg();
+}
+}
+
+/* 🔥 ESC CLOSE */
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape"){
+closeImg();
+}
+});
 
 </script>
 
