@@ -8,16 +8,52 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
+#search{
+width:100%;padding:10px;margin-bottom:15px;
+background:#065f46;color:white;border:none;border-radius:8px;
 }
 
-.gallery-grid img{
-width:100%;
+.categories{
+display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;
+}
+
+.cat-btn{
+padding:5px 10px;background:#064e3b;border-radius:15px;cursor:pointer;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.card{
+background:#065f46;border-radius:10px;overflow:hidden;
+}
+
+.card img{
+width:100%;height:180px;object-fit:cover;
+}
+
+.caption{
+padding:10px;color:#bbf7d0;font-size:14px;
+}
+
+/* modal */
+.modal{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.9);
+display:none;justify-content:center;align-items:center;
+z-index:2000;
+}
+
+.modal img{
+max-width:90%;max-height:80%;
 border-radius:10px;
-cursor:pointer;
+}
+
+.close{
+position:absolute;top:20px;right:30px;font-size:30px;color:white;cursor:pointer;
 }
 </style>
 
@@ -29,33 +65,122 @@ cursor:pointer;
 
 <div class="container">
 <h1>Photo Gallery</h1>
-<div id="gallery" class="gallery-grid"></div>
+
+<input id="search" placeholder="Search...">
+
+<div id="categories" class="categories"></div>
+<div id="gallery" class="gallery"></div>
+</div>
+
+<!-- modal -->
+<div id="modal" class="modal">
+<span class="close" onclick="closeImg()">✖</span>
+<img id="modalImg">
 </div>
 
 <div id="footer"></div>
 
 <script>
 
-fetch("data.json")
+/* 🔥 CONFIG */
+const spaceId = "YOUR_SPACE_ID";
+const accessToken = "YOUR_ACCESS_TOKEN";
+
+/* FETCH */
+fetch(`https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=gallery&include=1`)
 .then(res=>res.json())
 .then(data=>{
 
-let container=document.getElementById("gallery");
+let items = data.items;
+let assets = data.includes.Asset;
 
-data.gallery.forEach(g=>{
+let assetMap = {};
+assets.forEach(a=>{
+assetMap[a.sys.id] = "https:" + a.fields.file.url;
+});
 
-let img=document.createElement("img");
-img.src=g.image;
+let all=[];
+let categories=new Set();
 
-img.onclick=()=>{
-alert(g.title + " (" + g.date + ")");
+items.forEach(i=>{
+let f=i.fields;
+
+let imgUrl = assetMap[f.image.sys.id];
+
+let obj={
+title:f.title,
+category:f.category,
+image:imgUrl,
+caption:f.caption,
+date:f.date
 };
 
-container.appendChild(img);
+all.push(obj);
+categories.add(obj.category);
+});
 
+/* CATEGORY */
+let catDiv=document.getElementById("categories");
+
+let allBtn=document.createElement("div");
+allBtn.innerText="All";
+allBtn.className="cat-btn";
+allBtn.onclick=()=>render(all);
+catDiv.appendChild(allBtn);
+
+categories.forEach(c=>{
+let btn=document.createElement("div");
+btn.innerText=c;
+btn.className="cat-btn";
+btn.onclick=()=>{
+let filtered=all.filter(i=>i.category===c);
+render(filtered);
+};
+catDiv.appendChild(btn);
+});
+
+render(all);
+
+/* SEARCH */
+document.getElementById("search").addEventListener("keyup",function(){
+let v=this.value.toLowerCase();
+let filtered=all.filter(i=>i.title.toLowerCase().includes(v));
+render(filtered);
 });
 
 });
+
+/* RENDER */
+function render(list){
+let container=document.getElementById("gallery");
+container.innerHTML="";
+
+list.forEach(i=>{
+let div=document.createElement("div");
+div.className="card";
+
+div.innerHTML=`
+<img src="${i.image}" onclick="openImg('${i.image}')">
+<div class="caption">
+<b>${i.title}</b><br>
+${i.caption}<br>
+${i.date}
+</div>
+`;
+
+container.appendChild(div);
+});
+}
+
+/* MODAL */
+function openImg(src){
+modal.style.display="flex";
+modalImg.src=src;
+}
+
+function closeImg(){
+modal.style.display="none";
+}
 
 </script>
 
