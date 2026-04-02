@@ -3,149 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research & Thesis</title>
+
+<title>Research & Thesis | Ekramul Haque</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="style.css">
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(to bottom,#022c22,#064e3b);
-color:white;
-overflow-x:hidden;
-}
-
-/* ===== BACKGROUND ANIMATION ===== */
-.bg-icons{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:0;
-}
-
-.bg-icons i{
-position:absolute;
-font-size:40px;
-color:#4ade80;
-opacity:0.08;
-animation:float 20s linear infinite;
-}
-
-/* positions */
-.bg-icons i:nth-child(1){top:10%;left:15%;}
-.bg-icons i:nth-child(2){top:30%;left:70%;}
-.bg-icons i:nth-child(3){top:60%;left:20%;}
-.bg-icons i:nth-child(4){top:75%;left:80%;}
-.bg-icons i:nth-child(5){top:50%;left:50%;}
-
-/* animation */
-@keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-30px);}
-100%{transform:translateY(0);}
-}
-
-/* ===== CONTENT ABOVE BG ===== */
-header, .container, footer{
-position:relative;
-z-index:1;
-}
-
-/* HEADER */
-header{
-padding:15px 10%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(6,78,59,0.95);
-position:sticky;
-top:0;
-}
-
-header h2{color:#4ade80;}
-
-nav a{
-margin-left:20px;
-text-decoration:none;
-color:white;
-}
-
-/* CONTAINER */
-.container{
-padding:40px 10%;
-}
-
-h1{
-text-align:center;
-margin-bottom:30px;
-}
-
-/* CARD */
-.card{
-background:#065f46;
-padding:20px;
-border-radius:12px;
-margin-bottom:25px;
-}
-
-.card h2{
-color:#4ade80;
-margin-bottom:10px;
-}
-
-ul{
-padding-left:20px;
-color:#bbf7d0;
-}
-
-li{margin-bottom:8px;}
-
-/* BUTTON */
-.btn{
-display:inline-block;
-margin-top:10px;
-padding:8px 15px;
-background:#22c55e;
-color:black;
-border-radius:20px;
-text-decoration:none;
-}
-
-/* MAP */
-.map img{
-width:100%;
-border-radius:10px;
-margin-top:10px;
-}
-
-/* TIMELINE */
-.timeline{
-border-left:3px solid #22c55e;
-padding-left:15px;
-}
-
-.timeline div{
-margin-bottom:15px;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-color:#bbf7d0;
-}
-
-</style>
 </head>
 
 <body>
@@ -159,24 +27,15 @@ color:#bbf7d0;
 <i class="fas fa-seedling"></i>
 </div>
 
-<header>
-<h2>Ekramul</h2>
+<!-- HEADER LOAD -->
+<div id="header"></div>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About Me</a>
-<a href="research.html">Research & Thesis</a>
-<a href="articles.html">Newspaper Articles</a>
-<a href="gallery.html">Gallery</a>
-<a href="cv.html">CV</a>
-<a href="contact.html">Contact</a>
-</nav>
-</header>
-
+<!-- MAIN CONTENT -->
 <div class="container">
 
 <h1>Research & Thesis</h1>
 
+<!-- GRADUATE -->
 <div class="card">
 <h2>Graduate Thesis (Ongoing)</h2>
 
@@ -193,11 +52,13 @@ color:#bbf7d0;
 
 </div>
 
+<!-- MAP -->
 <div class="card map">
 <h2>Study Area & Map Preview</h2>
 <img src="images/map.jpg">
 </div>
 
+<!-- TIMELINE -->
 <div class="card">
 <h2>Research Timeline</h2>
 
@@ -209,6 +70,7 @@ color:#bbf7d0;
 
 </div>
 
+<!-- UNDERGRAD -->
 <div class="card">
 <h2>Undergraduate Thesis</h2>
 
@@ -222,6 +84,7 @@ color:#bbf7d0;
 
 </div>
 
+<!-- PUBLICATIONS -->
 <div class="card">
 <h2>Publications</h2>
 
@@ -234,9 +97,33 @@ color:#bbf7d0;
 
 </div>
 
-<footer>
-© 2026 Ekramul Haque
-</footer>
+<!-- FOOTER LOAD -->
+<div id="footer"></div>
+
+<!-- MENU FIX -->
+<script>
+function toggleMenu(){
+const menu = document.getElementById("menu");
+if(menu){
+menu.classList.toggle("active");
+}
+}
+</script>
+
+<!-- HEADER & FOOTER LOAD -->
+<script>
+fetch("header.html")
+.then(res => res.text())
+.then(data => {
+document.getElementById("header").innerHTML = data;
+});
+
+fetch("footer.html")
+.then(res => res.text())
+.then(data => {
+document.getElementById("footer").innerHTML = data;
+});
+</script>
 
 </body>
 </html>
