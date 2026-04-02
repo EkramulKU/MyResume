@@ -38,73 +38,64 @@ background:#22c55e;
 color:black;
 }
 
-.articles{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-}
-
+/* CARD */
 .card{
 border-radius:12px;
 overflow:hidden;
 cursor:pointer;
+color:white;
 }
 
 .card img{
 width:100%;
-height:180px;
+height:220px;
 object-fit:cover;
 }
 
-.card-content{
+.card-body{
 padding:10px;
-color:white;
 }
 
 /* CATEGORY COLORS */
-.Campus{background:#38bdf8;}
-.Environment{background:#064e3b;}
-.Features{background:#7c3aed;}
-.Khulna{background:#78350f;}
-.Country{background:#9333ea;}
-.Tour{background:#f97316;}
-.default{background:#6b21a8;}
-
-.meta{
-font-size:12px;
-color:#d1fae5;
-}
+.campus{background:#38bdf8;}
+.environment{background:#064e3b;}
+.features{background:#7c3aed;}
+.country{background:#7c3aed;}
+.khulna{background:#92400e;}
+.default{background:#7c3aed;}
 
 /* MODAL */
 .modal{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.95);
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.9);
 display:none;
-overflow:auto;
+justify-content:center;
+align-items:center;
 z-index:9999;
-padding:30px;
 }
 
-.modal-box{
-max-width:800px;
-margin:auto;
+.modal-content{
 background:#022c22;
 padding:20px;
 border-radius:10px;
+width:90%;
+max-width:900px;
+max-height:90vh;
+overflow:auto;
 color:white;
 }
 
 .modal img{
 width:100%;
-margin:15px 0;
+max-height:400px;
+object-fit:contain;
+margin:10px 0;
 }
 
 .close{
-position:fixed;
+position:absolute;
 top:20px;
 right:30px;
 font-size:30px;
@@ -116,7 +107,7 @@ cursor:pointer;
 .btn{
 display:inline-block;
 margin:10px 5px 0 0;
-padding:8px 12px;
+padding:8px 15px;
 background:#22c55e;
 color:black;
 border-radius:6px;
@@ -139,14 +130,14 @@ text-decoration:none;
 
 <div id="categories" class="categories"></div>
 
-<div id="articles" class="articles"></div>
+<div id="articles" class="gallery"></div>
 
 </div>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
 <span class="close" onclick="closeModal()">✖</span>
-<div class="modal-box" id="modalContent"></div>
+<div class="modal-content" id="modalContent"></div>
 </div>
 
 <div id="footer"></div>
@@ -154,17 +145,14 @@ text-decoration:none;
 <script>
 
 const spaceId = "ca2wujfe3emd";
-const accessToken = "e44CFNyOf4TaY2Qnze4Vr18ny7EGnPR9XYH-9oemanQ";
+const accessToken = "e44CFNyOf4TaY2Qnze4Vr18ny7EGnPR9XYH-9oemanQ"; // ← token বসাও
 
-/* FIXED CATEGORY */
-let defaultCategories=["Campus","Environment","Features","Country","Khulna","Tour"];
-
-fetch(`https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=newsArticles&include=1`)
+fetch(`https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=newsArticles&include=2`)
 .then(res=>res.json())
 .then(data=>{
 
 let items=data.items;
-let assets=data.includes?.Asset || [];
+let assets=data.includes.Asset;
 
 let assetMap={};
 assets.forEach(a=>{
@@ -172,24 +160,24 @@ assetMap[a.sys.id]="https:"+a.fields.file.url;
 });
 
 let all=[];
-let categories=new Set(defaultCategories);
+let categories=new Set();
 
 items.forEach(i=>{
 let f=i.fields;
 
-let obj={
-title:f.title || "",
-writer:f.writer || "",
-category:(f.category || "default").trim(),
-newspaper:f.newspaper || "",
-image: f.photo?.sys ? assetMap[f.photo.sys.id] : "",
-content:f.content || "",
-source:f.source || "#",
-archive:f.archive || "#",
-date:f.date || ""
-};
+let content = parseRichText(f.content);
 
-if(!obj.image) return;
+let obj={
+title:f.title,
+writer:f.writer,
+category:f.category,
+newspaper:f.newspaper,
+date:f.date,
+image: assetMap[f.photo.sys.id],
+content: content,
+source:f.source,
+archive:f.archive
+};
 
 all.push(obj);
 categories.add(obj.category);
@@ -204,14 +192,13 @@ allBtn.className="cat-btn";
 allBtn.onclick=()=>render(all);
 catDiv.appendChild(allBtn);
 
-[...categories].sort().forEach(c=>{
+[...categories].forEach(c=>{
 let btn=document.createElement("div");
 btn.innerText=c;
 btn.className="cat-btn";
 
 btn.onclick=()=>{
-let filtered=all.filter(i=>i.category===c);
-render(filtered);
+render(all.filter(i=>i.category===c));
 };
 
 catDiv.appendChild(btn);
@@ -223,14 +210,33 @@ render(all);
 document.getElementById("search").addEventListener("keyup",function(){
 let v=this.value.toLowerCase();
 
-let filtered=all.filter(i=>
+render(all.filter(i=>
 i.title.toLowerCase().includes(v)
-);
-
-render(filtered);
+));
 });
 
 });
+
+/* RICH TEXT FIX */
+function parseRichText(rich){
+if(!rich) return "";
+
+return rich.content.map(block=>{
+return block.content.map(text=>text.value).join("");
+}).join("<br><br>");
+}
+
+/* COLOR FUNCTION */
+function getColor(c){
+c=c.toLowerCase();
+
+if(c==="campus") return "campus";
+if(c==="environment") return "environment";
+if(c==="features") return "features";
+if(c==="khulna") return "khulna";
+
+return "default";
+}
 
 /* RENDER */
 function render(list){
@@ -241,16 +247,13 @@ container.innerHTML="";
 list.forEach(i=>{
 
 let div=document.createElement("div");
-
-let catClass = i.category.replace(/\s/g,'');
-
-div.className="card";
+div.className="card "+getColor(i.category);
 
 div.innerHTML=`
 <img src="${i.image}">
-<div class="card-content ${catClass}">
-<h3>${i.title}</h3>
-<div class="meta">${i.newspaper} | ${i.date}</div>
+<div class="card-body">
+<b>${i.title}</b><br>
+${i.newspaper} | ${i.date}
 </div>
 `;
 
@@ -265,13 +268,15 @@ container.appendChild(div);
 /* MODAL */
 function openModal(i){
 
-modal.style.display="block";
+modal.style.display="flex";
 
 modalContent.innerHTML=`
+
+<div>${i.category} (${i.newspaper})</div>
+
 <h2>${i.title}</h2>
-<p><b>${i.category} (${i.newspaper})</b></p>
-<p>✍ ${i.writer}</p>
-<p>${i.date}</p>
+
+<div>${i.writer} (${i.date})</div>
 
 <img src="${i.image}">
 
@@ -279,6 +284,7 @@ modalContent.innerHTML=`
 
 <a href="${i.source}" target="_blank" class="btn">Source</a>
 <a href="${i.archive}" target="_blank" class="btn">Archive</a>
+
 `;
 
 }
@@ -286,11 +292,6 @@ modalContent.innerHTML=`
 function closeModal(){
 modal.style.display="none";
 }
-
-/* ESC CLOSE */
-document.addEventListener("keydown",e=>{
-if(e.key==="Escape") closeModal();
-});
 
 </script>
 
