@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,50 +9,40 @@
 
 <style>
 
-/* SEARCH */
 #search{
 width:100%;
 padding:10px;
-border-radius:8px;
-border:none;
-margin-bottom:15px;
+margin-bottom:10px;
 background:#065f46;
+border:none;
 color:white;
+border-radius:8px;
 }
 
-/* FILTER ROW */
 .filter-bar{
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
 .filter-btn{
 padding:5px 10px;
 margin:3px;
-border:none;
 border-radius:15px;
-cursor:pointer;
 background:#064e3b;
 color:white;
-font-size:13px;
-}
-
-.filter-btn:hover{
-background:#22c55e;
-color:black;
+cursor:pointer;
+font-size:12px;
 }
 
 /* CARD */
 .article-card{
 background:#065f46;
-border-radius:12px;
+border-radius:10px;
 overflow:hidden;
 cursor:pointer;
 transition:0.3s;
 }
 
-.article-card:hover{
-transform:translateY(-5px);
-}
+.article-card:hover{transform:scale(1.03);}
 
 .thumb{
 width:100%;
@@ -60,9 +50,9 @@ height:140px;
 object-fit:cover;
 }
 
-.article-content{
-padding:10px;
-font-size:14px;
+/* FEATURED */
+.featured{
+border:2px solid gold;
 }
 
 /* MODAL */
@@ -72,42 +62,28 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
 display:none;
-align-items:center;
+background:rgba(0,0,0,0.9);
 justify-content:center;
+align-items:center;
 z-index:2000;
 }
 
 .modal-box{
 width:90%;
 max-width:700px;
-border-radius:12px;
 padding:20px;
-position:relative;
-color:white;
-}
-
-.modal-box img{
-width:100%;
 border-radius:10px;
-margin-bottom:10px;
+color:white;
 }
 
 .close{
 position:absolute;
 top:10px;
-right:15px;
-font-size:22px;
+right:20px;
+font-size:25px;
 cursor:pointer;
 }
-
-/* CATEGORY COLOR */
-.modal.environment .modal-box{background:#065f46;}
-.modal.ku .modal-box{background:#0ea5e9;}
-.modal.country .modal-box{background:#7c3aed;}
-.modal.features .modal-box{background:#047857;}
-.modal.khulna .modal-box{background:#b45309;}
 
 </style>
 
@@ -119,14 +95,12 @@ cursor:pointer;
 
 <div class="container">
 
-<h1>Newspaper Articles</h1>
+<h1>Articles</h1>
 
 <input type="text" id="search" placeholder="Search...">
 
-<!-- FILTER -->
 <div class="filter-bar">
 <button class="filter-btn" onclick="setFilter('all','all')">All</button>
-
 <button class="filter-btn" onclick="setFilter('janakantha','paper')">Janakantha</button>
 <button class="filter-btn" onclick="setFilter('samakal','paper')">Samakal</button>
 <button class="filter-btn" onclick="setFilter('kalbela','paper')">Kalbela</button>
@@ -135,167 +109,19 @@ cursor:pointer;
 <button class="filter-btn" onclick="setFilter('country','topic')">Country</button>
 <button class="filter-btn" onclick="setFilter('campus','topic')">Campus</button>
 <button class="filter-btn" onclick="setFilter('environment','topic')">Environment</button>
-<button class="filter-btn" onclick="setFilter('travel','topic')">Travel</button>
 </div>
 
-<!-- ARTICLES -->
-<div id="articles" class="quick-links">
-
-<!-- DEMO ARTICLES START START START START-->
-
-<!-- 1 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="janakantha"
-data-topic="features country"
-data-category="features"
-data-title="জলবায়ু পরিবর্তন ও উপকূলীয় বন"
-data-image="images/article1.jpg"
-data-content="জলবায়ু পরিবর্তনের ফলে উপকূলীয় বনাঞ্চলে ব্যাপক পরিবর্তন দেখা যাচ্ছে। লবণাক্ততা বৃদ্ধি, বন উজাড় এবং জীববৈচিত্র্যের ক্ষয় এখন বড় চ্যালেঞ্জ হয়ে দাঁড়িয়েছে।">
-
-<img src="images/article1.jpg" class="thumb">
-<div class="article-content">
-<h3>জলবায়ু পরিবর্তন ও উপকূলীয় বন</h3>
-<p>Janakantha</p>
-</div>
-</div>
-
-<!-- 2 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="samakal"
-data-topic="campus"
-data-category="ku"
-data-title="খুলনা বিশ্ববিদ্যালয়ে গবেষণার নতুন দিগন্ত"
-data-image="images/article2.jpg"
-data-content="খুলনা বিশ্ববিদ্যালয়ের শিক্ষার্থীরা নতুন নতুন গবেষণার মাধ্যমে পরিবেশ ও বন ব্যবস্থাপনায় গুরুত্বপূর্ণ অবদান রাখছে।">
-
-<img src="images/article2.jpg" class="thumb">
-<div class="article-content">
-<h3>খুলনা বিশ্ববিদ্যালয়ে গবেষণার নতুন দিগন্ত</h3>
-<p>Samakal</p>
-</div>
-</div>
-
-<!-- 3 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="kalbela"
-data-topic="environment"
-data-category="environment"
-data-title="পরিবেশ দূষণ: এক নীরব বিপর্যয়"
-data-image="images/article3.jpg"
-data-content="বায়ু, পানি ও মাটির দূষণ দিন দিন বেড়েই চলেছে। এর ফলে মানবস্বাস্থ্য ও পরিবেশ মারাত্মক হুমকির মুখে পড়েছে।">
-
-<img src="images/article3.jpg" class="thumb">
-<div class="article-content">
-<h3>পরিবেশ দূষণ: এক নীরব বিপর্যয়</h3>
-<p>Kalbela</p>
-</div>
-</div>
-
-<!-- 4 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="janakantha"
-data-topic="travel"
-data-category="country"
-data-title="সুন্দরবনে ভ্রমণ: এক অনন্য অভিজ্ঞতা"
-data-image="images/article4.jpg"
-data-content="সুন্দরবনের প্রাকৃতিক সৌন্দর্য, বাঘ, হরিণ ও ম্যানগ্রোভ বন ভ্রমণপ্রেমীদের জন্য এক অনন্য আকর্ষণ।">
-
-<img src="images/article4.jpg" class="thumb">
-<div class="article-content">
-<h3>সুন্দরবনে ভ্রমণ: এক অনন্য অভিজ্ঞতা</h3>
-<p>Janakantha</p>
-</div>
-</div>
-
-<!-- 5 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="samakal"
-data-topic="country"
-data-category="country"
-data-title="বাংলাদেশে বন সংরক্ষণ চ্যালেঞ্জ"
-data-image="images/article5.jpg"
-data-content="বাংলাদেশে বন সংরক্ষণ একটি বড় চ্যালেঞ্জ হয়ে দাঁড়িয়েছে, বিশেষ করে অবৈধ দখল ও গাছ কাটার কারণে।">
-
-<img src="images/article5.jpg" class="thumb">
-<div class="article-content">
-<h3>বাংলাদেশে বন সংরক্ষণ চ্যালেঞ্জ</h3>
-<p>Samakal</p>
-</div>
-</div>
-
-<!-- 6 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="kalbela"
-data-topic="features"
-data-category="features"
-data-title="গ্রামীণ জীবনে বনসম্পদের গুরুত্ব"
-data-image="images/article6.jpg"
-data-content="গ্রামীণ অর্থনীতিতে বনসম্পদ গুরুত্বপূর্ণ ভূমিকা পালন করে। জ্বালানি, খাদ্য ও জীবিকা—সবই নির্ভর করে বনসম্পদের ওপর।">
-
-<img src="images/article6.jpg" class="thumb">
-<div class="article-content">
-<h3>গ্রামীণ জীবনে বনসম্পদের গুরুত্ব</h3>
-<p>Kalbela</p>
-</div>
-</div>
-
-<!-- 7 (MULTI CATEGORY) -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="janakantha"
-data-topic="environment country"
-data-category="environment"
-data-title="বন উজাড় ও জলবায়ু সংকট"
-data-image="images/article7.jpg"
-data-content="বন উজাড়ের ফলে কার্বন নিঃসরণ বাড়ছে এবং জলবায়ু পরিবর্তন আরও ত্বরান্বিত হচ্ছে।">
-
-<img src="images/article7.jpg" class="thumb">
-<div class="article-content">
-<h3>বন উজাড় ও জলবায়ু সংকট</h3>
-<p>Janakantha</p>
-</div>
-</div>
-
-<!-- 8 -->
-<div class="article-card"
-onclick="openModal(this)"
-data-paper="samakal"
-data-topic="travel"
-data-category="khulna"
-data-title="খুলনার প্রাকৃতিক সৌন্দর্য"
-data-image="images/article8.jpg"
-data-content="খুলনা অঞ্চলের নদী, বন ও জীববৈচিত্র্য পর্যটনের জন্য গুরুত্বপূর্ণ সম্ভাবনা তৈরি করছে।">
-
-<img src="images/article8.jpg" class="thumb">
-<div class="article-content">
-<h3>খুলনার প্রাকৃতিক সৌন্দর্য</h3>
-<p>Samakal</p>
-</div>
-</div>
-
-  
-<!-- DEMO ARTICLES END END END END -->
-
-</div>
+<div id="articles" class="quick-links"></div>
 
 </div>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-box">
-
 <span class="close" onclick="closeModal()">✖</span>
-
 <h2 id="m-title"></h2>
-<img id="m-img">
+<img id="m-img" style="width:100%">
 <p id="m-content"></p>
-
 </div>
 </div>
 
@@ -303,59 +129,101 @@ data-content="খুলনা অঞ্চলের নদী, বন ও জী
 
 <script>
 
-/* SEARCH */
-document.getElementById("search").addEventListener("keyup", function(){
-let v=this.value.toLowerCase();
-document.querySelectorAll(".article-card").forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none";
+let allArticles=[];
+
+/* FETCH DATA */
+fetch("YOUR_CSV_LINK")
+.then(res=>res.text())
+.then(data=>{
+
+let rows=data.split("\n").slice(1);
+
+rows.forEach(row=>{
+let c=row.split(",");
+
+let obj={
+img:c[0],
+title:c[1],
+content:c[2],
+paper:c[3],
+category:c[4],
+tags:c[5].split(" "),
+date:c[6],
+featured:c[7]
+};
+
+allArticles.push(obj);
 });
+
+render(allArticles);
+});
+
+/* RENDER */
+function render(list){
+
+let container=document.getElementById("articles");
+container.innerHTML="";
+
+list.sort((a,b)=>b.date-a.date);
+
+list.forEach(a=>{
+
+let div=document.createElement("div");
+div.className="article-card "+(a.featured==="yes"?"featured":"");
+
+div.onclick=()=>openModal(a);
+
+div.innerHTML=`
+<img src="${a.img}" class="thumb">
+<div style="padding:8px">
+<h3>${a.title}</h3>
+<p>${a.paper} | ${a.date}</p>
+</div>
+`;
+
+container.appendChild(div);
+
+});
+}
+
+/* SEARCH */
+document.getElementById("search").addEventListener("keyup",function(){
+let v=this.value.toLowerCase();
+let filtered=allArticles.filter(a=>a.title.toLowerCase().includes(v));
+render(filtered);
 });
 
 /* FILTER */
-let currentPaper="all";
-let currentTopic="all";
+let cp="all",ct="all";
 
-function setFilter(value,type){
-
-if(type==="all"){
-currentPaper="all";
-currentTopic="all";
-}
-else if(type==="paper"){
-currentPaper=value;
-}
-else{
-currentTopic=value;
-}
+function setFilter(v,t){
+if(t==="paper") cp=v;
+else if(t==="topic") ct=v;
+else{cp="all";ct="all";}
 
 applyFilter();
 }
 
 function applyFilter(){
-document.querySelectorAll(".article-card").forEach(card=>{
-let paper=card.dataset.paper;
-let topics=card.dataset.topic.split(" ");
-
-let show=true;
-
-if(currentPaper!=="all" && paper!==currentPaper) show=false;
-if(currentTopic!=="all" && !topics.includes(currentTopic)) show=false;
-
-card.style.display=show?"block":"none";
+let filtered=allArticles.filter(a=>{
+let ok=true;
+if(cp!=="all" && a.paper!==cp) ok=false;
+if(ct!=="all" && !a.tags.includes(ct)) ok=false;
+return ok;
 });
+render(filtered);
 }
 
 /* MODAL */
-function openModal(el){
+function openModal(a){
 
 let modal=document.getElementById("modal");
 
-modal.className="modal";
-modal.classList.add(el.dataset.category);
+modal.className="modal "+a.category;
 
-document.getElementById("m-title").innerText=el.dataset.title;
-document.getElementById("m-img").src=el.dataset.image;
-document.getElementById("m-content").innerText=el.dataset.content;
+document.getElementById("m-title").innerText=a.title;
+document.getElementById("m-img").src=a.img;
+document.getElementById("m-content").innerText=a.content;
 
 modal.style.display="flex";
 }
@@ -364,17 +232,11 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-window.onclick=function(e){
-if(e.target.id==="modal"){
-closeModal();
-}
-}
-
 </script>
 
 <script>
-fetch("header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
-fetch("footer.html").then(r=>r.text()).then(d=>document.getElementById("footer").innerHTML=d);
+fetch("header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
 </script>
 
 </body>
