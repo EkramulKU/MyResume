@@ -3,90 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Articles</title>
+<title>Published News</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
-
 #search{
-width:100%;
-padding:10px;
-margin-bottom:10px;
-background:#065f46;
-border:none;
-color:white;
-border-radius:8px;
+width:100%;padding:10px;margin-bottom:15px;
+background:#065f46;color:white;border:none;border-radius:8px;
 }
 
-.filter-bar{
-margin-bottom:10px;
+.categories{
+display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;
 }
 
-.filter-btn{
-padding:5px 10px;
-margin:3px;
-border-radius:15px;
-background:#064e3b;
-color:white;
-cursor:pointer;
-font-size:12px;
+.cat-btn{
+padding:5px 10px;background:#064e3b;border-radius:15px;cursor:pointer;font-size:12px;
 }
 
-/* CARD */
-.article-card{
-background:#065f46;
-border-radius:10px;
-overflow:hidden;
-cursor:pointer;
-transition:0.3s;
+.article-grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;
 }
 
-.article-card:hover{transform:scale(1.03);}
-
-.thumb{
-width:100%;
-height:140px;
-object-fit:cover;
+.card{
+background:#065f46;border-radius:10px;overflow:hidden;cursor:pointer;
 }
 
-/* FEATURED */
-.featured{
-border:2px solid gold;
+.card img{
+width:100%;height:150px;object-fit:cover;
 }
 
-/* MODAL */
-.modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:none;
-background:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-z-index:2000;
-}
-
-.modal-box{
-width:90%;
-max-width:700px;
-padding:20px;
-border-radius:10px;
-color:white;
-}
-
-.close{
-position:absolute;
-top:10px;
-right:20px;
-font-size:25px;
-cursor:pointer;
-}
-
+.card-body{padding:10px;}
+.meta{font-size:12px;color:#bbf7d0;}
 </style>
-
 </head>
 
 <body>
@@ -95,33 +44,27 @@ cursor:pointer;
 
 <div class="container">
 
-<h1>Articles</h1>
+<h1>Published News / Article</h1>
 
 <input type="text" id="search" placeholder="Search...">
 
-<div class="filter-bar">
-<button class="filter-btn" onclick="setFilter('all','all')">All</button>
-<button class="filter-btn" onclick="setFilter('janakantha','paper')">Janakantha</button>
-<button class="filter-btn" onclick="setFilter('samakal','paper')">Samakal</button>
-<button class="filter-btn" onclick="setFilter('kalbela','paper')">Kalbela</button>
-
-<button class="filter-btn" onclick="setFilter('features','topic')">Features</button>
-<button class="filter-btn" onclick="setFilter('country','topic')">Country</button>
-<button class="filter-btn" onclick="setFilter('campus','topic')">Campus</button>
-<button class="filter-btn" onclick="setFilter('environment','topic')">Environment</button>
-</div>
-
-<div id="articles" class="quick-links"></div>
+<div id="categories" class="categories"></div>
+<div id="articles" class="article-grid"></div>
 
 </div>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
-<div class="modal-box">
-<span class="close" onclick="closeModal()">✖</span>
+<div id="modalBox" class="modal-box">
+<span onclick="closeModal()" class="close">✖</span>
+
+<p id="m-cat"></p>
 <h2 id="m-title"></h2>
-<img id="m-img" style="width:100%">
+<p id="m-writer"></p>
+<p id="m-date"></p>
+<img id="m-img">
 <p id="m-content"></p>
+
 </div>
 </div>
 
@@ -129,107 +72,140 @@ cursor:pointer;
 
 <script>
 
-let allArticles=[];
+let allData=[];
+let currentCategory="all";
 
-/* FETCH DATA */
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vT2RFKlzhDHYkEzHFXRC14VtWLSAujhNXIYoHp70I-v4378yAp9CFpIcDQNCNpy4dc5pDkL1q5KnyRd/pub?output=csv")
-.then(res=>res.text())
-.then(data=>{
+/* FETCH */
+fetch("YOUR_CSV_LINK")
+.then(r=>r.text())
+.then(d=>{
 
-let rows=data.split("\n").slice(1);
+let rows=d.split("\n").slice(1);
+let categories=new Set();
 
 rows.forEach(row=>{
 let c=row.split(",");
 
+if(c[0]!=="Article") return; // 🔥 MAIN FILTER
+
 let obj={
-img:c[0],
-title:c[1],
-content:c[2],
-paper:c[3],
-category:c[4],
-tags:c[5].split(" "),
-date:c[6],
-featured:c[7]
+category:c[1],
+paper:c[2],
+img:c[3],
+title:c[4],
+content:c[5],
+tag:c[6],
+date:c[7],
+featured:c[8],
+writer:c[9]
 };
 
-allArticles.push(obj);
+allData.push(obj);
+categories.add(obj.category);
 });
 
-render(allArticles);
+/* CATEGORY LOAD */
+let catDiv=document.getElementById("categories");
+
+let allBtn=document.createElement("div");
+allBtn.innerText="All";
+allBtn.className="cat-btn";
+allBtn.onclick=()=>{currentCategory="all";render();}
+catDiv.appendChild(allBtn);
+
+categories.forEach(cat=>{
+let btn=document.createElement("div");
+btn.innerText=cat;
+btn.className="cat-btn";
+btn.onclick=()=>{currentCategory=cat;render();}
+catDiv.appendChild(btn);
+});
+
+render();
+
 });
 
 /* RENDER */
-function render(list){
-
+function render(){
 let container=document.getElementById("articles");
 container.innerHTML="";
 
-list.sort((a,b)=>b.date-a.date);
+let list=allData.filter(a=>{
+return currentCategory==="all" || a.category===currentCategory;
+});
 
 list.forEach(a=>{
-
 let div=document.createElement("div");
-div.className="article-card "+(a.featured==="yes"?"featured":"");
-
+div.className="card";
 div.onclick=()=>openModal(a);
 
 div.innerHTML=`
-<img src="${a.img}" class="thumb">
-<div style="padding:8px">
+<img src="${a.img}">
+<div class="card-body">
 <h3>${a.title}</h3>
-<p>${a.paper} | ${a.date}</p>
+<div class="meta">${a.paper} | ${a.date}</div>
 </div>
 `;
 
 container.appendChild(div);
-
 });
 }
 
 /* SEARCH */
 document.getElementById("search").addEventListener("keyup",function(){
 let v=this.value.toLowerCase();
-let filtered=allArticles.filter(a=>a.title.toLowerCase().includes(v));
-render(filtered);
+let list=allData.filter(a=>a.title.toLowerCase().includes(v));
+renderSearch(list);
 });
 
-/* FILTER */
-let cp="all",ct="all";
+function renderSearch(list){
+let container=document.getElementById("articles");
+container.innerHTML="";
 
-function setFilter(v,t){
-if(t==="paper") cp=v;
-else if(t==="topic") ct=v;
-else{cp="all";ct="all";}
+list.forEach(a=>{
+let div=document.createElement("div");
+div.className="card";
+div.onclick=()=>openModal(a);
 
-applyFilter();
-}
+div.innerHTML=`
+<img src="${a.img}">
+<div class="card-body">
+<h3>${a.title}</h3>
+<div class="meta">${a.paper} | ${a.date}</div>
+</div>
+`;
 
-function applyFilter(){
-let filtered=allArticles.filter(a=>{
-let ok=true;
-if(cp!=="all" && a.paper!==cp) ok=false;
-if(ct!=="all" && !a.tags.includes(ct)) ok=false;
-return ok;
+container.appendChild(div);
 });
-render(filtered);
 }
 
 /* MODAL */
 function openModal(a){
 
 let modal=document.getElementById("modal");
+let box=document.getElementById("modalBox");
 
-modal.className="modal "+a.category;
+let color="#f97316";
 
-document.getElementById("m-title").innerText=a.title;
-document.getElementById("m-img").src=a.img;
-document.getElementById("m-content").innerText=a.content;
+if(a.category.toLowerCase()==="campus") color="#0ea5e9";
+if(a.category.toLowerCase()==="environment") color="#065f46";
+if(a.category.toLowerCase()==="country") color="#7c3aed";
+if(a.category.toLowerCase()==="khulna") color="#92400e";
+
+box.style.background=color;
+
+m-cat.innerText=`${a.category} (${a.paper})`;
+m-title.innerText=a.title;
+m-writer.innerText="By: "+a.writer;
+m-date.innerText=a.date;
+m-img.src=a.img;
+m-content.innerText=a.content;
 
 modal.style.display="flex";
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+modal.style.display="none";
 }
 
 </script>
