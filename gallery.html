@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Ekramul Haque</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* CATEGORY CARDS */
+.gallery-categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+margin-bottom:20px;
+}
+
+.gallery-btn{
+background:#065f46;
+padding:10px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+font-size:14px;
+}
+
+.gallery-btn:hover{
+background:#22c55e;
+color:black;
+}
+
+/* IMAGE GRID */
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+}
+
+.gallery-grid img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:80%;
+border-radius:10px;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<div class="container">
+
+<h1>Photo Gallery</h1>
+
+<!-- CATEGORY -->
+<div class="gallery-categories">
+
+<div class="gallery-btn" onclick="showCategory('gis')">GIS Work</div>
+<div class="gallery-btn" onclick="showCategory('school')">School</div>
+<div class="gallery-btn" onclick="showCategory('college')">College</div>
+<div class="gallery-btn" onclick="showCategory('club')">Club</div>
+<div class="gallery-btn" onclick="showCategory('university')">University</div>
+<div class="gallery-btn" onclick="showCategory('me')">Ekramul's Photo</div>
+
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="gallery-grid">
+
+<!-- GIS -->
+<img src="images/gis1.jpg" data-category="gis" onclick="openImg(this)">
+<img src="images/gis2.jpg" data-category="gis" onclick="openImg(this)">
+
+<!-- SCHOOL -->
+<img src="images/school1.jpg" data-category="school" onclick="openImg(this)">
+
+<!-- COLLEGE -->
+<img src="images/college1.jpg" data-category="college" onclick="openImg(this)">
+
+<!-- CLUB -->
+<img src="images/club1.jpg" data-category="club" onclick="openImg(this)">
+
+<!-- UNIVERSITY -->
+<img src="images/university1.jpg" data-category="university" onclick="openImg(this)">
+
+<!-- PERSONAL -->
+<img src="images/me1.jpg" data-category="me" onclick="openImg(this)">
+
+</div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+<span class="close" onclick="closeImg()">✖</span>
+<img id="lightbox-img">
+</div>
+
+<div id="footer"></div>
+
+<script>
+
+/* CATEGORY FILTER */
+function showCategory(cat){
+let imgs=document.querySelectorAll("#gallery img");
+
+imgs.forEach(img=>{
+img.style.display=(cat==="all" || img.dataset.category===cat)?"block":"none";
+});
+}
+
+/* LIGHTBOX */
+function openImg(el){
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=el.src;
+}
+
+function closeImg(){
+document.getElementById("lightbox").style.display="none";
+}
+
+</script>
+
+<script>
+fetch("header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
+</script>
+
+</body>
+</html>
