@@ -8,44 +8,121 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-.article-grid{
+
+#search{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+background:#065f46;
+color:white;
+border:none;
+border-radius:25px;
+}
+
+.categories{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.cat-btn{
+padding:6px 14px;
+background:#064e3b;
+border-radius:20px;
+cursor:pointer;
+}
+
+.cat-btn:hover{
+background:#22c55e;
+color:black;
+}
+
+.articles{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
 }
 
 .card{
-background:#065f46;
-border-radius:10px;
+border-radius:12px;
 overflow:hidden;
 cursor:pointer;
 }
 
 .card img{
 width:100%;
-height:150px;
+height:180px;
 object-fit:cover;
 }
 
-.card-body{padding:10px;}
+.card-content{
+padding:10px;
+color:white;
+}
 
+/* CATEGORY COLORS */
+.Campus{background:#38bdf8;}
+.Environment{background:#064e3b;}
+.Features{background:#7c3aed;}
+.Khulna{background:#78350f;}
+.Country{background:#9333ea;}
+.Tour{background:#f97316;}
+.default{background:#6b21a8;}
+
+.meta{
+font-size:12px;
+color:#d1fae5;
+}
+
+/* MODAL */
 .modal{
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.9);
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
 display:none;
-justify-content:center;
-align-items:center;
+overflow:auto;
+z-index:9999;
+padding:30px;
 }
 
 .modal-box{
-background:#065f46;
+max-width:800px;
+margin:auto;
+background:#022c22;
 padding:20px;
-max-width:700px;
-width:90%;
 border-radius:10px;
+color:white;
 }
+
+.modal img{
+width:100%;
+margin:15px 0;
+}
+
+.close{
+position:fixed;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+margin:10px 5px 0 0;
+padding:8px 12px;
+background:#22c55e;
+color:black;
+border-radius:6px;
+text-decoration:none;
+}
+
 </style>
 
 </head>
@@ -55,75 +132,165 @@ border-radius:10px;
 <div id="header"></div>
 
 <div class="container">
-<h1>Published News / Article</h1>
-<div id="articles" class="article-grid"></div>
+
+<h1 style="text-align:center">Published News / Article</h1>
+
+<input id="search" placeholder="Search...">
+
+<div id="categories" class="categories"></div>
+
+<div id="articles" class="articles"></div>
+
 </div>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
-<div class="modal-box">
-
-<span onclick="closeModal()" style="cursor:pointer">✖</span>
-
-<h2 id="m-title"></h2>
-<p id="m-meta"></p>
-<img id="m-img" style="width:100%">
-<p id="m-content"></p>
-
-<p>
-<a id="m-source" target="_blank">Source</a> |
-<a id="m-archive" target="_blank">Archive</a>
-</p>
-
-</div>
+<span class="close" onclick="closeModal()">✖</span>
+<div class="modal-box" id="modalContent"></div>
 </div>
 
 <div id="footer"></div>
 
 <script>
 
-fetch("data.json")
+const spaceId = "ca2wujfe3emd";
+const accessToken = "e44CFNyOf4TaY2Qnze4Vr18ny7EGnPR9XYH-9oemanQ";
+
+/* FIXED CATEGORY */
+let defaultCategories=["Campus","Environment","Features","Country","Khulna","Tour"];
+
+fetch(`https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=newsArticles&include=1`)
 .then(res=>res.json())
 .then(data=>{
 
-let container=document.getElementById("articles");
+let items=data.items;
+let assets=data.includes?.Asset || [];
 
-data.articles.forEach(a=>{
+let assetMap={};
+assets.forEach(a=>{
+assetMap[a.sys.id]="https:"+a.fields.file.url;
+});
+
+let all=[];
+let categories=new Set(defaultCategories);
+
+items.forEach(i=>{
+let f=i.fields;
+
+let obj={
+title:f.title || "",
+writer:f.writer || "",
+category:(f.category || "default").trim(),
+newspaper:f.newspaper || "",
+image: f.photo?.sys ? assetMap[f.photo.sys.id] : "",
+content:f.content || "",
+source:f.source || "#",
+archive:f.archive || "#",
+date:f.date || ""
+};
+
+if(!obj.image) return;
+
+all.push(obj);
+categories.add(obj.category);
+});
+
+/* CATEGORY BUTTON */
+let catDiv=document.getElementById("categories");
+
+let allBtn=document.createElement("div");
+allBtn.innerText="All";
+allBtn.className="cat-btn";
+allBtn.onclick=()=>render(all);
+catDiv.appendChild(allBtn);
+
+[...categories].sort().forEach(c=>{
+let btn=document.createElement("div");
+btn.innerText=c;
+btn.className="cat-btn";
+
+btn.onclick=()=>{
+let filtered=all.filter(i=>i.category===c);
+render(filtered);
+};
+
+catDiv.appendChild(btn);
+});
+
+render(all);
+
+/* SEARCH */
+document.getElementById("search").addEventListener("keyup",function(){
+let v=this.value.toLowerCase();
+
+let filtered=all.filter(i=>
+i.title.toLowerCase().includes(v)
+);
+
+render(filtered);
+});
+
+});
+
+/* RENDER */
+function render(list){
+
+let container=document.getElementById("articles");
+container.innerHTML="";
+
+list.forEach(i=>{
 
 let div=document.createElement("div");
+
+let catClass = i.category.replace(/\s/g,'');
+
 div.className="card";
 
-div.onclick=()=>openModal(a);
-
 div.innerHTML=`
-<img src="${a.image}">
-<div class="card-body">
-<h3>${a.title}</h3>
-<p>${a.newspaper} | ${a.date}</p>
+<img src="${i.image}">
+<div class="card-content ${catClass}">
+<h3>${i.title}</h3>
+<div class="meta">${i.newspaper} | ${i.date}</div>
 </div>
 `;
+
+div.onclick=()=>openModal(i);
 
 container.appendChild(div);
 
 });
 
-});
+}
 
-function openModal(a){
-m-title.innerText=a.title;
-m-meta.innerText=`${a.category} | ${a.writer}`;
-m-img.src=a.image;
-m-content.innerText=a.content;
+/* MODAL */
+function openModal(i){
 
-m-source.href=a.source;
-m-archive.href=a.archive;
+modal.style.display="block";
 
-modal.style.display="flex";
+modalContent.innerHTML=`
+<h2>${i.title}</h2>
+<p><b>${i.category} (${i.newspaper})</b></p>
+<p>✍ ${i.writer}</p>
+<p>${i.date}</p>
+
+<img src="${i.image}">
+
+<p>${i.content}</p>
+
+<a href="${i.source}" target="_blank" class="btn">Source</a>
+<a href="${i.archive}" target="_blank" class="btn">Archive</a>
+`;
+
 }
 
 function closeModal(){
 modal.style.display="none";
 }
+
+/* ESC CLOSE */
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape") closeModal();
+});
 
 </script>
 
