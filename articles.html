@@ -168,17 +168,21 @@ text-decoration:underline;
 let allData=[];
 let currentCategory="all";
 
-/* FETCH */
+/* FETCH DATA */
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQIboxF5X3guD1aJoSDYTunwVQukZLITCnFTQgEg5ED-QxdEAyL3lJbI_ukw6F8gXNPPwO5Ghz5-eYN/pub?output=csv")
 .then(res=>res.text())
 .then(data=>{
 
-let rows=data.split("\n").slice(1);
+/* SAFE ROW SPLIT (বাংলা + newline fix) */
+let rows = data.split(/\r?\n(?=(?:[^"]*"[^"]*")*[^"]*$)/).slice(1);
+
 let categories=new Set();
 
 rows.forEach(row=>{
 
-let c=row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+let c = row.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/);
+
+if(c.length < 5) return;
 
 /* IMAGE FIX */
 let img=c[2];
@@ -186,6 +190,7 @@ if(img.includes("open?id=")){
 img=img.replace("open?id=","uc?export=view&id=");
 }
 
+/* OBJECT */
 let obj={
 category:c[0],
 paper:c[1],
@@ -201,6 +206,7 @@ archive:c[9]
 
 allData.push(obj);
 categories.add(obj.category);
+
 });
 
 /* CATEGORY BUTTON */
@@ -240,7 +246,7 @@ div.className="card";
 div.onclick=()=>openModal(a);
 
 div.innerHTML=`
-<img src="${a.img}">
+<img src="${a.img || 'https://via.placeholder.com/300'}">
 <div class="card-body">
 <h3>${a.title}</h3>
 <div class="meta">${a.paper} | ${a.date}</div>
