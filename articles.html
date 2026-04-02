@@ -10,7 +10,34 @@
 
 <style>
 
-/* ARTICLE CARD */
+/* SEARCH */
+#search{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:none;
+margin-bottom:20px;
+background:#065f46;
+color:white;
+}
+
+/* FILTER */
+.filter-btn{
+padding:6px 12px;
+margin:5px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+background:#064e3b;
+color:white;
+}
+
+.filter-btn.active{
+background:#22c55e;
+color:black;
+}
+
+/* CARD */
 .article-card{
 background:#065f46;
 border-radius:12px;
@@ -54,13 +81,6 @@ background:#065f46;
 border-radius:12px;
 padding:20px;
 position:relative;
-animation:fadeIn 0.3s ease;
-}
-
-.modal-box img{
-width:100%;
-border-radius:10px;
-margin-bottom:15px;
 }
 
 .close{
@@ -78,12 +98,6 @@ cursor:pointer;
 .modal.features .modal-box{background:#047857;}
 .modal.khulna .modal-box{background:#b45309;}
 
-/* ANIMATION */
-@keyframes fadeIn{
-from{opacity:0;transform:scale(0.9);}
-to{opacity:1;transform:scale(1);}
-}
-
 </style>
 
 </head>
@@ -96,11 +110,33 @@ to{opacity:1;transform:scale(1);}
 
 <h1>Newspaper Articles</h1>
 
-<div class="quick-links">
+<!-- SEARCH -->
+<input type="text" id="search" placeholder="Search articles...">
 
-<!-- ARTICLE 1 -->
+<!-- FILTER -->
+<div>
+<strong>Newspaper:</strong>
+<button class="filter-btn" onclick="setFilter('all','paper')">All</button>
+<button class="filter-btn" onclick="setFilter('janakantha','paper')">Janakantha</button>
+<button class="filter-btn" onclick="setFilter('sharebiz','paper')">ShareBiz</button>
+</div>
+
+<div>
+<strong>Category:</strong>
+<button class="filter-btn" onclick="setFilter('all','topic')">All</button>
+<button class="filter-btn" onclick="setFilter('features','topic')">Features</button>
+<button class="filter-btn" onclick="setFilter('country','topic')">Country</button>
+<button class="filter-btn" onclick="setFilter('khulna','topic')">Khulna</button>
+<button class="filter-btn" onclick="setFilter('ku','topic')">KU</button>
+</div>
+
+<!-- ARTICLES -->
+<div id="articles" class="quick-links">
+
 <div class="article-card"
 onclick="openModal(this)"
+data-paper="janakantha"
+data-topic="features country"
 data-title="Climate Change and Coastal Forest"
 data-image="images/article1.jpg"
 data-content="Full article content here..."
@@ -115,19 +151,20 @@ data-category="features">
 
 </div>
 
-<!-- ARTICLE 2 -->
 <div class="article-card"
 onclick="openModal(this)"
-data-title="KU Research on Environment"
+data-paper="sharebiz"
+data-topic="khulna"
+data-title="Sundarbans Economy"
 data-image="images/article2.jpg"
-data-content="Details about KU research..."
-data-category="ku">
+data-content="Full details..."
+data-category="khulna">
 
 <img src="images/article2.jpg" class="thumb">
 
 <div class="article-content">
-<h3>KU Research on Environment</h3>
-<p>Janakantha | 2025</p>
+<h3>Sundarbans Economy</h3>
+<p>ShareBiz | 2024</p>
 </div>
 
 </div>
@@ -139,60 +176,80 @@ data-category="ku">
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-box">
-
 <span class="close" onclick="closeModal()">✖</span>
-
 <h2 id="modal-title"></h2>
-
-<img id="modal-img">
-
+<img id="modal-img" style="width:100%;border-radius:10px;">
 <p id="modal-content"></p>
-
 </div>
 </div>
 
 <div id="footer"></div>
 
-<!-- SCRIPT -->
 <script>
 
+/* SEARCH */
+document.getElementById("search").addEventListener("keyup", function(){
+let value = this.value.toLowerCase();
+let cards = document.querySelectorAll(".article-card");
+
+cards.forEach(card=>{
+let text = card.innerText.toLowerCase();
+card.style.display = text.includes(value) ? "block" : "none";
+});
+});
+
+/* FILTER */
+let currentPaper="all";
+let currentTopic="all";
+
+function setFilter(value,type){
+if(type==="paper") currentPaper=value;
+if(type==="topic") currentTopic=value;
+applyFilter();
+}
+
+function applyFilter(){
+let cards=document.querySelectorAll(".article-card");
+
+cards.forEach(card=>{
+let paper=card.dataset.paper;
+let topics=card.dataset.topic.split(" ");
+
+let show=true;
+
+if(currentPaper!=="all" && paper!==currentPaper) show=false;
+if(currentTopic!=="all" && !topics.includes(currentTopic)) show=false;
+
+card.style.display=show?"block":"none";
+});
+}
+
+/* MODAL */
 function openModal(el){
+let modal=document.getElementById("modal");
 
-let title = el.dataset.title;
-let img = el.dataset.image;
-let content = el.dataset.content;
-let category = el.dataset.category;
+modal.className="modal";
+modal.classList.add(el.dataset.category);
 
-let modal = document.getElementById("modal");
+document.getElementById("modal-title").innerText=el.dataset.title;
+document.getElementById("modal-img").src=el.dataset.image;
+document.getElementById("modal-content").innerText=el.dataset.content;
 
-document.getElementById("modal-title").innerText = title;
-document.getElementById("modal-img").src = img;
-document.getElementById("modal-content").innerText = content;
-
-/* RESET CLASS */
-modal.className = "modal";
-
-/* ADD CATEGORY COLOR */
-modal.classList.add(category);
-
-modal.style.display = "flex";
+modal.style.display="flex";
 }
 
 function closeModal(){
-document.getElementById("modal").style.display = "none";
+document.getElementById("modal").style.display="none";
 }
 
-/* CLICK OUTSIDE CLOSE */
-window.onclick = function(e){
-let modal = document.getElementById("modal");
-if(e.target === modal){
-modal.style.display = "none";
-}
+/* CLICK OUTSIDE */
+window.onclick=function(e){
+let modal=document.getElementById("modal");
+if(e.target===modal) modal.style.display="none";
 }
 
 </script>
 
-<!-- HEADER FOOTER -->
 <script>
 fetch("header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
 fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
