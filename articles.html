@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Newspaper Articles</title>
+<title>Articles</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,23 +15,28 @@ width:100%;
 padding:10px;
 border-radius:8px;
 border:none;
-margin-bottom:20px;
+margin-bottom:15px;
 background:#065f46;
 color:white;
 }
 
-/* FILTER */
+/* FILTER ROW */
+.filter-bar{
+margin-bottom:15px;
+}
+
 .filter-btn{
-padding:6px 12px;
-margin:5px;
+padding:5px 10px;
+margin:3px;
 border:none;
-border-radius:20px;
+border-radius:15px;
 cursor:pointer;
 background:#064e3b;
 color:white;
+font-size:13px;
 }
 
-.filter-btn.active{
+.filter-btn:hover{
 background:#22c55e;
 color:black;
 }
@@ -52,12 +56,13 @@ transform:translateY(-5px);
 
 .thumb{
 width:100%;
-height:150px;
+height:140px;
 object-fit:cover;
 }
 
 .article-content{
 padding:10px;
+font-size:14px;
 }
 
 /* MODAL */
@@ -77,23 +82,29 @@ z-index:2000;
 .modal-box{
 width:90%;
 max-width:700px;
-background:#065f46;
 border-radius:12px;
 padding:20px;
 position:relative;
+color:white;
+}
+
+.modal-box img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
 }
 
 .close{
 position:absolute;
 top:10px;
 right:15px;
-font-size:25px;
+font-size:22px;
 cursor:pointer;
 }
 
-/* CATEGORY COLORS */
-.modal.ku .modal-box{background:#0ea5e9;}
+/* CATEGORY COLOR */
 .modal.environment .modal-box{background:#065f46;}
+.modal.ku .modal-box{background:#0ea5e9;}
 .modal.country .modal-box{background:#7c3aed;}
 .modal.features .modal-box{background:#047857;}
 .modal.khulna .modal-box{background:#b45309;}
@@ -110,63 +121,90 @@ cursor:pointer;
 
 <h1>Newspaper Articles</h1>
 
-<!-- SEARCH -->
-<input type="text" id="search" placeholder="Search articles...">
+<input type="text" id="search" placeholder="Search...">
 
 <!-- FILTER -->
-<div>
-<strong>Newspaper:</strong>
-<button class="filter-btn" onclick="setFilter('all','paper')">All</button>
-<button class="filter-btn" onclick="setFilter('janakantha','paper')">Janakantha</button>
-<button class="filter-btn" onclick="setFilter('sharebiz','paper')">ShareBiz</button>
-</div>
+<div class="filter-bar">
+<button class="filter-btn" onclick="setFilter('all','all')">All</button>
 
-<div>
-<strong>Category:</strong>
-<button class="filter-btn" onclick="setFilter('all','topic')">All</button>
+<button class="filter-btn" onclick="setFilter('janakantha','paper')">Janakantha</button>
+<button class="filter-btn" onclick="setFilter('samakal','paper')">Samakal</button>
+<button class="filter-btn" onclick="setFilter('kalbela','paper')">Kalbela</button>
+
 <button class="filter-btn" onclick="setFilter('features','topic')">Features</button>
 <button class="filter-btn" onclick="setFilter('country','topic')">Country</button>
-<button class="filter-btn" onclick="setFilter('khulna','topic')">Khulna</button>
-<button class="filter-btn" onclick="setFilter('ku','topic')">KU</button>
+<button class="filter-btn" onclick="setFilter('campus','topic')">Campus</button>
+<button class="filter-btn" onclick="setFilter('environment','topic')">Environment</button>
+<button class="filter-btn" onclick="setFilter('travel','topic')">Travel</button>
 </div>
 
 <!-- ARTICLES -->
 <div id="articles" class="quick-links">
 
+<!-- DEMO ARTICLES -->
+
 <div class="article-card"
 onclick="openModal(this)"
 data-paper="janakantha"
 data-topic="features country"
-data-title="Climate Change and Coastal Forest"
+data-category="features"
+data-title="Forest & Climate Change"
 data-image="images/article1.jpg"
-data-content="Full article content here..."
-data-category="features">
+data-content="Full article about climate and forest.">
 
 <img src="images/article1.jpg" class="thumb">
-
 <div class="article-content">
-<h3>Climate Change and Coastal Forest</h3>
-<p>Janakantha | 2025</p>
+<h3>Forest & Climate Change</h3>
+<p>Janakantha</p>
 </div>
-
 </div>
 
 <div class="article-card"
 onclick="openModal(this)"
-data-paper="sharebiz"
-data-topic="khulna"
-data-title="Sundarbans Economy"
+data-paper="samakal"
+data-topic="campus"
+data-category="ku"
+data-title="KU Campus Research"
 data-image="images/article2.jpg"
-data-content="Full details..."
-data-category="khulna">
+data-content="Khulna University research news.">
 
 <img src="images/article2.jpg" class="thumb">
-
 <div class="article-content">
-<h3>Sundarbans Economy</h3>
-<p>ShareBiz | 2024</p>
+<h3>KU Campus Research</h3>
+<p>Samakal</p>
+</div>
 </div>
 
+<div class="article-card"
+onclick="openModal(this)"
+data-paper="kalbela"
+data-topic="environment"
+data-category="environment"
+data-title="Environmental Crisis"
+data-image="images/article3.jpg"
+data-content="Environmental issue details.">
+
+<img src="images/article3.jpg" class="thumb">
+<div class="article-content">
+<h3>Environmental Crisis</h3>
+<p>Kalbela</p>
+</div>
+</div>
+
+<div class="article-card"
+onclick="openModal(this)"
+data-paper="janakantha"
+data-topic="travel"
+data-category="country"
+data-title="Travel in Sundarbans"
+data-image="images/article4.jpg"
+data-content="Travel experience in forest.">
+
+<img src="images/article4.jpg" class="thumb">
+<div class="article-content">
+<h3>Travel in Sundarbans</h3>
+<p>Janakantha</p>
+</div>
 </div>
 
 </div>
@@ -176,10 +214,13 @@ data-category="khulna">
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-box">
+
 <span class="close" onclick="closeModal()">✖</span>
-<h2 id="modal-title"></h2>
-<img id="modal-img" style="width:100%;border-radius:10px;">
-<p id="modal-content"></p>
+
+<h2 id="m-title"></h2>
+<img id="m-img">
+<p id="m-content"></p>
+
 </div>
 </div>
 
@@ -189,12 +230,9 @@ data-category="khulna">
 
 /* SEARCH */
 document.getElementById("search").addEventListener("keyup", function(){
-let value = this.value.toLowerCase();
-let cards = document.querySelectorAll(".article-card");
-
-cards.forEach(card=>{
-let text = card.innerText.toLowerCase();
-card.style.display = text.includes(value) ? "block" : "none";
+let v=this.value.toLowerCase();
+document.querySelectorAll(".article-card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none";
 });
 });
 
@@ -203,15 +241,23 @@ let currentPaper="all";
 let currentTopic="all";
 
 function setFilter(value,type){
-if(type==="paper") currentPaper=value;
-if(type==="topic") currentTopic=value;
+
+if(type==="all"){
+currentPaper="all";
+currentTopic="all";
+}
+else if(type==="paper"){
+currentPaper=value;
+}
+else{
+currentTopic=value;
+}
+
 applyFilter();
 }
 
 function applyFilter(){
-let cards=document.querySelectorAll(".article-card");
-
-cards.forEach(card=>{
+document.querySelectorAll(".article-card").forEach(card=>{
 let paper=card.dataset.paper;
 let topics=card.dataset.topic.split(" ");
 
@@ -226,14 +272,15 @@ card.style.display=show?"block":"none";
 
 /* MODAL */
 function openModal(el){
+
 let modal=document.getElementById("modal");
 
 modal.className="modal";
 modal.classList.add(el.dataset.category);
 
-document.getElementById("modal-title").innerText=el.dataset.title;
-document.getElementById("modal-img").src=el.dataset.image;
-document.getElementById("modal-content").innerText=el.dataset.content;
+document.getElementById("m-title").innerText=el.dataset.title;
+document.getElementById("m-img").src=el.dataset.image;
+document.getElementById("m-content").innerText=el.dataset.content;
 
 modal.style.display="flex";
 }
@@ -242,17 +289,17 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-/* CLICK OUTSIDE */
 window.onclick=function(e){
-let modal=document.getElementById("modal");
-if(e.target===modal) modal.style.display="none";
+if(e.target.id==="modal"){
+closeModal();
+}
 }
 
 </script>
 
 <script>
-fetch("header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
-fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
+fetch("header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
+fetch("footer.html").then(r=>r.text()).then(d=>document.getElementById("footer").innerHTML=d);
 </script>
 
 </body>
