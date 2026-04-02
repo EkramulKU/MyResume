@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Newspaper Articles</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ARTICLE CARD */
+.article-card{
+background:#065f46;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.article-card:hover{
+transform:translateY(-5px);
+}
+
+.thumb{
+width:100%;
+height:150px;
+object-fit:cover;
+}
+
+.article-content{
+padding:10px;
+}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.modal-box{
+width:90%;
+max-width:700px;
+background:#065f46;
+border-radius:12px;
+padding:20px;
+position:relative;
+animation:fadeIn 0.3s ease;
+}
+
+.modal-box img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.close{
+position:absolute;
+top:10px;
+right:15px;
+font-size:25px;
+cursor:pointer;
+}
+
+/* CATEGORY COLORS */
+.modal.ku .modal-box{background:#0ea5e9;}
+.modal.environment .modal-box{background:#065f46;}
+.modal.country .modal-box{background:#7c3aed;}
+.modal.features .modal-box{background:#047857;}
+.modal.khulna .modal-box{background:#b45309;}
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.9);}
+to{opacity:1;transform:scale(1);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<div class="container">
+
+<h1>Newspaper Articles</h1>
+
+<div class="quick-links">
+
+<!-- ARTICLE 1 -->
+<div class="article-card"
+onclick="openModal(this)"
+data-title="Climate Change and Coastal Forest"
+data-image="images/article1.jpg"
+data-content="Full article content here..."
+data-category="features">
+
+<img src="images/article1.jpg" class="thumb">
+
+<div class="article-content">
+<h3>Climate Change and Coastal Forest</h3>
+<p>Janakantha | 2025</p>
+</div>
+
+</div>
+
+<!-- ARTICLE 2 -->
+<div class="article-card"
+onclick="openModal(this)"
+data-title="KU Research on Environment"
+data-image="images/article2.jpg"
+data-content="Details about KU research..."
+data-category="ku">
+
+<img src="images/article2.jpg" class="thumb">
+
+<div class="article-content">
+<h3>KU Research on Environment</h3>
+<p>Janakantha | 2025</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-box">
+
+<span class="close" onclick="closeModal()">✖</span>
+
+<h2 id="modal-title"></h2>
+
+<img id="modal-img">
+
+<p id="modal-content"></p>
+
+</div>
+</div>
+
+<div id="footer"></div>
+
+<!-- SCRIPT -->
+<script>
+
+function openModal(el){
+
+let title = el.dataset.title;
+let img = el.dataset.image;
+let content = el.dataset.content;
+let category = el.dataset.category;
+
+let modal = document.getElementById("modal");
+
+document.getElementById("modal-title").innerText = title;
+document.getElementById("modal-img").src = img;
+document.getElementById("modal-content").innerText = content;
+
+/* RESET CLASS */
+modal.className = "modal";
+
+/* ADD CATEGORY COLOR */
+modal.classList.add(category);
+
+modal.style.display = "flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display = "none";
+}
+
+/* CLICK OUTSIDE CLOSE */
+window.onclick = function(e){
+let modal = document.getElementById("modal");
+if(e.target === modal){
+modal.style.display = "none";
+}
+}
+
+</script>
+
+<!-- HEADER FOOTER -->
+<script>
+fetch("header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
+</script>
+
+</body>
+</html>
