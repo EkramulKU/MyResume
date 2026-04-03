@@ -9,7 +9,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<!-- ICON -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -17,7 +16,7 @@
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#021a14;
+background:linear-gradient(135deg,#021a14,#022c22);
 color:white;
 }
 
@@ -27,14 +26,16 @@ display:grid;
 grid-template-columns:320px 1fr;
 max-width:1200px;
 margin:40px auto;
-background:#022c22;
-border-radius:12px;
+background:rgba(2,44,34,0.9);
+backdrop-filter:blur(10px);
+border-radius:15px;
 overflow:hidden;
+box-shadow:0 0 30px rgba(0,0,0,0.5);
 }
 
 /* LEFT */
 .left{
-background:#064e3b;
+background:linear-gradient(180deg,#064e3b,#022c22);
 padding:25px;
 text-align:center;
 }
@@ -45,6 +46,7 @@ height:150px;
 border-radius:50%;
 object-fit:cover;
 border:4px solid #22c55e;
+box-shadow:0 0 15px #22c55e;
 }
 
 .left h2{
@@ -52,7 +54,6 @@ margin:15px 0 5px;
 color:#4ade80;
 }
 
-/* CONTACT */
 .contact{
 font-size:14px;
 color:#bbf7d0;
@@ -60,10 +61,6 @@ line-height:1.6;
 }
 
 /* SOCIAL */
-.socials{
-margin-top:15px;
-}
-
 .socials a{
 display:inline-block;
 margin:5px;
@@ -79,7 +76,7 @@ transition:0.3s;
 .socials a:hover{
 background:#22c55e;
 color:black;
-transform:scale(1.1);
+transform:scale(1.2);
 }
 
 /* BUTTON */
@@ -87,10 +84,11 @@ transform:scale(1.1);
 display:inline-block;
 margin-top:15px;
 padding:10px 18px;
-background:#22c55e;
+background:linear-gradient(45deg,#22c55e,#4ade80);
 color:black;
 border-radius:8px;
 text-decoration:none;
+font-weight:bold;
 }
 
 /* RIGHT */
@@ -98,22 +96,33 @@ text-decoration:none;
 padding:35px;
 }
 
-/* SECTION */
-.section{
-margin-bottom:30px;
+/* SECTION TITLE */
+.section h2{
+padding:8px 15px;
+background:linear-gradient(90deg,#22c55e,#064e3b);
+border-radius:8px;
+display:inline-block;
+margin-bottom:15px;
 }
 
-.section h2{
-border-left:6px solid #22c55e;
-padding-left:10px;
+/* CARD BOX */
+.box{
+background:#065f46;
+padding:15px;
+border-radius:10px;
 margin-bottom:12px;
-color:#4ade80;
+transition:0.3s;
+}
+
+.box:hover{
+transform:translateY(-5px) scale(1.02);
+background:#047857;
 }
 
 /* TIMELINE */
 .timeline{
-border-left:2px solid #22c55e;
-padding-left:18px;
+border-left:3px solid #22c55e;
+padding-left:15px;
 }
 
 .timeline div{
@@ -128,7 +137,7 @@ height:10px;
 background:#22c55e;
 border-radius:50%;
 position:absolute;
-left:-24px;
+left:-21px;
 top:6px;
 }
 
@@ -139,28 +148,28 @@ padding-left:20px;
 
 li{
 margin-bottom:6px;
-line-height:1.7;
 }
 
-/* BOX */
-.box{
-background:#065f46;
-padding:15px;
-border-radius:8px;
+/* SKILL BAR */
+.skill{
 margin-bottom:10px;
-transition:0.3s;
 }
 
-.box:hover{
-transform:translateY(-5px);
-background:#047857;
+.bar{
+height:6px;
+background:#022c22;
+border-radius:5px;
+}
+
+.fill{
+height:6px;
+background:#22c55e;
+border-radius:5px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-.cv{
-grid-template-columns:1fr;
-}
+.cv{grid-template-columns:1fr;}
 }
 
 </style>
@@ -181,20 +190,17 @@ grid-template-columns:1fr;
 <h2>Ekramul Haque</h2>
 
 <div class="contact">
-Room No. 110, KBA Hall<br>
 Khulna University<br>
 📞 01777024027<br>
 📧 ekramulhaqueku@gmail.com
 </div>
 
-<!-- SOCIAL -->
 <div class="socials">
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-linkedin-in"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
 <a href="#"><i class="fab fa-github"></i></a>
 </div>
 
-<!-- DOWNLOAD -->
 <a href="cv.pdf" class="btn" download>Download CV</a>
 
 </div>
@@ -202,63 +208,62 @@ Khulna University<br>
 <!-- RIGHT -->
 <div class="right">
 
+<!-- EDUCATION -->
 <div class="section">
 <h2>Education</h2>
 <div class="timeline">
-<div><b>2025-2026</b><br>MS in Forestry, KU (Ongoing)</div>
-<div><b>2020-2025</b><br>BSc Forestry, KU (CGPA 3.22)</div>
-<div><b>2016-2018</b><br>HSC (GPA 5.00)</div>
-<div><b>2014-2016</b><br>SSC (GPA 5.00)</div>
+<div><b>MS Forestry (2025–26)</b> KU</div>
+<div><b>BSc Forestry (2020–25)</b> KU</div>
+<div><b>HSC (GPA 5.00)</b></div>
+<div><b>SSC (GPA 5.00)</b></div>
 </div>
 </div>
 
+<!-- THESIS -->
 <div class="section">
-<h2>Thesis & Research</h2>
+<h2>Research</h2>
 
-<div class="box">
-<b>Sundarbans LULC Analysis (2000–2025)</b>
-</div>
-
+<div class="box">Sundarbans LULC Analysis</div>
 <ul>
 <li>Google Earth Engine</li>
 <li>ArcGIS Pro</li>
-<li>Policy Analysis</li>
+<li>Policy Study</li>
 </ul>
 
-<div class="box">
-<b>Madhupur Forest Change</b>
-</div>
-
+<div class="box">Madhupur Forest Study</div>
 <ul>
 <li>Landsat & Sentinel</li>
-<li>Classification Analysis</li>
+<li>Classification</li>
 </ul>
 
 </div>
 
+<!-- EXPERIENCE -->
 <div class="section">
 <h2>Experience</h2>
 <div class="timeline">
-<div>Sub-Editor – Education Times</div>
-<div>Correspondent – Janakantha</div>
-<div>Correspondent – ShareBiz</div>
+<div>Janakantha</div>
+<div>ShareBiz</div>
+<div>Education Times</div>
 </div>
 </div>
 
-<div class="section">
-<h2>Leadership</h2>
-<ul>
-<li>President – KU Writers’ Society</li>
-<li>President – KUJA</li>
-</ul>
-</div>
-
+<!-- SKILLS -->
 <div class="section">
 <h2>Skills</h2>
+
+<div class="skill">GIS<div class="bar"><div class="fill" style="width:90%"></div></div></div>
+<div class="skill">Journalism<div class="bar"><div class="fill" style="width:85%"></div></div></div>
+<div class="skill">Programming<div class="bar"><div class="fill" style="width:70%"></div></div></div>
+
+</div>
+
+<!-- PERSONAL -->
+<div class="section">
+<h2>Personal</h2>
 <ul>
-<li>GIS, Remote Sensing</li>
-<li>Journalism</li>
-<li>Python, C++</li>
+<li>Nationality: Bangladeshi</li>
+<li>DOB: 2000</li>
 </ul>
 </div>
 
