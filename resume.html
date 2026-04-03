@@ -11,300 +11,300 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-    /* =========================================
-       CV Page Specific CSS (Won't affect other pages)
-       ========================================= */
-    
-    /* Ensuring Header & Footer Alignment for this page */
-    #header header {
-        position: sticky !important;
-        top: 0;
-        width: 100%;
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        z-index: 1000;
-        background: rgba(6, 78, 59, 0.98) !important;
-        padding: 15px 10% !important;
-    }
+    /* =========================================
+       CV Page Specific CSS (Won't affect other pages)
+       ========================================= */
+    
+    /* Ensuring Header & Footer Alignment for this page */
+    #header header {
+        position: sticky !important;
+        top: 0;
+        width: 100%;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        z-index: 1000;
+        background: rgba(6, 78, 59, 0.98) !important;
+        padding: 15px 10% !important;
+    }
 
-    #header nav {
-        display: flex !important;
-        gap: 20px;
-    }
+    #header nav {
+        display: flex !important;
+        gap: 20px;
+    }
 
-    /* Main CV Layout */
-    .cv-section-wrapper {
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-        font-family: 'Poppins', sans-serif;
-    }
+    /* Main CV Layout */
+    .cv-section-wrapper {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+        font-family: 'Poppins', sans-serif;
+    }
 
-    .cv-layout {
-        display: grid;
-        grid-template-columns: 340px 1fr;
-        background: #065f46; /* Matches your card theme */
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-        color: white;
-    }
+    .cv-layout {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        background: #065f46; /* Matches your card theme */
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        color: white;
+    }
 
-    /* --- SIDEBAR (LEFT) --- */
-    .cv-sidebar {
-        background: #022c22; /* Darker accent */
-        padding: 50px 30px;
-        text-align: center;
-        border-right: 2px solid #10b981;
-    }
+    /* --- SIDEBAR (LEFT) --- */
+    .cv-sidebar {
+        background: #022c22; /* Darker accent */
+        padding: 50px 30px;
+        text-align: center;
+        border-right: 2px solid #10b981;
+    }
 
-    .cv-sidebar img.profile-pic {
-        width: 170px;
-        height: 170px;
-        border-radius: 50%;
-        border: 5px solid #22c55e;
-        object-fit: cover;
-        margin-bottom: 25px;
-        transition: transform 0.3s;
-    }
+    .cv-sidebar img.profile-pic {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        border: 5px solid #22c55e;
+        object-fit: cover;
+        margin-bottom: 25px;
+        transition: transform 0.3s;
+    }
 
-    .cv-sidebar img.profile-pic:hover {
-        transform: scale(1.05);
-    }
+    .cv-sidebar img.profile-pic:hover {
+        transform: scale(1.05);
+    }
 
-    .cv-sidebar h1 {
-        color: #4ade80;
-        font-size: 1.8rem;
-        margin-bottom: 8px;
-        font-weight: 700;
-    }
+    .cv-sidebar h1 {
+        color: #4ade80;
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
 
-    .cv-sidebar .tagline {
-        color: #bbf7d0;
-        font-size: 0.95rem;
-        margin-bottom: 40px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+    .cv-sidebar .tagline {
+        color: #bbf7d0;
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-    .contact-block {
-        text-align: left;
-        font-size: 0.9rem;
-        margin-bottom: 40px;
-    }
+    .contact-block {
+        text-align: left;
+        font-size: 0.9rem;
+        margin-bottom: 40px;
+    }
 
-    .contact-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        line-height: 1.5;
-    }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
 
-    .contact-item i {
-        color: #4ade80;
-        width: 25px;
-        font-size: 1.1rem;
-        margin-right: 10px;
-    }
+    .contact-item i {
+        color: #4ade80;
+        width: 25px;
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
 
-    /* Personal Details Styling */
-    .personal-details {
-        text-align: left;
-        border-top: 1px solid #065f46;
-        padding-top: 30px;
-        margin-bottom: 30px;
-    }
+    /* Personal Details Styling */
+    .personal-details {
+        text-align: left;
+        border-top: 1px solid #065f46;
+        padding-top: 30px;
+        margin-bottom: 30px;
+    }
 
-    .personal-details h3 {
-        color: #4ade80;
-        margin-bottom: 15px;
-        font-size: 1.1rem;
-    }
+    .personal-details h3 {
+        color: #4ade80;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
 
-    .personal-item {
-        font-size: 0.85rem;
-        margin-bottom: 8px;
-        color: #bbf7d0;
-    }
+    .personal-item {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+        color: #bbf7d0;
+    }
 
-    .personal-item b {
-        color: white;
-    }
+    .personal-item b {
+        color: white;
+    }
 
-    /* Download Button (Sidebar placement) */
-    .sidebar-download-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: #22c55e;
-        color: black;
-        padding: 12px 25px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        margin-top: 10px;
-        width: 100%;
-        justify-content: center;
-        box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
-    }
+    /* Download Button (Sidebar placement) */
+    .sidebar-download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #22c55e;
+        color: black;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+    }
 
-    .sidebar-download-btn:hover {
-        background: #4ade80;
-        transform: translateY(-3px);
-    }
+    .sidebar-download-btn:hover {
+        background: #4ade80;
+        transform: translateY(-3px);
+    }
 
-    /* --- MAIN CONTENT (RIGHT) --- */
-    .cv-main {
-        background: #065f46;
-        padding: 50px;
-    }
+    /* --- MAIN CONTENT (RIGHT) --- */
+    .cv-main {
+        background: #065f46;
+        padding: 50px;
+    }
 
-    .cv-section {
-        margin-bottom: 45px;
-    }
+    .cv-section {
+        margin-bottom: 45px;
+    }
 
-    .cv-section-title {
-        color: #10b981;
-        font-size: 1.5rem;
-        font-weight: 600;
-        border-bottom: 2px solid #22c55e;
-        padding-bottom: 10px;
-        margin-bottom: 25px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
+    .cv-section-title {
+        color: #10b981;
+        font-size: 1.5rem;
+        font-weight: 600;
+        border-bottom: 2px solid #22c55e;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
 
-    /* Entry Items (Education/Experience) */
-    .entry {
-        position: relative;
-        padding-left: 25px;
-        border-left: 2px solid #022c22;
-        margin-bottom: 25px;
-    }
+    /* Entry Items (Education/Experience) */
+    .entry {
+        position: relative;
+        padding-left: 25px;
+        border-left: 2px solid #022c22;
+        margin-bottom: 25px;
+    }
 
-    .entry::before {
-        content: "";
-        position: absolute;
-        left: -8px;
-        top: 6px;
-        width: 14px;
-        height: 14px;
-        background: #22c55e;
-        border-radius: 50%;
-    }
+    .entry::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        background: #22c55e;
+        border-radius: 50%;
+    }
 
-    .entry-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        margin-bottom: 5px;
-    }
+    .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 5px;
+    }
 
-    .entry-header h3 {
-        font-size: 1.15rem;
-        color: white;
-        font-weight: 600;
-    }
+    .entry-header h3 {
+        font-size: 1.15rem;
+        color: white;
+        font-weight: 600;
+    }
 
-    .entry-date {
-        color: #facc15; /* Golden Yellow for dates */
-        font-weight: 600;
-        font-size: 0.85rem;
-        white-space: nowrap;
-        margin-left: 15px;
-    }
+    .entry-date {
+        color: #facc15; /* Golden Yellow for dates */
+        font-weight: 600;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        margin-left: 15px;
+    }
 
-    .entry-sub {
-        color: #bbf7d0;
-        font-size: 0.95rem;
-        font-weight: 500;
-        margin-bottom: 8px;
-    }
+    .entry-sub {
+        color: #bbf7d0;
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
 
-    .entry-sub i { margin-right: 5px; }
+    .entry-sub i { margin-right: 5px; }
 
-    .entry-details {
-        font-size: 0.9rem;
-        color: #e2e8f0;
-        line-height: 1.6;
-    }
+    .entry-details {
+        font-size: 0.9rem;
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
 
-    .entry-details ul {
-        margin-top: 8px;
-        padding-left: 20px;
-    }
+    .entry-details ul {
+        margin-top: 8px;
+        padding-left: 20px;
+    }
 
-    .entry-details li { margin-bottom: 5px; }
+    .entry-details li { margin-bottom: 5px; }
 
-    /* Thesis Highlight */
-    .thesis-block {
-        background: rgba(2, 44, 34, 0.4);
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 3px solid #facc15;
-        margin-top: 10px;
-    }
+    /* Thesis Highlight */
+    .thesis-block {
+        background: rgba(2, 44, 34, 0.4);
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid #facc15;
+        margin-top: 10px;
+    }
 
-    /* Skills Grid */
-    .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 12px;
-    }
+    /* Skills Grid */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+    }
 
-    .skill-badge {
-        background: #022c22;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        text-align: center;
-        border: 1px solid #10b981;
-        transition: 0.3s;
-    }
+    .skill-badge {
+        background: #022c22;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        text-align: center;
+        border: 1px solid #10b981;
+        transition: 0.3s;
+    }
 
-    .skill-badge:hover {
-        background: #10b981;
-        color: black;
-    }
+    .skill-badge:hover {
+        background: #10b981;
+        color: black;
+    }
 
-    /* Certifications/Training List */
-    .list-item {
-        display: flex;
-        align-items: start;
-        margin-bottom: 12px;
-        font-size: 0.9rem;
-        color: #e2e8f0;
-    }
+    /* Certifications/Training List */
+    .list-item {
+        display: flex;
+        align-items: start;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        color: #e2e8f0;
+    }
 
-    .list-item i {
-        color: #22c55e;
-        margin-right: 10px;
-        margin-top: 4px;
-    }
+    .list-item i {
+        color: #22c55e;
+        margin-right: 10px;
+        margin-top: 4px;
+    }
 
-    /* Responsive Design */
-    @media (max-width: 950px) {
-        .cv-layout {
-            grid-template-columns: 1fr;
-        }
-        .cv-sidebar {
-            border-right: none;
-            border-bottom: 3px solid #10b981;
-            padding: 40px 20px;
-        }
-        .entry-header {
-            flex-direction: column;
-        }
-        .entry-date {
-            margin-left: 0;
-            margin-top: 3px;
-            margin-bottom: 5px;
-        }
-    }
+    /* Responsive Design */
+    @media (max-width: 950px) {
+        .cv-layout {
+            grid-template-columns: 1fr;
+        }
+        .cv-sidebar {
+            border-right: none;
+            border-bottom: 3px solid #10b981;
+            padding: 40px 20px;
+        }
+        .entry-header {
+            flex-direction: column;
+        }
+        .entry-date {
+            margin-left: 0;
+            margin-top: 3px;
+            margin-bottom: 5px;
+        }
+    }
 </style>
 </head>
 
@@ -313,265 +313,265 @@
 <div id="header"></div>
 
 <div class="cv-section-wrapper">
-    <div class="cv-layout">
-        
-        <aside class="cv-sidebar">
-            <img src="images/profile.jpg" alt="Ekramul Haque" class="profile-pic">
-            <h1>Ekramul Haque</h1>
-            <p class="tagline">Researcher & Journalist</p>
+    <div class="cv-layout">
+        
+        <aside class="cv-sidebar">
+            <img src="images/profile.jpg" alt="Ekramul Haque" class="profile-pic">
+            <h1>Ekramul Haque</h1>
+            <p class="tagline">Researcher & Journalist</p>
 
-            <div class="contact-block">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>ekramulhaqueku@gmail.com</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>01777024027</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Room No. 110, Khan Bahadur Ahsanullah Hall,<br>Khulna University</span>
-                </div>
-            </div>
+            <div class="contact-block">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ekramulhaqueku@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>01777024027</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Room No. 110, Khan Bahadur Ahsanullah Hall,<br>Khulna University</span>
+                </div>
+            </div>
 
-            <div class="personal-details">
-                <h3>Personal Details</h3>
-                <p class="personal-item"><b>Date of Birth:</b> 04 June 2000</p>
-                <p class="personal-item"><b>Nationality:</b> Bangladeshi</p>
-                <p class="personal-item"><b>Religion:</b> Islam</p>
-                <p class="personal-item"><b>Blood Group:</b> O Positive (O+)</p>
-            </div>
+            <div class="personal-details">
+                <h3>Personal Details</h3>
+                <p class="personal-item"><b>Date of Birth:</b> 04 June 2000</p>
+                <p class="personal-item"><b>Nationality:</b> Bangladeshi</p>
+                <p class="personal-item"><b>Religion:</b> Islam</p>
+                <p class="personal-item"><b>Blood Group:</b> O Positive (O+)</p>
+            </div>
 
-            <a href="Ekramuls CV.pdf" download class="sidebar-download-btn">
-                <i class="fas fa-file-pdf"></i> Download PDF CV
-            </a>
-        </aside>
+            <a href="Ekramuls CV.pdf" download class="sidebar-download-btn">
+                <i class="fas fa-file-pdf"></i> Download PDF CV
+            </a>
+        </aside>
 
-        <main class="cv-main">
-            
-            <section class="cv-section">
-                <h2 class="cv-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-                
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>MS in Forestry</h3>
-                        <span class="entry-date">2025 – 2026 (Expected)</span>
-                    </div>
-                    <p class="entry-sub"><i class="fas fa-university"></i> Khulna University, Khulna-9208</p>
-                    <p class="entry-details">Coursework completed. Dissertation ongoing. Expected completion: May 2026.</p>
-                </div>
+        <main class="cv-main">
+            
+            <section class="cv-section">
+                <h2 class="cv-section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>MS in Forestry</h3>
+                        <span class="entry-date">2025 – 2026 (Expected)</span>
+                    </div>
+                    <p class="entry-sub"><i class="fas fa-university"></i> Khulna University, Khulna-9208</p>
+                    <p class="entry-details">Coursework completed. Dissertation ongoing. Expected completion: May 2026.</p>
+                </div>
 
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>BSc (Honours) in Forestry</h3>
-                        <span class="entry-date">2020 – 2025</span>
-                    </div>
-                    <p class="entry-sub"><i class="fas fa-university"></i> Khulna University</p>
-                    <p class="entry-details">Achieved CGPA: <strong>3.22</strong> (out of 4.00).</p>
-                </div>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>BSc (Honours) in Forestry</h3>
+                        <span class="entry-date">2020 – 2025</span>
+                    </div>
+                    <p class="entry-sub"><i class="fas fa-university"></i> Khulna University</p>
+                    <p class="entry-details">Achieved CGPA: <strong>3.22</strong> (out of 4.00).</p>
+                </div>
 
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>HSC Examination</h3>
-                        <span class="entry-date">2016 – 2018</span>
-                    </div>
-                    <p class="entry-sub">Govt Azizul Haque College, Bogura</p>
-                    <p class="entry-details">GPA: <strong>5.00</strong> (out of 5.00).</p>
-                </div>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>HSC Examination</h3>
+                        <span class="entry-date">2016 – 2018</span>
+                    </div>
+                    <p class="entry-sub">Govt Azizul Haque College, Bogura</p>
+                    <p class="entry-details">GPA: <strong>5.00</strong> (out of 5.00).</p>
+                </div>
 
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>SSC Examination</h3>
-                        <span class="entry-date">2014 – 2016</span>
-                    </div>
-                    <p class="entry-sub">BIAM Model School and College, Bogura</p>
-                    <p class="entry-details">GPA: <strong>5.00</strong> (out of 5.00).</p>
-                </div>
-            </section>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>SSC Examination</h3>
+                        <span class="entry-date">2014 – 2016</span>
+                    </div>
+                    <p class="entry-sub">BIAM Model School and College, Bogura</p>
+                    <p class="entry-details">GPA: <strong>5.00</strong> (out of 5.00).</p>
+                </div>
+            </section>
 
-            <section class="cv-section">
-                <h2 class="cv-section-title"><i class="fas fa-microscope"></i> Research & Thesis</h2>
-                
-                <div class="entry">
-                    <h3>Graduate Dissertation (MS)</h3>
-                    <div class="thesis-block">
-                        <strong>Title:</strong> Spatiotemporal Dynamics of Land Use and Land Cover in the Sundarbans ECA (2000–2025)
-                    </div>
-                    <div class="entry-details" style="margin-top: 10px;">
-                        Methodology involves Satellite remote sensing, Google Earth Engine data collection, ArcGIS Pro analysis, and policy-based evaluation.
-                    </div>
-                </div>
+            <section class="cv-section">
+                <h2 class="cv-section-title"><i class="fas fa-microscope"></i> Research & Thesis</h2>
+                
+                <div class="entry">
+                    <h3>Graduate Dissertation (MS)</h3>
+                    <div class="thesis-block">
+                        <strong>Title:</strong> Spatiotemporal Dynamics of Land Use and Land Cover in the Sundarbans ECA (2000–2025)
+                    </div>
+                    <div class="entry-details" style="margin-top: 10px;">
+                        Methodology involves Satellite remote sensing, Google Earth Engine data collection, ArcGIS Pro analysis, and policy-based evaluation.
+                    </div>
+                </div>
 
-                <div class="entry">
-                    <h3>Undergraduate Dissertation (BSc)</h3>
-                    <div class="thesis-block">
-                        <strong>Title:</strong> Spatial and Temporal Analysis of Forest Cover Changes in Madhupur National Park (2015–2024)
-                    </div>
-                    <div class="entry-details" style="margin-top: 10px;">
-                        Used Landsat & Sentinel imagery and supervised classification to analyze deforestation drivers.
-                    </div>
-                </div>
-            </section>
+                <div class="entry">
+                    <h3>Undergraduate Dissertation (BSc)</h3>
+                    <div class="thesis-block">
+                        <strong>Title:</strong> Spatial and Temporal Analysis of Forest Cover Changes in Madhupur National Park (2015–2024)
+                    </div>
+                    <div class="entry-details" style="margin-top: 10px;">
+                        Used Landsat & Sentinel imagery and supervised classification to analyze deforestation drivers.
+                    </div>
+                </div>
+            </section>
 
-            <section class="cv-section">
-                <h2 class="cv-section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
-                
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>Sub-Editor</h3>
-                        <span class="entry-date">Since 2025</span>
-                    </div>
-                    <p class="entry-sub">Education Times News Portal</p>
-                </div>
+            <section class="cv-section">
+                <h2 class="cv-section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+                
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>Sub-Editor</h3>
+                        <span class="entry-date">Since 2025</span>
+                    </div>
+                    <p class="entry-sub">Education Times News Portal</p>
+                </div>
 
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>Research Field Support</h3>
-                        <span class="entry-date">Feb – Mar 2025</span>
-                    </div>
-                    <p class="entry-sub">Climate Action Team, Friendship NGO</p>
-                    <div class="entry-details">
-                        Supported mangrove ecosystem research, field data collection, and community engagement in Satkhira. Received a certificate.
-                    </div>
-                </div>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>Research Field Support</h3>
+                        <span class="entry-date">Feb – Mar 2025</span>
+                    </div>
+                    <p class="entry-sub">Climate Action Team, Friendship NGO</p>
+                    <div class="entry-details">
+                        Supported mangrove ecosystem research, field data collection, and community engagement in Satkhira. Received a certificate.
+                    </div>
+                </div>
 
-                <div class="entry">
-                    <div class="entry-header">
-                        <h3>University Correspondent</h3>
-                        <span class="entry-date">2020 – Present</span>
-                    </div>
-                    <p class="entry-sub">Major National Dailies & Portals</p>
-                    <div class="entry-details">
-                        Regular contributor to **Daily Janakantha**, **Share Biz**, **Naya Shatabdi**, **Barta Bichitra**, **Alokito Vor**, and others.
-                    </div>
-                </div>
-            </section>
+                <div class="entry">
+                    <div class="entry-header">
+                        <h3>University Correspondent</h3>
+                        <span class="entry-date">2020 – Present</span>
+                    </div>
+                    <p class="entry-sub">Major National Dailies & Portals</p>
+                    <div class="entry-details">
+                        Regular contributor to **Daily Janakantha**, **Share Biz**, **Naya Shatabdi**, **Barta Bichitra**, **Alokito Vor**, and others.
+                    </div>
+                </div>
+            </section>
 
-            <section class="cv-section">
-                <h2 class="cv-section-title"><i class="fas fa-users"></i> Leadership Roles</h2>
-                
-                <div class="entry">
-                    <h3>KU Journalists' Association (KUJA)</h3>
-                    <p class="entry-sub">President (2024-2025)</p>
-                    <p class="entry-details">Led PR, organized high-impact journalism training, and managed membership applicants.</p>
-                </div>
+            <section class="cv-section">
+                <h2 class="cv-section-title"><i class="fas fa-users"></i> Leadership Roles</h2>
+                
+                <div class="entry">
+                    <h3>KU Journalists' Association (KUJA)</h3>
+                    <p class="entry-sub">President (2024-2025)</p>
+                    <p class="entry-details">Led PR, organized high-impact journalism training, and managed membership applicants.</p>
+                </div>
 
-                <div class="entry">
-                    <h3>KU Writers' Society</h3>
-                    <p class="entry-sub">Founding President (Since 2024)</p>
-                    <p class="entry-details">Developed a static website and organized nationwide writing competitions.</p>
-                </div>
+                <div class="entry">
+                    <h3>KU Writers' Society</h3>
+                    <p class="entry-sub">Founding President (Since 2024)</p>
+                    <p class="entry-details">Developed a static website and organized nationwide writing competitions.</p>
+                </div>
 
-                <div class="entry">
-                    <h3>Genesis Foundation</h3>
-                    <p class="entry-sub">Coordinator</p>
-                </div>
-                
-                <div class="entry">
-                    <h3>Forestry and Wood Technology Club (FWTC)</h3>
-                    <p class="entry-sub">General Secretary</p>
-                </div>
-            </section>
+                <div class="entry">
+                    <h3>Genesis Foundation</h3>
+                    <p class="entry-sub">Coordinator</p>
+                </div>
+                
+                <div class="entry">
+                    <h3>Forestry and Wood Technology Club (FWTC)</h3>
+                    <p class="entry-sub">General Secretary</p>
+                </div>
+            </section>
 
-            <section class="cv-section">
-                <h2 class="cv-section-title"><i class="fas fa-tools"></i> Technical Skills</h2>
-                <div class="skills-grid">
-                    <span class="skill-badge">ArcGIS Pro</span>
-                    <span class="skill-badge">Google Earth Engine</span>
-                    <span class="skill-badge">Remote Sensing</span>
-                    <span class="skill-badge">Python</span>
-                    <span class="skill-badge">C++</span>
-                    <span class="skill-badge">Graphics Design (Canva/Ps)</span>
-                    <span class="skill-badge">SPSS</span>
-                    <span class="skill-badge">MS Office</span>
-                    <span class="skill-badge">Fact-Checking</span>
-                    <span class="skill-badge">Multimedia Journalism</span>
-                </div>
-            </section>
+            <section class="cv-section">
+                <h2 class="cv-section-title"><i class="fas fa-tools"></i> Technical Skills</h2>
+                <div class="skills-grid">
+                    <span class="skill-badge">ArcGIS Pro</span>
+                    <span class="skill-badge">Google Earth Engine</span>
+                    <span class="skill-badge">Remote Sensing</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">C++</span>
+                    <span class="skill-badge">Graphics Design (Canva/Ps)</span>
+                    <span class="skill-badge">SPSS</span>
+                    <span class="skill-badge">MS Office</span>
+                    <span class="skill-badge">Fact-Checking</span>
+                    <span class="skill-badge">Multimedia Journalism</span>
+                </div>
+            </section>
 
-            <section class="cv-section">
-                <h2 class="cv-section-title"><i class="fas fa-certificate"></i> Trainings & Certifications</h2>
-                
-                <div class="list-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <strong>Reuters Digital Journalism Certification</strong> (Reuters & Meta)
-                    </div>
-                </div>
+            <section class="cv-section">
+                <h2 class="cv-section-title"><i class="fas fa-certificate"></i> Trainings & Certifications</h2>
+                
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Reuters Digital Journalism Certification</strong> (Reuters & Meta)
+                    </div>
+                </div>
 
-                <div class="list-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <strong>IT Support Training for Office Management</strong> (200 Hours) - EDGE Project, BCC
-                    </div>
-                </div>
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>IT Support Training for Office Management</strong> (200 Hours) - EDGE Project, BCC
+                    </div>
+                </div>
 
-                <div class="list-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <strong>Multimedia Journalism Training</strong> - Press Institute of Bangladesh (PIB)
-                    </div>
-                </div>
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Multimedia Journalism Training</strong> - Press Institute of Bangladesh (PIB)
+                    </div>
+                </div>
 
-                <div class="list-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <strong>Mobile Journalism (MoJo)</strong>
-                    </div>
-                </div>
-                
-                <div class="list-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <strong>University of Amsterdam:</strong> Media Ethics course.
-                    </div>
-                </div>
-                
-                <div class="list-item">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <strong>University of London:</strong> Research Methods course.
-                    </div>
-                </div>
-            </section>
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Mobile Journalism (MoJo)</strong>
+                    </div>
+                </div>
+                
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>University of Amsterdam:</strong> Media Ethics course.
+                    </div>
+                </div>
+                
+                <div class="list-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>University of London:</strong> Research Methods course.
+                    </div>
+                </div>
+            </section>
 
-        </main>
-    </div>
+        </main>
+    </div>
 </div>
 
 <div id="footer"></div>
 
 <script>
-    // 1. Function to Toggle Mobile Menu (From your header.html logic)
-    function toggleMenu(){
-        const menu = document.getElementById("menu");
-        if(menu) {
-            menu.classList.toggle("active");
-        }
-    }
+    // 1. Function to Toggle Mobile Menu (From your header.html logic)
+    function toggleMenu(){
+        const menu = document.getElementById("menu");
+        if(menu) {
+            menu.classList.toggle("active");
+        }
+    }
 
-    // 2. Load External Header
-    fetch("header.html")
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById("header").innerHTML = data;
-        })
-        .catch(error => console.error('Error loading header:', error));
+    // 2. Load External Header
+    fetch("header.html")
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
 
-    // 3. Load External Footer
-    fetch("footer.html")
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById("footer").innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
+    // 3. Load External Footer
+    fetch("footer.html")
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById("footer").innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
 </script>
 
 </body>
