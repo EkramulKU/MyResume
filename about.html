@@ -1,7 +1,103 @@
-<div class="card">
-<h2>About Me</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me</title>
 
-<div class="about-text">
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* BODY */
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:#020617;
+color:#e2e8f0;
+}
+
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:40px auto;
+padding:20px;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+margin-bottom:30px;
+}
+
+.hero img{
+width:140px;
+height:140px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #22c55e;
+}
+
+.hero h1{
+margin-top:15px;
+color:#4ade80;
+}
+
+.hero p{
+color:#94a3b8;
+}
+
+/* CARD */
+.card{
+background:#065f46;
+padding:30px;
+border-radius:14px;
+line-height:1.8;
+}
+
+/* TEXT */
+.card p{
+margin-bottom:18px;
+text-align:justify;
+}
+
+/* SECTION TITLE */
+.section-title{
+color:#4ade80;
+margin-bottom:15px;
+font-size:22px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.container{padding:15px;}
+.card{padding:20px;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+<img src="images/profile.jpg">
+<h1>Ekramul Haque</h1>
+<p>Environmental Researcher & Journalist</p>
+</div>
+
+<!-- ABOUT -->
+<div class="card">
+
+<h2 class="section-title">About Me</h2>
 
 <p>
 Ekramul Haque is an environmental researcher and journalist based in Khulna, Bangladesh. He is currently pursuing a Master of Science in Forestry at Khulna University, where his research focuses on land use and land cover dynamics, environmental change, and conservation policy analysis. His academic work integrates remote sensing and GIS techniques, particularly using Google Earth Engine and ArcGIS Pro, to assess ecological transformations in sensitive ecosystems such as the Sundarbans.
@@ -34,3 +130,15 @@ Through a combination of research, journalism, and leadership, Ekramul Haque con
 </div>
 
 </div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- LOAD HEADER FOOTER -->
+<script>
+fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
+</script>
+
+</body>
+</html>
