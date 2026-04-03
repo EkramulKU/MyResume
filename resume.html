@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekramul Haque | Professional CV</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #10b981; /* Emerald */
+            --bg-dark: #0f172a; /* Slate 900 */
+            --card-bg: #1e293b; /* Slate 800 */
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background: linear-gradient(180deg, #064e3b 0%, #022c22 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .sidebar .tagline {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item i {
+            width: 30px;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            padding: 50px;
+            background: var(--card-bg);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+        }
+
+        /* Timeline Items */
+        .entry {
+            position: relative;
+            padding-left: 25px;
+            border-left: 2px solid #334155;
+            margin-bottom: 25px;
+        }
+
+        .entry::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .entry h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .entry .date {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .entry p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: #334155;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Personal List */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .detail-item b {
+            color: var(--primary-color);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 850px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                padding: 50px 20px;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <aside class="sidebar">
+        <img src="images/profile.jpg" alt="Ekramul Haque" class="profile-img">
+        <h1>Ekramul Haque</h1>
+        <p class="tagline">Forestry Researcher & Journalist</p>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Room 110, Khan Bahadur Ahsanullah Hall, Khulna University [cite: 2, 3]</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>01777024027 [cite: 4]</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>ekramulhaqueku@gmail.com [cite: 5]</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-tint"></i>
+                <span>Blood Group: O Positive [cite: 123]</span>
+            </div>
+        </div>
+
+        <div class="section" style="margin-top: 40px; text-align: left;">
+            <h2 class="section-title" style="font-size: 1.1rem;"><i class="fas fa-user"></i> Personal</h2>
+            <div class="detail-item" style="font-size: 0.9rem; margin-bottom: 8px;"><b>DOB:</b> 04 June 2000 [cite: 111]</div>
+            <div class="detail-item" style="font-size: 0.9rem; margin-bottom: 8px;"><b>Father:</b> Akbar Ali [cite: 97]</div>
+            <div class="detail-item" style="font-size: 0.9rem; margin-bottom: 8px;"><b>Mother:</b> Nasima [cite: 104]</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="entry">
+                <span class="date">2025 - 2026 (Expected)</span>
+                <h3>MS in Forestry</h3>
+                <p>Khulna University. Coursework completed, dissertation ongoing. [cite: 7]</p>
+            </div>
+            <div class="entry">
+                <span class="date">2020 - 2025</span>
+                <h3>BSc (Honours) in Forestry</h3>
+                <p>Khulna University. CGPA: 3.22 / 4.00 [cite: 8]</p>
+            </div>
+            <div class="entry">
+                <span class="date">2016 - 2018</span>
+                <h3>HSC Examination</h3>
+                <p>Government Azizul Haque College, Bogura. GPA: 5.00 [cite: 8]</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-microscope"></i> Research & Dissertation</h2>
+            <div class="entry">
+                <h3>Graduate Dissertation (Ongoing)</h3>
+                <p><b>Title:</b> Spatiotemporal Dynamics of Land Use and Land Cover in the Sundarbans ECA (2000-2025) [cite: 10]</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Used Google Earth Engine (GEE) for satellite imagery and ArcGIS Pro for spatial assessment. [cite: 16, 17]</p>
+            </div>
+            <div class="entry">
+                <h3>Undergraduate Dissertation (2024)</h3>
+                <p><b>Title:</b> Spatial and Temporal Analysis of Forest Cover Changes in Madhupur National Park [cite: 20]</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Applied supervised classification on Landsat and Sentinel-2 imagery to analyze deforestation. [cite: 23, 25]</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Work & Leadership</h2>
+            <div class="entry">
+                <span class="date">Since 2024 / 2025</span>
+                <h3>Media & Journalism</h3>
+                <p>Sub-Editor at Education Times and Correspondent for Daily Janakantha. [cite: 35]</p>
+            </div>
+            <div class="entry">
+                <span class="date">2024 - 2025</span>
+                <h3>President, KU Journalists' Association (KUJA)</h3>
+                <p>Led PR, organized high-impact journalism training, and managed 20 member applicants. [cite: 43, 46, 48]</p>
+            </div>
+            <div class="entry">
+                <span class="date">Since 2024</span>
+                <h3>Founding President, KU Writers' Society</h3>
+                <p>Developed a static website for the society and organized nationwide writing competitions. [cite: 39, 40, 42]</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-tools"></i> Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-tag">ArcGIS Pro </div>
+                <div class="skill-tag">Remote Sensing [cite: 15]</div>
+                <div class="skill-tag">Python & C++ </div>
+                <div class="skill-tag">Google Earth Engine [cite: 16]</div>
+                <div class="skill-tag">Graphics Design [cite: 78]</div>
+                <div class="skill-tag">MS Office </div>
+                <div class="skill-tag">Fact-Checking [cite: 82]</div>
+                <div class="skill-tag">Multimedia Journalism [cite: 72]</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Key Certifications</h2>
+            <ul style="list-style: none; font-size: 0.95rem;">
+                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i> Reuters Digital Journalism Certificate [cite: 89]</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i> Planning with Climate Change in Mind (CU Boulder) [cite: 83]</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i> IT Support for Office Management (EDGE Project) [cite: 69]</li>
+            </ul>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
