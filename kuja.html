@@ -7,110 +7,148 @@
 
 <link rel="stylesheet" href="style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:#021a14;
-color:white;
+font-family:'Inter',sans-serif;
+background:#020617;
+color:#e2e8f0;
 }
 
 /* LAYOUT */
 .wrapper{
 display:grid;
-grid-template-columns:300px 1fr;
+grid-template-columns:320px 1fr;
 height:100vh;
 }
 
 /* SIDEBAR */
 .sidebar{
 background:#064e3b;
-padding:25px;
+padding:30px 25px;
 position:sticky;
 top:0;
 height:100vh;
 overflow:auto;
 }
 
+/* LOGO FIX */
 .sidebar img{
-width:110px;
-height:110px;
-object-fit:contain;
-background:white;
-padding:8px;
-border-radius:10px;
+width:120px;
+height:auto; /* 🔥 original ratio */
 margin-bottom:15px;
 }
 
+/* TITLE */
 .sidebar h2{
 color:#4ade80;
+margin-bottom:10px;
 }
 
+/* ABOUT */
 .sidebar p{
 font-size:14px;
-color:#bbf7d0;
+color:#d1fae5;
+text-align:justify; /* 🔥 justify */
+line-height:1.6;
 }
 
 /* BUTTON */
 .btn{
 display:block;
 margin-top:10px;
-padding:8px;
+padding:9px;
 text-align:center;
 background:#22c55e;
 color:black;
 border-radius:6px;
 text-decoration:none;
+font-size:14px;
 }
 
 /* CONTENT */
 .content{
-padding:40px;
+padding:45px;
 overflow-y:auto;
 }
 
 /* CARD */
 .card{
 background:#065f46;
-padding:20px;
-border-radius:12px;
-margin-bottom:20px;
+padding:25px;
+border-radius:14px;
+margin-bottom:25px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-4px);
 }
 
 /* TITLE */
 .title{
-color:#22c55e;
-margin-bottom:10px;
+color:#4ade80;
+margin-bottom:15px;
+font-size:20px;
 }
 
 /* TIMELINE */
 .timeline{
-border-left:3px solid #22c55e;
-padding-left:15px;
+border-left:2px solid #22c55e;
+padding-left:18px;
 }
 
 .timeline div{
-margin-bottom:20px;
+margin-bottom:22px;
+}
+
+/* ROLE TEXT LEFT */
+.timeline ul{
+text-align:left;
+}
+
+/* ROLE TITLE */
+.timeline b{
+color:#bbf7d0;
+}
+
+/* LIST */
+ul{
+padding-left:18px;
+}
+
+li{
+margin-bottom:6px;
+line-height:1.6;
 }
 
 /* GALLERY */
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
 }
 
 .gallery img{
 width:100%;
-height:120px;
+height:130px;
 object-fit:cover;
-border-radius:8px;
+border-radius:10px;
+transition:0.3s;
 }
 
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* MOBILE */
 @media(max-width:768px){
 .wrapper{grid-template-columns:1fr;}
 .sidebar{position:relative;height:auto;}
+.content{padding:25px;}
 }
 
 </style>
@@ -123,7 +161,7 @@ border-radius:8px;
 
 <div class="wrapper">
 
-<!-- LEFT -->
+<!-- LEFT SIDEBAR -->
 <div class="sidebar">
 
 <img src="images/kuja.png">
@@ -131,8 +169,7 @@ border-radius:8px;
 <h2>KUJA</h2>
 
 <p>
-Khulna University Journalists’ Association (KUJA) is a student-led platform that nurtures responsible journalism, media ethics, and communication skills among students of Khulna University.  
-It works closely with national media, organizes training, and promotes campus journalism culture.
+Khulna University Journalists’ Association (KUJA) is a student-led organization dedicated to promoting ethical journalism, media literacy, and professional communication among students. It regularly organizes training sessions, workshops, and collaborative programs with national media institutions to enhance practical journalism skills and leadership capacity.
 </p>
 
 <a href="#" class="btn">🌐 Website</a>
@@ -140,7 +177,7 @@ It works closely with national media, organizes training, and promotes campus jo
 
 </div>
 
-<!-- RIGHT -->
+<!-- RIGHT CONTENT -->
 <div class="content">
 
 <!-- ROLE -->
@@ -150,39 +187,39 @@ It works closely with national media, organizes training, and promotes campus jo
 <div class="timeline">
 
 <div>
-<b>President</b> (8 Feb 2024 – 11 May 2025)
+<b>President (8 Feb 2024 – 11 May 2025)</b>
 <ul>
 <li>Planned and organized high-impact journalism training programs with national media experts.</li>
 <li>Led public relations, partnerships, and press coordination with university administration and newspapers.</li>
-<li>Managed recruitment process, including interviewing and selecting 20+ applicants.</li>
-<li>Oversaw annual magazine publication, including proofreading, sponsorship management, and distribution.</li>
-<li>Led collaborative brainstorming sessions with journalists from diverse academic disciplines.</li>
+<li>Managed recruitment process, interviewing and selecting 20+ applicants.</li>
+<li>Oversaw annual magazine publication including proofreading, sponsorship, and distribution.</li>
+<li>Led brainstorming sessions with campus journalists across disciplines.</li>
 <li>Presided over multimedia journalism training organized by Press Institute Bangladesh (PIB).</li>
 </ul>
 </div>
 
 <div>
-<b>Organizing Secretary</b> (22 Jan 2023 – 8 Feb 2024)
+<b>Organizing Secretary (22 Jan 2023 – 8 Feb 2024)</b>
 <ul>
 <li>Led member selection and disciplinary committees.</li>
-<li>Reviewed and evaluated applications for new member recruitment.</li>
+<li>Reviewed and evaluated membership applications.</li>
 <li>Managed event registrations, communication, and participant engagement.</li>
 </ul>
 </div>
 
 <div>
-<b>Secretary of Publicity & Publication</b> (17 May 2022 – 22 Jan 2023)
+<b>Secretary of Publicity & Publication (17 May 2022 – 22 Jan 2023)</b>
 <ul>
-<li>Produced press releases, publicity materials, and social media campaigns.</li>
-<li>Enhanced organizational visibility through strategic communication.</li>
+<li>Produced press releases and publicity content.</li>
+<li>Managed social media communication strategies.</li>
 </ul>
 </div>
 
 <div>
-<b>Member</b> (27 Oct 2020 – 15 May 2025)
+<b>Member (27 Oct 2020 – 15 May 2025)</b>
 <ul>
-<li>Actively participated in organizational activities, journalism events, and reporting initiatives.</li>
-<li>Developed practical experience in campus journalism and media coordination.</li>
+<li>Participated in journalism activities and reporting initiatives.</li>
+<li>Developed practical experience in campus media coordination.</li>
 </ul>
 </div>
 
