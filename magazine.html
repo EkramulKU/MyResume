@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KUJA Magazine</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+
+<!-- Turn.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+
+<style>
+
+body{
+background:#020617;
+color:white;
+font-family:'Poppins',sans-serif;
+text-align:center;
+}
+
+h1{
+margin:20px 0;
+color:#4ade80;
+}
+
+/* FLIPBOOK */
+#flipbook{
+width:90%;
+max-width:900px;
+height:600px;
+margin:20px auto;
+}
+
+#flipbook div{
+background:#022c22;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+canvas{
+max-width:100%;
+height:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>KUJA Magazine 2024</h1>
+
+<div id="flipbook"></div>
+
+<script>
+
+let pdfDoc = null;
+
+const url = "files/kuja-magazine.pdf";
+
+async function loadPDF(){
+
+pdfDoc = await pdfjsLib.getDocument(url).promise;
+
+const flipbook = document.getElementById("flipbook");
+
+for(let i=1;i<=pdfDoc.numPages;i++){
+
+const page = await pdfDoc.getPage(i);
+const viewport = page.getViewport({scale:1.5});
+
+const canvas = document.createElement("canvas");
+const context = canvas.getContext("2d");
+
+canvas.width = viewport.width;
+canvas.height = viewport.height;
+
+await page.render({
+canvasContext: context,
+viewport: viewport
+}).promise;
+
+const div = document.createElement("div");
+div.appendChild(canvas);
+
+flipbook.appendChild(div);
+
+}
+
+/* TURN EFFECT */
+$("#flipbook").turn({
+width:900,
+height:600,
+autoCenter:true
+});
+
+}
+
+/* LOAD ON PAGE OPEN */
+loadPDF();
+
+</script>
+
+</body>
+</html>
