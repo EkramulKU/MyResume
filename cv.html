@@ -7,36 +7,57 @@
 
 <link rel="stylesheet" href="style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 
 body{
-background:#022c22;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#021a14;
 color:white;
-font-family: 'Poppins', sans-serif;
 }
 
-/* CONTAINER */
-.cv-container{
-max-width:900px;
+/* LAYOUT */
+.cv-wrapper{
+display:grid;
+grid-template-columns:280px 1fr;
+max-width:1100px;
 margin:40px auto;
-background:#064e3b;
-padding:30px;
+background:#022c22;
 border-radius:12px;
+overflow:hidden;
 }
 
-/* HEADER */
-.cv-header{
+/* LEFT SIDEBAR */
+.sidebar{
+background:#064e3b;
+padding:20px;
 text-align:center;
-margin-bottom:25px;
 }
 
-.cv-header h1{
-font-size:28px;
+.sidebar img{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #22c55e;
+margin-bottom:10px;
+}
+
+.sidebar h2{
+margin:10px 0;
 color:#4ade80;
 }
 
-.cv-header p{
+.sidebar p{
+font-size:14px;
 color:#bbf7d0;
+}
+
+/* RIGHT CONTENT */
+.content{
+padding:30px;
 }
 
 /* SECTION */
@@ -46,8 +67,8 @@ margin-bottom:25px;
 
 .section h2{
 border-bottom:2px solid #22c55e;
-margin-bottom:10px;
 padding-bottom:5px;
+margin-bottom:10px;
 color:#4ade80;
 }
 
@@ -58,19 +79,35 @@ padding-left:20px;
 
 li{
 margin-bottom:6px;
+line-height:1.6;
 }
 
-/* DOWNLOAD BUTTON */
+/* TIMELINE */
+.timeline{
+border-left:3px solid #22c55e;
+padding-left:15px;
+}
+
+.timeline div{
+margin-bottom:12px;
+}
+
+/* BUTTON */
 .download-btn{
-display:block;
-margin:20px auto;
-text-align:center;
-padding:10px 20px;
+display:inline-block;
+margin-top:10px;
+padding:10px 15px;
 background:#22c55e;
 color:black;
 border-radius:8px;
 text-decoration:none;
-width:200px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.cv-wrapper{
+grid-template-columns:1fr;
+}
 }
 
 </style>
@@ -81,64 +118,151 @@ width:200px;
 
 <div id="header"></div>
 
-<div class="cv-container">
+<div class="cv-wrapper">
 
-<!-- HEADER -->
-<div class="cv-header">
-<h1>Ekramul Haque</h1>
-<p>Media & Environmental Journalist | Researcher</p>
-<p>📍 Khulna, Bangladesh | 📧 your@email.com</p>
-</div>
+<!-- LEFT -->
+<div class="sidebar">
+
+<img src="images/profile.jpg">
+
+<h2>Ekramul Haque</h2>
+
+<p>Environmental Researcher & Journalist</p>
+
+<p>📍 Khulna, Bangladesh</p>
+<p>📞 01777024027</p>
+<p>📧 ekramulhaqueku@gmail.com</p>
 
 <a href="cv.pdf" class="download-btn" download>Download CV</a>
+
+</div>
+
+<!-- RIGHT -->
+<div class="content">
 
 <!-- EDUCATION -->
 <div class="section">
 <h2>Education</h2>
+<div class="timeline">
+<div><b>MS in Forestry</b>, Khulna University (Ongoing, Expected May 2026)</div>
+<div><b>BSc in Forestry</b>, Khulna University (CGPA 3.22)</div>
+<div>HSC – Govt Azizul Haque College (GPA 5.00)</div>
+<div>SSC – BIAM Model School (GPA 5.00)</div>
+</div>
+</div>
+
+<!-- THESIS -->
+<div class="section">
+<h2>Thesis & Dissertation</h2>
+
+<p><b>Graduate Thesis:</b> Spatiotemporal Dynamics of Land Use and Land Cover in Sundarbans ECA</p>
+
 <ul>
-<li>MS in Forestry – Khulna University (Ongoing)</li>
-<li>BSc in Forestry – Khulna University</li>
+<li>Satellite data using Google Earth Engine</li>
+<li>GIS analysis using ArcGIS Pro</li>
+<li>Policy impact analysis</li>
 </ul>
+
+<p><b>Undergraduate Thesis:</b> Forest Cover Change in Madhupur National Park</p>
+
+<ul>
+<li>Landsat & Sentinel analysis</li>
+<li>Classification & deforestation analysis</li>
+</ul>
+
 </div>
 
 <!-- EXPERIENCE -->
 <div class="section">
 <h2>Work Experience</h2>
+
 <ul>
-<li>Sub-Editor – ShareBiz</li>
-<li>Correspondent – Daily Janakantha (Khulna)</li>
-<li>Contributor – Education Times, Alokito Vor</li>
+<li>Sub-Editor – Education Times</li>
+<li>Correspondent – Daily Janakantha</li>
+<li>Correspondent – Daily ShareBiz</li>
+<li>Correspondent – Naya Shatabdi</li>
+<li>Correspondent – Weekly Barta Bichitra</li>
+<li>Correspondent – Daily Alokito Vor</li>
 </ul>
+
+</div>
+
+<!-- FIELD -->
+<div class="section">
+<h2>Field Experience</h2>
+
+<ul>
+<li>Research Support – Friendship NGO (Mangrove Study)</li>
+<li>Field data collection & biodiversity work</li>
+</ul>
+
+</div>
+
+<!-- LEADERSHIP -->
+<div class="section">
+<h2>Leadership</h2>
+
+<ul>
+<li>President – KU Writers’ Society</li>
+<li>President – KUJA</li>
+<li>General Secretary – FWTC</li>
+<li>Media Coordinator – Genesis Foundation</li>
+</ul>
+
+</div>
+
+<!-- TRAINING -->
+<div class="section">
+<h2>Trainings & Workshops</h2>
+
+<ul>
+<li>IT Support Training (EDGE Project)</li>
+<li>Multimedia Journalism – PIB</li>
+<li>Mobile Journalism Training</li>
+<li>Graphics Design Training</li>
+</ul>
+
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section">
+<h2>Certifications</h2>
+
+<ul>
+<li>Reuters Digital Journalism Certificate</li>
+<li>Media Ethics – University of Amsterdam</li>
+<li>Research Methods – University of London</li>
+</ul>
+
 </div>
 
 <!-- SKILLS -->
 <div class="section">
 <h2>Skills</h2>
+
 <ul>
-<li>Journalism & Reporting</li>
-<li>Research & Data Analysis</li>
 <li>GIS & Remote Sensing</li>
+<li>Journalism & Research</li>
+<li>MS Office, Canva</li>
+<li>Python, C++</li>
 </ul>
+
 </div>
 
-<!-- TOOLS -->
+<!-- PERSONAL -->
 <div class="section">
-<h2>Software & Tools</h2>
+<h2>Personal Details</h2>
+
 <ul>
-<li>ArcGIS Pro</li>
-<li>Google Earth Engine</li>
-<li>Google Earth Pro</li>
-<li>MS Excel</li>
+<li>Father: Akbar Ali</li>
+<li>Mother: Nasima</li>
+<li>DOB: 04 June 2000</li>
+<li>Nationality: Bangladeshi</li>
+<li>Blood Group: O+</li>
 </ul>
+
 </div>
 
-<!-- LEADERSHIP -->
-<div class="section">
-<h2>Leadership & Activities</h2>
-<ul>
-<li>President – KU Writers’ Society</li>
-<li>President – KU Journalist Association</li>
-</ul>
 </div>
 
 </div>
