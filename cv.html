@@ -6,139 +6,64 @@
 <title>Ekramul Haque CV</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#021a14,#022c22);
-color:white;
+font-family:'Inter',sans-serif;
+background:#f8fafc;
+color:#111827;
 }
 
-/* MAIN */
+/* CONTAINER */
 .cv{
-display:grid;
-grid-template-columns:320px 1fr;
-max-width:1200px;
+max-width:1000px;
 margin:40px auto;
-background:rgba(2,44,34,0.9);
-backdrop-filter:blur(10px);
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 0 30px rgba(0,0,0,0.5);
-}
-
-/* LEFT */
-.left{
-background:linear-gradient(180deg,#064e3b,#022c22);
-padding:25px;
-text-align:center;
-}
-
-.left img{
-width:150px;
-height:150px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid #22c55e;
-box-shadow:0 0 15px #22c55e;
-}
-
-.left h2{
-margin:15px 0 5px;
-color:#4ade80;
-}
-
-.contact{
-font-size:14px;
-color:#bbf7d0;
-line-height:1.6;
-}
-
-/* SOCIAL */
-.socials a{
-display:inline-block;
-margin:5px;
-width:35px;
-height:35px;
-line-height:35px;
-background:#022c22;
-border-radius:50%;
-color:white;
-transition:0.3s;
-}
-
-.socials a:hover{
-background:#22c55e;
-color:black;
-transform:scale(1.2);
-}
-
-/* BUTTON */
-.btn{
-display:inline-block;
-margin-top:15px;
-padding:10px 18px;
-background:linear-gradient(45deg,#22c55e,#4ade80);
-color:black;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
-
-/* RIGHT */
-.right{
-padding:35px;
-}
-
-/* SECTION TITLE */
-.section h2{
-padding:8px 15px;
-background:linear-gradient(90deg,#22c55e,#064e3b);
-border-radius:8px;
-display:inline-block;
-margin-bottom:15px;
-}
-
-/* CARD BOX */
-.box{
-background:#065f46;
-padding:15px;
+background:white;
+padding:40px;
 border-radius:10px;
-margin-bottom:12px;
-transition:0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.box:hover{
-transform:translateY(-5px) scale(1.02);
-background:#047857;
+/* HEADER */
+.header{
+display:flex;
+gap:20px;
+border-bottom:2px solid #e5e7eb;
+padding-bottom:20px;
+margin-bottom:25px;
 }
 
-/* TIMELINE */
-.timeline{
-border-left:3px solid #22c55e;
-padding-left:15px;
+.header img{
+width:120px;
+height:120px;
+border-radius:8px;
+object-fit:cover;
 }
 
-.timeline div{
-margin-bottom:15px;
-position:relative;
+.header h1{
+margin:0;
+font-size:28px;
 }
 
-.timeline div::before{
-content:"";
-width:10px;
-height:10px;
-background:#22c55e;
-border-radius:50%;
-position:absolute;
-left:-21px;
-top:6px;
+.header p{
+margin:4px 0;
+color:#374151;
+}
+
+/* SECTION */
+.section{
+margin-bottom:25px;
+}
+
+.section h2{
+font-size:18px;
+margin-bottom:10px;
+color:#065f46;
+border-bottom:1px solid #d1d5db;
+padding-bottom:5px;
 }
 
 /* LIST */
@@ -148,28 +73,30 @@ padding-left:20px;
 
 li{
 margin-bottom:6px;
+line-height:1.6;
 }
 
-/* SKILL BAR */
-.skill{
-margin-bottom:10px;
+/* TWO COLUMN */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 }
 
-.bar{
-height:6px;
-background:#022c22;
-border-radius:5px;
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:10px;
+padding:8px 15px;
+background:#065f46;
+color:white;
+border-radius:6px;
+text-decoration:none;
 }
 
-.fill{
-height:6px;
-background:#22c55e;
-border-radius:5px;
-}
-
-/* MOBILE */
 @media(max-width:768px){
-.cv{grid-template-columns:1fr;}
+.grid{grid-template-columns:1fr;}
+.header{flex-direction:column;}
 }
 
 </style>
@@ -182,90 +109,146 @@ border-radius:5px;
 
 <div class="cv">
 
-<!-- LEFT -->
-<div class="left">
-
+<!-- HEADER -->
+<div class="header">
 <img src="images/profile.jpg">
 
-<h2>Ekramul Haque</h2>
-
-<div class="contact">
-Khulna University<br>
-📞 01777024027<br>
-📧 ekramulhaqueku@gmail.com
-</div>
-
-<div class="socials">
-<a href="#"><i class="fab fa-facebook"></i></a>
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fab fa-github"></i></a>
-</div>
+<div>
+<h1>Ekramul Haque</h1>
+<p>Environmental Researcher & Journalist</p>
+<p>📍 Khulna University, Bangladesh</p>
+<p>📞 01777024027 | 📧 ekramulhaqueku@gmail.com</p>
 
 <a href="cv.pdf" class="btn" download>Download CV</a>
-
 </div>
-
-<!-- RIGHT -->
-<div class="right">
+</div>
 
 <!-- EDUCATION -->
 <div class="section">
 <h2>Education</h2>
-<div class="timeline">
-<div><b>MS Forestry (2025–26)</b> KU</div>
-<div><b>BSc Forestry (2020–25)</b> KU</div>
-<div><b>HSC (GPA 5.00)</b></div>
-<div><b>SSC (GPA 5.00)</b></div>
-</div>
+
+<ul>
+<li><b>MS in Forestry</b>, Khulna University (Coursework completed, dissertation ongoing. Expected completion: May 2026)</li>
+<li><b>BSc (Honours) in Forestry</b>, Khulna University (CGPA 3.22 out of 4.00)</li>
+<li><b>HSC</b>, Government Azizul Haque College, Bogura (GPA 5.00)</li>
+<li><b>SSC</b>, BIAM Model School and College, Bogura (GPA 5.00)</li>
+</ul>
+
 </div>
 
 <!-- THESIS -->
 <div class="section">
-<h2>Research</h2>
+<h2>Thesis & Dissertation</h2>
 
-<div class="box">Sundarbans LULC Analysis</div>
+<p><b>Graduate Dissertation:</b> Spatiotemporal Dynamics of Land Use and Land Cover in the Sundarbans ECA (2000–2025)</p>
+
 <ul>
-<li>Google Earth Engine</li>
-<li>ArcGIS Pro</li>
-<li>Policy Study</li>
+<li>Satellite remote sensing and GIS analysis</li>
+<li>Google Earth Engine data collection</li>
+<li>ArcGIS Pro analysis</li>
+<li>Policy-based evaluation</li>
 </ul>
 
-<div class="box">Madhupur Forest Study</div>
+<p><b>Undergraduate Dissertation:</b> Forest Cover Change in Madhupur National Park (2015–2024)</p>
+
 <ul>
-<li>Landsat & Sentinel</li>
-<li>Classification</li>
+<li>Landsat & Sentinel imagery analysis</li>
+<li>Supervised classification</li>
+<li>Deforestation drivers analysis</li>
 </ul>
 
 </div>
 
 <!-- EXPERIENCE -->
 <div class="section">
-<h2>Experience</h2>
-<div class="timeline">
-<div>Janakantha</div>
-<div>ShareBiz</div>
-<div>Education Times</div>
+<h2>Work Experience</h2>
+
+<ul>
+<li>Sub-Editor – Education Times</li>
+<li>Correspondent – Daily Janakantha</li>
+<li>Correspondent – ShareBiz</li>
+<li>Correspondent – Naya Shatabdi</li>
+<li>Correspondent – Weekly Barta Bichitra</li>
+<li>Correspondent – Daily Alokito Vor</li>
+</ul>
+
 </div>
+
+<!-- FIELD -->
+<div class="section">
+<h2>Field Experience</h2>
+
+<ul>
+<li>Research Support – Friendship NGO (Mangrove ecosystem study)</li>
+<li>Field data collection, community engagement</li>
+</ul>
+
+</div>
+
+<!-- LEADERSHIP -->
+<div class="section">
+<h2>Leadership & Activities</h2>
+
+<ul>
+<li>President – KU Writers’ Society</li>
+<li>President – KU Journalist Association (KUJA)</li>
+<li>General Secretary – Forestry and Wood Technology Club</li>
+<li>Coordinator – Genesis Foundation</li>
+</ul>
+
+</div>
+
+<!-- TRAINING -->
+<div class="section">
+<h2>Trainings & Workshops</h2>
+
+<ul>
+<li>IT Support Training – EDGE Project</li>
+<li>Multimedia Journalism Training – PIB</li>
+<li>Mobile Journalism Training</li>
+<li>Graphics Design Training (200 hours)</li>
+</ul>
+
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section">
+<h2>Certifications</h2>
+
+<ul>
+<li>Reuters Digital Journalism Certificate</li>
+<li>Media Ethics – University of Amsterdam</li>
+<li>Research Methods – University of London</li>
+<li>Climate Change Planning – University of Colorado</li>
+</ul>
+
 </div>
 
 <!-- SKILLS -->
 <div class="section">
 <h2>Skills</h2>
 
-<div class="skill">GIS<div class="bar"><div class="fill" style="width:90%"></div></div></div>
-<div class="skill">Journalism<div class="bar"><div class="fill" style="width:85%"></div></div></div>
-<div class="skill">Programming<div class="bar"><div class="fill" style="width:70%"></div></div></div>
+<ul>
+<li>GIS & Remote Sensing (ArcGIS Pro, GEE)</li>
+<li>Journalism & Research Writing</li>
+<li>MS Office, Canva</li>
+<li>Python, C++</li>
+</ul>
 
 </div>
 
 <!-- PERSONAL -->
 <div class="section">
-<h2>Personal</h2>
+<h2>Personal Details</h2>
+
 <ul>
+<li>Father: Akbar Ali</li>
+<li>Mother: Nasima</li>
+<li>Date of Birth: 04 June 2000</li>
 <li>Nationality: Bangladeshi</li>
-<li>DOB: 2000</li>
+<li>Religion: Islam</li>
+<li>Blood Group: O Positive</li>
 </ul>
-</div>
 
 </div>
 
