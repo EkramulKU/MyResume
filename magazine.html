@@ -33,13 +33,12 @@ color:#4ade80;
 
 /* FLIPBOOK */
 #flipbook{
-width:90%;
-max-width:900px;
+width:900px;
 height:600px;
 margin:20px auto;
 }
 
-#flipbook div{
+.page{
 background:#022c22;
 display:flex;
 justify-content:center;
@@ -63,20 +62,18 @@ height:auto;
 
 <script>
 
-let pdfDoc = null;
-
 const url = "files/kuja-magazine.pdf";
 
 async function loadPDF(){
 
-pdfDoc = await pdfjsLib.getDocument(url).promise;
-
+const pdf = await pdfjsLib.getDocument(url).promise;
 const flipbook = document.getElementById("flipbook");
 
-for(let i=1;i<=pdfDoc.numPages;i++){
+/* LOAD ALL PAGES FIRST */
+for(let i=1;i<=pdf.numPages;i++){
 
-const page = await pdfDoc.getPage(i);
-const viewport = page.getViewport({scale:1.5});
+const page = await pdf.getPage(i);
+const viewport = page.getViewport({scale:1.3});
 
 const canvas = document.createElement("canvas");
 const context = canvas.getContext("2d");
@@ -90,22 +87,26 @@ viewport: viewport
 }).promise;
 
 const div = document.createElement("div");
+div.className = "page"; /* 🔥 IMPORTANT */
 div.appendChild(canvas);
 
 flipbook.appendChild(div);
-
 }
 
-/* TURN EFFECT */
+/* 🔥 APPLY TURN AFTER ALL PAGES READY */
+setTimeout(() => {
+
 $("#flipbook").turn({
 width:900,
 height:600,
-autoCenter:true
+autoCenter:true,
+display:"double" /* 🔥 book style */
 });
+
+}, 500);
 
 }
 
-/* LOAD ON PAGE OPEN */
 loadPDF();
 
 </script>
