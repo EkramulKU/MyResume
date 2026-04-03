@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Ekramul Haque</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+background:#022c22;
+color:white;
+font-family: 'Poppins', sans-serif;
+}
+
+/* CONTAINER */
+.cv-container{
+max-width:900px;
+margin:40px auto;
+background:#064e3b;
+padding:30px;
+border-radius:12px;
+}
+
+/* HEADER */
+.cv-header{
+text-align:center;
+margin-bottom:25px;
+}
+
+.cv-header h1{
+font-size:28px;
+color:#4ade80;
+}
+
+.cv-header p{
+color:#bbf7d0;
+}
+
+/* SECTION */
+.section{
+margin-bottom:25px;
+}
+
+.section h2{
+border-bottom:2px solid #22c55e;
+margin-bottom:10px;
+padding-bottom:5px;
+color:#4ade80;
+}
+
+/* LIST */
+ul{
+padding-left:20px;
+}
+
+li{
+margin-bottom:6px;
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn{
+display:block;
+margin:20px auto;
+text-align:center;
+padding:10px 20px;
+background:#22c55e;
+color:black;
+border-radius:8px;
+text-decoration:none;
+width:200px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<div class="cv-container">
+
+<!-- HEADER -->
+<div class="cv-header">
+<h1>Ekramul Haque</h1>
+<p>Media & Environmental Journalist | Researcher</p>
+<p>📍 Khulna, Bangladesh | 📧 your@email.com</p>
+</div>
+
+<a href="cv.pdf" class="download-btn" download>Download CV</a>
+
+<!-- EDUCATION -->
+<div class="section">
+<h2>Education</h2>
+<ul>
+<li>MS in Forestry – Khulna University (Ongoing)</li>
+<li>BSc in Forestry – Khulna University</li>
+</ul>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+<h2>Work Experience</h2>
+<ul>
+<li>Sub-Editor – ShareBiz</li>
+<li>Correspondent – Daily Janakantha (Khulna)</li>
+<li>Contributor – Education Times, Alokito Vor</li>
+</ul>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+<h2>Skills</h2>
+<ul>
+<li>Journalism & Reporting</li>
+<li>Research & Data Analysis</li>
+<li>GIS & Remote Sensing</li>
+</ul>
+</div>
+
+<!-- TOOLS -->
+<div class="section">
+<h2>Software & Tools</h2>
+<ul>
+<li>ArcGIS Pro</li>
+<li>Google Earth Engine</li>
+<li>Google Earth Pro</li>
+<li>MS Excel</li>
+</ul>
+</div>
+
+<!-- LEADERSHIP -->
+<div class="section">
+<h2>Leadership & Activities</h2>
+<ul>
+<li>President – KU Writers’ Society</li>
+<li>President – KU Journalist Association</li>
+</ul>
+</div>
+
+</div>
+
+<div id="footer"></div>
+
+<script>
+fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
+</script>
+
+</body>
+</html>
