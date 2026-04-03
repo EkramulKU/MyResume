@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV - Ekramul Haque</title>
+<title>Ekramul Haque CV</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -19,57 +19,81 @@ color:white;
 }
 
 /* LAYOUT */
-.cv-wrapper{
+.cv{
 display:grid;
-grid-template-columns:280px 1fr;
-max-width:1100px;
+grid-template-columns:300px 1fr;
+max-width:1200px;
 margin:40px auto;
 background:#022c22;
 border-radius:12px;
 overflow:hidden;
 }
 
-/* LEFT SIDEBAR */
-.sidebar{
+/* SIDEBAR */
+.left{
 background:#064e3b;
-padding:20px;
-text-align:center;
+padding:25px;
 }
 
-.sidebar img{
-width:130px;
-height:130px;
+.left img{
+width:140px;
+height:140px;
 border-radius:50%;
 object-fit:cover;
 border:4px solid #22c55e;
-margin-bottom:10px;
+display:block;
+margin:auto;
 }
 
-.sidebar h2{
+.left h2{
+text-align:center;
 margin:10px 0;
 color:#4ade80;
 }
 
-.sidebar p{
+.left p{
 font-size:14px;
+line-height:1.6;
 color:#bbf7d0;
 }
 
-/* RIGHT CONTENT */
-.content{
+/* RIGHT */
+.right{
 padding:30px;
 }
 
 /* SECTION */
 .section{
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
 .section h2{
-border-bottom:2px solid #22c55e;
-padding-bottom:5px;
+border-left:5px solid #22c55e;
+padding-left:10px;
 margin-bottom:10px;
 color:#4ade80;
+}
+
+/* TIMELINE */
+.timeline{
+border-left:2px solid #22c55e;
+padding-left:15px;
+}
+
+.timeline div{
+margin-bottom:15px;
+position:relative;
+}
+
+.timeline div::before{
+content:"";
+width:10px;
+height:10px;
+background:#22c55e;
+border-radius:50%;
+position:absolute;
+left:-21px;
+top:5px;
 }
 
 /* LIST */
@@ -82,30 +106,9 @@ margin-bottom:6px;
 line-height:1.6;
 }
 
-/* TIMELINE */
-.timeline{
-border-left:3px solid #22c55e;
-padding-left:15px;
-}
-
-.timeline div{
-margin-bottom:12px;
-}
-
-/* BUTTON */
-.download-btn{
-display:inline-block;
-margin-top:10px;
-padding:10px 15px;
-background:#22c55e;
-color:black;
-border-radius:8px;
-text-decoration:none;
-}
-
 /* MOBILE */
 @media(max-width:768px){
-.cv-wrapper{
+.cv{
 grid-template-columns:1fr;
 }
 }
@@ -118,71 +121,60 @@ grid-template-columns:1fr;
 
 <div id="header"></div>
 
-<div class="cv-wrapper">
+<div class="cv">
 
 <!-- LEFT -->
-<div class="sidebar">
+<div class="left">
 
 <img src="images/profile.jpg">
 
 <h2>Ekramul Haque</h2>
 
-<p>Environmental Researcher & Journalist</p>
+<p>
+Room No. 110, Khan Bahadur Ahsanullah Hall,<br>
+Khulna University, Khulna-9208<br><br>
 
-<p>📍 Khulna, Bangladesh</p>
-<p>📞 01777024027</p>
-<p>📧 ekramulhaqueku@gmail.com</p>
-
-<a href="cv.pdf" class="download-btn" download>Download CV</a>
+📞 01777024027<br>
+📧 ekramulhaqueku@gmail.com
+</p>
 
 </div>
 
 <!-- RIGHT -->
-<div class="content">
+<div class="right">
 
 <!-- EDUCATION -->
 <div class="section">
 <h2>Education</h2>
+
 <div class="timeline">
-<div><b>MS in Forestry</b>, Khulna University (Ongoing, Expected May 2026)</div>
-<div><b>BSc in Forestry</b>, Khulna University (CGPA 3.22)</div>
-<div>HSC – Govt Azizul Haque College (GPA 5.00)</div>
-<div>SSC – BIAM Model School (GPA 5.00)</div>
+<div><b>2025-2026</b> – MS in Forestry, Khulna University (Coursework completed, dissertation ongoing. Expected completion: May 2026)</div>
+<div><b>2020-2025</b> – BSc (Honours) in Forestry, Khulna University, CGPA 3.22</div>
+<div><b>2016-2018</b> – HSC, Govt Azizul Haque College, GPA 5.00</div>
+<div><b>2014-2016</b> – SSC, BIAM Model School, GPA 5.00</div>
 </div>
+
 </div>
 
 <!-- THESIS -->
 <div class="section">
 <h2>Thesis & Dissertation</h2>
 
-<p><b>Graduate Thesis:</b> Spatiotemporal Dynamics of Land Use and Land Cover in Sundarbans ECA</p>
+<p><b>Graduate Dissertation:</b> Spatiotemporal Dynamics of Land Use and Land Cover in the Sundarbans ECA (2000–2025)</p>
 
 <ul>
-<li>Satellite data using Google Earth Engine</li>
-<li>GIS analysis using ArcGIS Pro</li>
-<li>Policy impact analysis</li>
+<li>Satellite remote sensing and GIS analysis</li>
+<li>Google Earth Engine data collection</li>
+<li>ArcGIS Pro analysis</li>
+<li>Policy-based evaluation</li>
 </ul>
 
-<p><b>Undergraduate Thesis:</b> Forest Cover Change in Madhupur National Park</p>
+<p><b>Undergraduate Dissertation:</b> Forest Cover Change in Madhupur National Park (2015–2024)</p>
 
 <ul>
-<li>Landsat & Sentinel analysis</li>
-<li>Classification & deforestation analysis</li>
-</ul>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div class="section">
-<h2>Work Experience</h2>
-
-<ul>
-<li>Sub-Editor – Education Times</li>
-<li>Correspondent – Daily Janakantha</li>
-<li>Correspondent – Daily ShareBiz</li>
-<li>Correspondent – Naya Shatabdi</li>
-<li>Correspondent – Weekly Barta Bichitra</li>
-<li>Correspondent – Daily Alokito Vor</li>
+<li>Landsat & Sentinel imagery</li>
+<li>Supervised classification</li>
+<li>Deforestation drivers analysis</li>
 </ul>
 
 </div>
@@ -191,10 +183,31 @@ grid-template-columns:1fr;
 <div class="section">
 <h2>Field Experience</h2>
 
+<div class="timeline">
+<div><b>Feb–Mar 2025</b> – Research Support, Friendship NGO</div>
+</div>
+
 <ul>
-<li>Research Support – Friendship NGO (Mangrove Study)</li>
-<li>Field data collection & biodiversity work</li>
+<li>Mangrove ecosystem research support</li>
+<li>Field data collection</li>
+<li>Community engagement</li>
+<li>Earned research certificate</li>
 </ul>
+
+</div>
+
+<!-- WORK -->
+<div class="section">
+<h2>Work Experience</h2>
+
+<div class="timeline">
+<div>Sub-Editor – Education Times</div>
+<div>Correspondent – Daily Janakantha</div>
+<div>Correspondent – ShareBiz</div>
+<div>Correspondent – Naya Shatabdi</div>
+<div>Correspondent – Barta Bichitra</div>
+<div>Correspondent – Alokito Vor</div>
+</div>
 
 </div>
 
@@ -206,20 +219,20 @@ grid-template-columns:1fr;
 <li>President – KU Writers’ Society</li>
 <li>President – KUJA</li>
 <li>General Secretary – FWTC</li>
-<li>Media Coordinator – Genesis Foundation</li>
+<li>Coordinator – Genesis Foundation</li>
 </ul>
 
 </div>
 
 <!-- TRAINING -->
 <div class="section">
-<h2>Trainings & Workshops</h2>
+<h2>Trainings</h2>
 
 <ul>
 <li>IT Support Training (EDGE Project)</li>
 <li>Multimedia Journalism – PIB</li>
-<li>Mobile Journalism Training</li>
-<li>Graphics Design Training</li>
+<li>Mobile Journalism</li>
+<li>Graphics Design (200 hrs)</li>
 </ul>
 
 </div>
@@ -229,7 +242,7 @@ grid-template-columns:1fr;
 <h2>Certifications</h2>
 
 <ul>
-<li>Reuters Digital Journalism Certificate</li>
+<li>Reuters Digital Journalism</li>
 <li>Media Ethics – University of Amsterdam</li>
 <li>Research Methods – University of London</li>
 </ul>
@@ -258,6 +271,7 @@ grid-template-columns:1fr;
 <li>Mother: Nasima</li>
 <li>DOB: 04 June 2000</li>
 <li>Nationality: Bangladeshi</li>
+<li>Religion: Islam</li>
 <li>Blood Group: O+</li>
 </ul>
 
