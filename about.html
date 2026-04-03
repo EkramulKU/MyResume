@@ -20,24 +20,23 @@ color:#e2e8f0;
 
 /* CONTAINER */
 .container{
-max-width:1100px;
-margin:40px auto;
+max-width:950px;
+margin:50px auto;
 padding:20px;
 }
 
 /* HERO */
 .hero{
-display:flex;
-gap:25px;
-align-items:center;
+text-align:center;
 margin-bottom:30px;
 }
 
 .hero img{
-width:140px;
-height:140px;
-border-radius:12px;
+width:130px;
+height:130px;
+border-radius:50%;
 object-fit:cover;
+margin-bottom:10px;
 }
 
 .hero h1{
@@ -52,45 +51,24 @@ color:#94a3b8;
 /* CARD */
 .card{
 background:#065f46;
-padding:30px;
-border-radius:14px;
-margin-bottom:25px;
-line-height:1.8;
+padding:35px;
+border-radius:16px;
+line-height:1.9;
+font-size:16px;
 }
 
 .card p{
+margin-bottom:18px;
 text-align:justify;
 }
 
-/* SECTION */
-.title{
-color:#4ade80;
-margin-bottom:15px;
-font-size:22px;
-}
-
-/* LIST */
-ul{
-padding-left:20px;
-}
-li{
-margin-bottom:6px;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-/* FOOT SECTION */
+/* FOOT */
 .bottom{
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
-gap:20px;
 margin-top:30px;
+gap:20px;
 }
 
 .social a{
@@ -111,8 +89,8 @@ text-decoration:none;
 
 /* MOBILE */
 @media(max-width:768px){
-.grid{grid-template-columns:1fr;}
-.hero{flex-direction:column;}
+.container{padding:15px;}
+.card{padding:25px;}
 }
 
 </style>
@@ -128,108 +106,44 @@ text-decoration:none;
 <!-- HERO -->
 <div class="hero">
 <img src="images/profile.jpg">
-
-<div>
 <h1>Ekramul Haque</h1>
-<p>Environmental Researcher | Journalist | Data & GIS Enthusiast</p>
-<p>Currently preparing for government, university officer, and fact-checking roles</p>
-</div>
+<p>Environmental Researcher | Journalist</p>
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT TEXT -->
 <div class="card">
-<h2 class="title">About Me</h2>
 
 <p>
-Ekramul Haque is an environmental researcher and journalist based in Khulna, Bangladesh. He is currently pursuing a Master of Science in Forestry at Khulna University, focusing on land use and land cover dynamics, environmental monitoring, and conservation policy. His research integrates advanced geospatial technologies including Google Earth Engine and ArcGIS Pro to analyze ecological changes, particularly within the Sundarbans Ecologically Critical Area.
+Ekramul Haque is an environmental researcher and journalist based in Khulna, Bangladesh. He is currently pursuing a Master of Science in Forestry at Khulna University, where his academic work focuses on land use and land cover dynamics, environmental change, and conservation policy. His ongoing graduate research investigates the spatiotemporal dynamics of land use and land cover in the Sundarbans Ecologically Critical Area (2000–2025), using remote sensing and GIS techniques. Through tools such as Google Earth Engine and ArcGIS Pro, he conducts detailed spatial analysis and develops policy-relevant insights to support sustainable forest management.
 </p>
 
 <p>
-Alongside his academic work, he is actively engaged in journalism, contributing to multiple national newspapers. His reporting focuses on environmental issues, climate change, forestry, and socio-ecological challenges. Through his writing, he aims to make scientific knowledge accessible to the public and support evidence-based decision-making.
+He completed his Bachelor of Science (Honours) in Forestry from Khulna University, following outstanding academic achievements in both secondary and higher secondary education with GPA 5.00. His undergraduate dissertation focused on forest cover change in Madhupur National Park (2015–2024), where he applied Landsat and Sentinel imagery, supervised classification, and spatial analysis to identify deforestation patterns and their drivers, including agricultural expansion and settlement growth.
 </p>
 
 <p>
-He is currently preparing for competitive government positions, fact-checking roles, and first-class officer positions in universities, aiming to build a career that combines research, policy, and communication.
+Alongside his academic career, Ekramul has built a strong background in journalism, working as a correspondent for several national newspapers including Daily Janakantha, Share Biz, Naya Shatabdi, Barta Bichitra, and Alokito Vor, and currently serving as a Sub-Editor at Education Times. His reporting primarily focuses on environmental issues, climate change, and socio-ecological challenges. Through journalism, he aims to translate scientific research into accessible information for the public and contribute to informed decision-making.
 </p>
 
-</div>
+<p>
+He has also gained valuable field experience through his involvement with Friendship NGO, where he contributed to a field-based research project on mangrove ecosystems in Satkhira. His responsibilities included data collection, field coordination, and community engagement, providing him with practical insights into environmental research and conservation at the grassroots level.
+</p>
 
-<!-- EDUCATION -->
-<div class="card">
-<h2 class="title">Education</h2>
+<p>
+Ekramul has demonstrated strong leadership through various academic and extracurricular roles. He served as the President of the Khulna University Journalists’ Association (KUJA), where he organized national-level journalism training programs, led media coordination, and managed editorial activities. He is also the Founding President of the Khulna University Writers’ Society, where he organized nationwide writing competitions and developed a digital platform for showcasing student work. In addition, he served as General Secretary of the Forestry and Wood Technology Club (FWTC) and held key roles in Genesis Foundation, contributing to environmental awareness and community engagement initiatives.
+</p>
 
-<ul>
-<li>MS in Forestry, Khulna University (Expected 2026)</li>
-<li>BSc in Forestry, Khulna University (CGPA 3.22)</li>
-<li>HSC, Govt Azizul Haque College (GPA 5.00)</li>
-<li>SSC, BIAM Model School (GPA 5.00)</li>
-</ul>
+<p>
+He has participated in numerous trainings and workshops, including multimedia journalism, mobile journalism, IT support training under the EDGE project, and professional graphics design training. His certifications include fact-checking training by MRDI, Reuters Digital Journalism certification, and courses on media ethics, research methods, and climate change planning from internationally recognized institutions.
+</p>
 
-</div>
+<p>
+His technical skills include GIS and remote sensing, data analysis, and environmental research methodologies. He is proficient in ArcGIS Pro, Google Earth Engine, and Microsoft Office, and has working knowledge of Python and C++. His interdisciplinary expertise enables him to combine scientific analysis, data interpretation, and effective communication.
+</p>
 
-<!-- RESEARCH -->
-<div class="card">
-<h2 class="title">Research & Dissertation</h2>
-
-<ul>
-<li><b>Sundarbans LULC Study (Ongoing)</b> – Remote sensing & GIS based analysis (2000–2025)</li>
-<li><b>Madhupur Forest Study</b> – Forest cover change detection using Landsat & Sentinel</li>
-</ul>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div class="card">
-<h2 class="title">Work Experience</h2>
-
-<ul>
-<li>Sub-Editor – Education Times</li>
-<li>Correspondent – Daily Janakantha</li>
-<li>Correspondent – ShareBiz</li>
-<li>Correspondent – Naya Shatabdi</li>
-<li>Correspondent – Barta Bichitra</li>
-<li>Correspondent – Alokito Vor</li>
-</ul>
-
-</div>
-
-<!-- LEADERSHIP -->
-<div class="card">
-<h2 class="title">Leadership & Activities</h2>
-
-<ul>
-<li>President – KUJA</li>
-<li>President – KU Writers’ Society</li>
-<li>General Secretary – FWTC</li>
-<li>Coordinator – Genesis Foundation</li>
-</ul>
-
-</div>
-
-<!-- SKILLS -->
-<div class="card">
-<h2 class="title">Skills</h2>
-
-<ul>
-<li>GIS & Remote Sensing (ArcGIS, GEE)</li>
-<li>Journalism & Research Writing</li>
-<li>Python, C++</li>
-<li>MS Office, Canva</li>
-</ul>
-
-</div>
-
-<!-- PERSONAL -->
-<div class="card">
-<h2 class="title">Personal Information</h2>
-
-<ul>
-<li>Father: Akbar Ali</li>
-<li>Mother: Nasima</li>
-<li>DOB: 04 June 2000</li>
-<li>Nationality: Bangladeshi</li>
-<li>Blood Group: O+</li>
-</ul>
+<p>
+Currently, Ekramul is preparing for competitive government positions, fact-checking roles, and first-class officer positions in universities. His long-term goal is to build a career at the intersection of environmental research, policy, and journalism, contributing to sustainable development and evidence-based decision-making in Bangladesh.
+</p>
 
 </div>
 
