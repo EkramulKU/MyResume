@@ -9,6 +9,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 
 body{
@@ -18,10 +21,10 @@ background:#021a14;
 color:white;
 }
 
-/* LAYOUT */
+/* MAIN */
 .cv{
 display:grid;
-grid-template-columns:300px 1fr;
+grid-template-columns:320px 1fr;
 max-width:1200px;
 margin:40px auto;
 background:#022c22;
@@ -29,37 +32,70 @@ border-radius:12px;
 overflow:hidden;
 }
 
-/* SIDEBAR */
+/* LEFT */
 .left{
 background:#064e3b;
 padding:25px;
+text-align:center;
 }
 
 .left img{
-width:140px;
-height:140px;
+width:150px;
+height:150px;
 border-radius:50%;
 object-fit:cover;
 border:4px solid #22c55e;
-display:block;
-margin:auto;
 }
 
 .left h2{
-text-align:center;
-margin:10px 0;
+margin:15px 0 5px;
 color:#4ade80;
 }
 
-.left p{
+/* CONTACT */
+.contact{
 font-size:14px;
-line-height:1.6;
 color:#bbf7d0;
+line-height:1.6;
+}
+
+/* SOCIAL */
+.socials{
+margin-top:15px;
+}
+
+.socials a{
+display:inline-block;
+margin:5px;
+width:35px;
+height:35px;
+line-height:35px;
+background:#022c22;
+border-radius:50%;
+color:white;
+transition:0.3s;
+}
+
+.socials a:hover{
+background:#22c55e;
+color:black;
+transform:scale(1.1);
+}
+
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 18px;
+background:#22c55e;
+color:black;
+border-radius:8px;
+text-decoration:none;
 }
 
 /* RIGHT */
 .right{
-padding:30px;
+padding:35px;
 }
 
 /* SECTION */
@@ -68,16 +104,16 @@ margin-bottom:30px;
 }
 
 .section h2{
-border-left:5px solid #22c55e;
+border-left:6px solid #22c55e;
 padding-left:10px;
-margin-bottom:10px;
+margin-bottom:12px;
 color:#4ade80;
 }
 
 /* TIMELINE */
 .timeline{
 border-left:2px solid #22c55e;
-padding-left:15px;
+padding-left:18px;
 }
 
 .timeline div{
@@ -92,8 +128,8 @@ height:10px;
 background:#22c55e;
 border-radius:50%;
 position:absolute;
-left:-21px;
-top:5px;
+left:-24px;
+top:6px;
 }
 
 /* LIST */
@@ -103,7 +139,21 @@ padding-left:20px;
 
 li{
 margin-bottom:6px;
-line-height:1.6;
+line-height:1.7;
+}
+
+/* BOX */
+.box{
+background:#065f46;
+padding:15px;
+border-radius:8px;
+margin-bottom:10px;
+transition:0.3s;
+}
+
+.box:hover{
+transform:translateY(-5px);
+background:#047857;
 }
 
 /* MOBILE */
@@ -130,151 +180,86 @@ grid-template-columns:1fr;
 
 <h2>Ekramul Haque</h2>
 
-<p>
-Room No. 110, Khan Bahadur Ahsanullah Hall,<br>
-Khulna University, Khulna-9208<br><br>
-
+<div class="contact">
+Room No. 110, KBA Hall<br>
+Khulna University<br>
 📞 01777024027<br>
 📧 ekramulhaqueku@gmail.com
-</p>
+</div>
+
+<!-- SOCIAL -->
+<div class="socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+
+<!-- DOWNLOAD -->
+<a href="cv.pdf" class="btn" download>Download CV</a>
 
 </div>
 
 <!-- RIGHT -->
 <div class="right">
 
-<!-- EDUCATION -->
 <div class="section">
 <h2>Education</h2>
-
 <div class="timeline">
-<div><b>2025-2026</b> – MS in Forestry, Khulna University (Coursework completed, dissertation ongoing. Expected completion: May 2026)</div>
-<div><b>2020-2025</b> – BSc (Honours) in Forestry, Khulna University, CGPA 3.22</div>
-<div><b>2016-2018</b> – HSC, Govt Azizul Haque College, GPA 5.00</div>
-<div><b>2014-2016</b> – SSC, BIAM Model School, GPA 5.00</div>
+<div><b>2025-2026</b><br>MS in Forestry, KU (Ongoing)</div>
+<div><b>2020-2025</b><br>BSc Forestry, KU (CGPA 3.22)</div>
+<div><b>2016-2018</b><br>HSC (GPA 5.00)</div>
+<div><b>2014-2016</b><br>SSC (GPA 5.00)</div>
+</div>
 </div>
 
-</div>
-
-<!-- THESIS -->
 <div class="section">
-<h2>Thesis & Dissertation</h2>
+<h2>Thesis & Research</h2>
 
-<p><b>Graduate Dissertation:</b> Spatiotemporal Dynamics of Land Use and Land Cover in the Sundarbans ECA (2000–2025)</p>
+<div class="box">
+<b>Sundarbans LULC Analysis (2000–2025)</b>
+</div>
 
 <ul>
-<li>Satellite remote sensing and GIS analysis</li>
-<li>Google Earth Engine data collection</li>
-<li>ArcGIS Pro analysis</li>
-<li>Policy-based evaluation</li>
+<li>Google Earth Engine</li>
+<li>ArcGIS Pro</li>
+<li>Policy Analysis</li>
 </ul>
 
-<p><b>Undergraduate Dissertation:</b> Forest Cover Change in Madhupur National Park (2015–2024)</p>
-
-<ul>
-<li>Landsat & Sentinel imagery</li>
-<li>Supervised classification</li>
-<li>Deforestation drivers analysis</li>
-</ul>
-
-</div>
-
-<!-- FIELD -->
-<div class="section">
-<h2>Field Experience</h2>
-
-<div class="timeline">
-<div><b>Feb–Mar 2025</b> – Research Support, Friendship NGO</div>
+<div class="box">
+<b>Madhupur Forest Change</b>
 </div>
 
 <ul>
-<li>Mangrove ecosystem research support</li>
-<li>Field data collection</li>
-<li>Community engagement</li>
-<li>Earned research certificate</li>
+<li>Landsat & Sentinel</li>
+<li>Classification Analysis</li>
 </ul>
 
 </div>
 
-<!-- WORK -->
 <div class="section">
-<h2>Work Experience</h2>
-
+<h2>Experience</h2>
 <div class="timeline">
 <div>Sub-Editor – Education Times</div>
-<div>Correspondent – Daily Janakantha</div>
+<div>Correspondent – Janakantha</div>
 <div>Correspondent – ShareBiz</div>
-<div>Correspondent – Naya Shatabdi</div>
-<div>Correspondent – Barta Bichitra</div>
-<div>Correspondent – Alokito Vor</div>
+</div>
 </div>
 
-</div>
-
-<!-- LEADERSHIP -->
 <div class="section">
 <h2>Leadership</h2>
-
 <ul>
 <li>President – KU Writers’ Society</li>
 <li>President – KUJA</li>
-<li>General Secretary – FWTC</li>
-<li>Coordinator – Genesis Foundation</li>
 </ul>
-
 </div>
 
-<!-- TRAINING -->
-<div class="section">
-<h2>Trainings</h2>
-
-<ul>
-<li>IT Support Training (EDGE Project)</li>
-<li>Multimedia Journalism – PIB</li>
-<li>Mobile Journalism</li>
-<li>Graphics Design (200 hrs)</li>
-</ul>
-
-</div>
-
-<!-- CERTIFICATIONS -->
-<div class="section">
-<h2>Certifications</h2>
-
-<ul>
-<li>Reuters Digital Journalism</li>
-<li>Media Ethics – University of Amsterdam</li>
-<li>Research Methods – University of London</li>
-</ul>
-
-</div>
-
-<!-- SKILLS -->
 <div class="section">
 <h2>Skills</h2>
-
 <ul>
-<li>GIS & Remote Sensing</li>
-<li>Journalism & Research</li>
-<li>MS Office, Canva</li>
+<li>GIS, Remote Sensing</li>
+<li>Journalism</li>
 <li>Python, C++</li>
 </ul>
-
-</div>
-
-<!-- PERSONAL -->
-<div class="section">
-<h2>Personal Details</h2>
-
-<ul>
-<li>Father: Akbar Ali</li>
-<li>Mother: Nasima</li>
-<li>DOB: 04 June 2000</li>
-<li>Nationality: Bangladeshi</li>
-<li>Religion: Islam</li>
-<li>Blood Group: O+</li>
-</ul>
-
 </div>
 
 </div>
