@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUJA | Ekramul</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#021a14;
+color:white;
+}
+
+/* LAYOUT */
+.wrapper{
+display:grid;
+grid-template-columns:300px 1fr;
+height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+background:#064e3b;
+padding:25px;
+position:sticky;
+top:0;
+height:100vh;
+overflow:auto;
+}
+
+.sidebar img{
+width:110px;
+height:110px;
+object-fit:contain;
+background:white;
+padding:8px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.sidebar h2{
+color:#4ade80;
+}
+
+.sidebar p{
+font-size:14px;
+color:#bbf7d0;
+}
+
+/* BUTTON */
+.btn{
+display:block;
+margin-top:10px;
+padding:8px;
+text-align:center;
+background:#22c55e;
+color:black;
+border-radius:6px;
+text-decoration:none;
+}
+
+/* CONTENT */
+.content{
+padding:40px;
+overflow-y:auto;
+}
+
+/* CARD */
+.card{
+background:#065f46;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+/* TITLE */
+.title{
+color:#22c55e;
+margin-bottom:10px;
+}
+
+/* TIMELINE */
+.timeline{
+border-left:3px solid #22c55e;
+padding-left:15px;
+}
+
+.timeline div{
+margin-bottom:20px;
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+}
+
+.gallery img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:8px;
+}
+
+@media(max-width:768px){
+.wrapper{grid-template-columns:1fr;}
+.sidebar{position:relative;height:auto;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<div class="wrapper">
+
+<!-- LEFT -->
+<div class="sidebar">
+
+<img src="images/kuja.png">
+
+<h2>KUJA</h2>
+
+<p>
+Khulna University Journalists’ Association (KUJA) is a student-led platform that nurtures responsible journalism, media ethics, and communication skills among students of Khulna University.  
+It works closely with national media, organizes training, and promotes campus journalism culture.
+</p>
+
+<a href="#" class="btn">🌐 Website</a>
+<a href="#" class="btn">🔗 Facebook</a>
+
+</div>
+
+<!-- RIGHT -->
+<div class="content">
+
+<!-- ROLE -->
+<div class="card">
+<h2 class="title">My Role & Contributions</h2>
+
+<div class="timeline">
+
+<div>
+<b>President</b> (8 Feb 2024 – 11 May 2025)
+<ul>
+<li>Planned and organized high-impact journalism training programs with national media experts.</li>
+<li>Led public relations, partnerships, and press coordination with university administration and newspapers.</li>
+<li>Managed recruitment process, including interviewing and selecting 20+ applicants.</li>
+<li>Oversaw annual magazine publication, including proofreading, sponsorship management, and distribution.</li>
+<li>Led collaborative brainstorming sessions with journalists from diverse academic disciplines.</li>
+<li>Presided over multimedia journalism training organized by Press Institute Bangladesh (PIB).</li>
+</ul>
+</div>
+
+<div>
+<b>Organizing Secretary</b> (22 Jan 2023 – 8 Feb 2024)
+<ul>
+<li>Led member selection and disciplinary committees.</li>
+<li>Reviewed and evaluated applications for new member recruitment.</li>
+<li>Managed event registrations, communication, and participant engagement.</li>
+</ul>
+</div>
+
+<div>
+<b>Secretary of Publicity & Publication</b> (17 May 2022 – 22 Jan 2023)
+<ul>
+<li>Produced press releases, publicity materials, and social media campaigns.</li>
+<li>Enhanced organizational visibility through strategic communication.</li>
+</ul>
+</div>
+
+<div>
+<b>Member</b> (27 Oct 2020 – 15 May 2025)
+<ul>
+<li>Actively participated in organizational activities, journalism events, and reporting initiatives.</li>
+<li>Developed practical experience in campus journalism and media coordination.</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<!-- GALLERY -->
+<div class="card">
+<h2 class="title">Gallery</h2>
+
+<div class="gallery">
+<img src="images/kuja1.jpg">
+<img src="images/kuja2.jpg">
+<img src="images/kuja3.jpg">
+<img src="images/kuja4.jpg">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer"></div>
+
+<script>
+fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
+</script>
+
+</body>
+</html>
