@@ -35,10 +35,10 @@ height:100vh;
 overflow:auto;
 }
 
-/* LOGO FIX */
+/* LOGO */
 .sidebar img{
 width:120px;
-height:auto; /* 🔥 original ratio */
+height:auto;
 margin-bottom:15px;
 }
 
@@ -52,7 +52,7 @@ margin-bottom:10px;
 .sidebar p{
 font-size:14px;
 color:#d1fae5;
-text-align:justify; /* 🔥 justify */
+text-align:justify;
 line-height:1.6;
 }
 
@@ -103,16 +103,14 @@ padding-left:18px;
 
 .timeline div{
 margin-bottom:22px;
-}
-
-/* ROLE TEXT LEFT */
-.timeline ul{
-text-align:left;
+text-align:left; /* 🔥 FIX */
 }
 
 /* ROLE TITLE */
 .timeline b{
-color:#bbf7d0;
+display:block;           /* 🔥 FIX */
+margin-bottom:6px;
+color:#4ade80;
 }
 
 /* LIST */
@@ -144,11 +142,23 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media(max-width:768px){
-.wrapper{grid-template-columns:1fr;}
-.sidebar{position:relative;height:auto;}
-.content{padding:25px;}
+
+.wrapper{
+grid-template-columns:1fr;
+height:auto; /* 🔥 FIX */
+}
+
+.sidebar{
+position:relative; /* 🔥 FIX */
+height:auto;
+}
+
+.content{
+padding:20px;
+}
+
 }
 
 </style>
@@ -169,7 +179,7 @@ transform:scale(1.05);
 <h2>KUJA</h2>
 
 <p>
-Khulna University Journalists’ Association (KUJA) is a student-led organization dedicated to promoting ethical journalism, media literacy, and professional communication among students. It regularly organizes training sessions, workshops, and collaborative programs with national media institutions to enhance practical journalism skills and leadership capacity.
+Khulna University Journalists’ Association (KUJA) is a student-led organization dedicated to promoting ethical journalism, media literacy, and professional communication among students. It organizes training sessions, workshops, and collaborative programs with national media institutions to enhance practical journalism skills and leadership capacity.
 </p>
 
 <a href="#" class="btn">🌐 Website</a>
