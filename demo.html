@@ -1,21 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>KUJA - Ekramul</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organization</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
-.container{
-max-width:900px;
-margin:40px auto;
-padding:30px;
-background:#064e3b;
-border-radius:12px;
+
+body{
+background:#021a14;
 color:white;
+font-family:'Poppins',sans-serif;
 }
 
-h1{color:#4ade80;}
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:40px auto;
+padding:20px;
+}
+
+/* HERO */
+.hero{
+display:flex;
+align-items:center;
+gap:20px;
+background:#064e3b;
+padding:20px;
+border-radius:12px;
+}
+
+.hero img{
+width:80px;
+height:80px;
+object-fit:contain;
+background:white;
+padding:5px;
+border-radius:10px;
+}
+
+.hero h1{
+color:#4ade80;
+}
+
+/* CARD */
+.card{
+background:#065f46;
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* SECTION TITLE */
+.section-title{
+color:#22c55e;
+margin-bottom:10px;
+}
+
+/* LIST */
+ul{
+padding-left:20px;
+}
+
+li{
+margin-bottom:8px;
+}
+
 </style>
 
 </head>
@@ -26,28 +83,39 @@ h1{color:#4ade80;}
 
 <div class="container">
 
-<h1>Khulna University Journalist Association (KUJA)</h1>
+<!-- HERO -->
+<div class="hero">
+<img src="images/logo.png">
+<div>
+<h1>Organization Name</h1>
+<p>Short tagline about organization</p>
+</div>
+</div>
 
-<p><b>Position:</b> President</p>
+<!-- YOUR ROLE -->
+<div class="card">
+<h2 class="section-title">My Role & Contributions</h2>
+
+<p><b>Position:</b> Your Position</p>
+
+<ul>
+<li>What you did</li>
+<li>Responsibilities</li>
+<li>Leadership work</li>
+<li>Impact / achievements</li>
+</ul>
+
+</div>
+
+<!-- ABOUT -->
+<div class="card">
+<h2 class="section-title">About Organization</h2>
 
 <p>
-KUJA is a student journalist organization at Khulna University.
+Write details about the organization, its mission, activities, and importance.
 </p>
 
-<h3>My Contributions</h3>
-
-<ul>
-<li>Organized journalism training</li>
-<li>Led media coordination</li>
-<li>Managed team activities</li>
-</ul>
-
-<h3>Achievements</h3>
-
-<ul>
-<li>Successfully organized workshops</li>
-<li>Increased participation</li>
-</ul>
+</div>
 
 </div>
 
