@@ -3,240 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ekramul Haque | CV</title>
+<title>CV | Ekramul Haque</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<link rel="stylesheet" href="style.css">
+
 <style>
+    /* CV Page specific fix for Header & Footer */
+    header {
+        position: sticky !important;
+        top: 0;
+        width: 100%;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        z-index: 1000;
+    }
 
-:root {
---green:#10b981;
---bg:#0f172a;
---card:#1e293b;
---text:#f1f5f9;
---dim:#94a3b8;
-}
+    /* CV Layout Design */
+    .cv-wrapper {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 0 20px;
+        position: relative;
+    }
 
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
-margin:0;
-}
+    .cv-container {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        background: #065f46; /* Matches your card theme */
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
 
-/* MAIN */
-.cv{
-max-width:1100px;
-margin:40px auto;
-display:grid;
-grid-template-columns:320px 1fr;
-gap:30px;
-background:var(--card);
-border-radius:20px;
-overflow:hidden;
-}
+    .cv-sidebar {
+        background: #022c22;
+        padding: 40px 25px;
+        text-align: center;
+        border-right: 1px solid #10b981;
+    }
 
-/* SIDEBAR */
-.sidebar{
-background:linear-gradient(#064e3b,#022c22);
-padding:30px;
-text-align:center;
-}
+    .cv-main {
+        background: #065f46;
+        padding: 40px;
+    }
 
-.sidebar img{
-width:160px;
-height:160px;
-border-radius:15px;
-object-fit:cover;
-border:4px solid var(--green);
-}
+    .cv-section {
+        margin-bottom: 30px;
+    }
 
-.sidebar h1{
-margin:15px 0 5px;
-color:var(--green);
-}
+    .cv-section h2 {
+        color: #4ade80;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #22c55e;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.tag{
-font-size:13px;
-color:var(--dim);
-margin-bottom:20px;
-}
+    .cv-item {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
 
-/* CONTACT */
-.contact{
-text-align:left;
-margin-top:20px;
-font-size:14px;
-}
+    .cv-item strong {
+        color: #facc15; /* Highlights degree/position */
+    }
 
-.contact div{
-margin-bottom:10px;
-display:flex;
-gap:10px;
-}
+    .skill-badge {
+        display: inline-block;
+        background: #022c22;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin: 4px;
+        border: 1px solid #22c55e;
+    }
 
-/* BUTTON */
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:10px 15px;
-background:var(--green);
-color:black;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
+    .download-link {
+        display: inline-block;
+        background: #22c55e;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
 
-/* MAIN CONTENT */
-.main{
-padding:40px;
-}
+    .download-link:hover {
+        background: #4ade80;
+        transform: translateY(-3px);
+    }
 
-/* TITLE */
-.title{
-font-size:20px;
-color:var(--green);
-margin-bottom:15px;
-border-bottom:1px solid #334155;
-padding-bottom:5px;
-}
-
-/* TIMELINE */
-.item{
-margin-bottom:20px;
-padding-left:15px;
-border-left:2px solid #334155;
-}
-
-.item h3{
-margin:0;
-}
-
-.item span{
-font-size:13px;
-color:var(--green);
-}
-
-/* SKILLS */
-.skills{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
-
-.skill{
-background:#334155;
-padding:6px 12px;
-border-radius:6px;
-font-size:13px;
-}
-
-/* PERSONAL */
-.personal{
-margin-top:30px;
-font-size:14px;
-}
-
+    /* Responsive */
+    @media (max-width: 850px) {
+        .cv-container {
+            grid-template-columns: 1fr;
+        }
+        .cv-sidebar {
+            border-right: none;
+            border-bottom: 2px solid #10b981;
+        }
+    }
 </style>
-
 </head>
 
 <body>
 
-<div class="cv">
+<div id="header"></div>
 
-<!-- LEFT -->
-<div class="sidebar">
+<div class="container" style="padding-top: 20px;">
+    
+    <div style="text-align: right;">
+        <a href="Ekramuls CV.pdf" download class="download-link">
+            <i class="fas fa-file-pdf"></i> Download Full CV
+        </a>
+    </div>
 
-<img src="images/profile.jpg">
+    <div class="cv-container">
+        <aside class="cv-sidebar">
+            <img src="images/profile.jpg" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid #22c55e; margin-bottom: 20px;">
+            <h2 style="color: #4ade80; margin-bottom: 5px;">Ekramul Haque</h2>
+            <p style="color: #bbf7d0; font-size: 0.9rem; margin-bottom: 30px;">Forestry Researcher & Journalist</p>
 
-<h1>Ekramul Haque</h1>
-<div class="tag">Forestry Researcher & Journalist</div>
+            <div style="text-align: left; font-size: 0.85rem;">
+                <p style="margin-bottom: 12px;"><i class="fas fa-envelope" style="color:#4ade80; width:20px;"></i> ekramulhaqueku@gmail.com</p>
+                <p style="margin-bottom: 12px;"><i class="fas fa-phone" style="color:#4ade80; width:20px;"></i> 01777024027</p>
+                <p style="margin-bottom: 12px;"><i class="fas fa-map-marker-alt" style="color:#4ade80; width:20px;"></i> Khulna University, Khulna</p>
+                <p><i class="fas fa-tint" style="color:#4ade80; width:20px;"></i> Blood Group: O Positive</p>
+            </div>
+        </aside>
 
-<div class="contact">
-<div><i class="fas fa-map-marker-alt"></i> Khulna University</div>
-<div><i class="fas fa-phone"></i> 01777024027</div>
-<div><i class="fas fa-envelope"></i> ekramulhaqueku@gmail.com</div>
+        <main class="cv-main">
+            <section class="cv-section">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="cv-item">
+                    <strong>MS in Forestry (2025-2026)</strong><br>
+                    Khulna University. Coursework completed, dissertation ongoing. [cite: 7]
+                </div>
+                <div class="cv-item">
+                    <strong>BSc (Honours) in Forestry (2020-2025)</strong><br>
+                    Khulna University. CGPA 3.22 [cite: 8]
+                </div>
+                <div class="cv-item">
+                    <strong>HSC & SSC (Bogura)</strong><br>
+                    Government Azizul Haque College & BIAM Model School. Both GPA 5.00 [cite: 8]
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-briefcase"></i> Experience</h2>
+                <div class="cv-item">
+                    <strong>Sub-Editor (Since 2025)</strong><br>
+                    Education Times News Portal [cite: 35]
+                </div>
+                <div class="cv-item">
+                    <strong>University Correspondent</strong><br>
+                    Daily Janakantha, Share Biz, Naya Shatabdi (2020-Present) [cite: 35, 36]
+                </div>
+                <div class="cv-item">
+                    <strong>Field Research Support (2025)</strong><br>
+                    Climate Action Team, Friendship NGO. Mangrove research in Satkhira [cite: 27, 29]
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-satellite"></i> Research & GIS</h2>
+                <div class="cv-item">
+                    <strong>Graduate Dissertation:</strong><br>
+                    Spatiotemporal Dynamics of Land Use in Sundarbans ECA (2000–2025) using GEE and ArcGIS Pro [cite: 10, 16, 17]
+                </div>
+                <div class="cv-item">
+                    <strong>Undergraduate Thesis:</strong><br>
+                    Forest Cover Changes in Madhupur National Park (2015–2024) [cite: 20]
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2><i class="fas fa-tools"></i> Technical Skills</h2>
+                <div>
+                    <span class="skill-badge">ArcGIS Pro</span>
+                    <span class="skill-badge">Google Earth Engine</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">C++</span>
+                    <span class="skill-badge">Graphics Design</span>
+                    <span class="skill-badge">SPSS</span>
+                    <span class="skill-badge">MS Office</span>
+                </div>
+            </section>
+        </main>
+    </div>
 </div>
 
-<a href="cv.pdf" class="btn" download>Download CV</a>
+<div id="footer"></div>
 
-</div>
+<script>
+    // Toggle Menu (From your header logic)
+    function toggleMenu(){
+        const menu = document.getElementById("menu");
+        if(menu) menu.classList.toggle("active");
+    }
 
-<!-- RIGHT -->
-<div class="main">
+    // Load External Header/Footer
+    fetch("header.html")
+        .then(res => res.text())
+        .then(data => { document.getElementById("header").innerHTML = data; });
 
-<!-- EDUCATION -->
-<div>
-<div class="title">Education</div>
-
-<div class="item">
-<span>2025-2026</span>
-<h3>MS in Forestry, Khulna University</h3>
-<p>Coursework completed, dissertation ongoing</p>
-</div>
-
-<div class="item">
-<span>2020-2025</span>
-<h3>BSc Forestry (CGPA 3.22)</h3>
-</div>
-
-</div>
-
-<!-- RESEARCH -->
-<div>
-<div class="title">Research & Dissertation</div>
-
-<div class="item">
-<h3>Sundarbans LULC Study</h3>
-<p>Google Earth Engine + ArcGIS Pro analysis</p>
-</div>
-
-<div class="item">
-<h3>Madhupur Forest Study</h3>
-<p>Landsat & Sentinel analysis</p>
-</div>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div>
-<div class="title">Experience</div>
-
-<div class="item">Janakantha</div>
-<div class="item">ShareBiz</div>
-<div class="item">Education Times</div>
-
-</div>
-
-<!-- SKILLS -->
-<div>
-<div class="title">Skills</div>
-
-<div class="skills">
-<div class="skill">ArcGIS</div>
-<div class="skill">GEE</div>
-<div class="skill">Python</div>
-<div class="skill">Journalism</div>
-</div>
-
-</div>
-
-<!-- PERSONAL -->
-<div class="personal">
-<div class="title">Personal Details</div>
-
-<p><b>DOB:</b> 04 June 2000</p>
-<p><b>Father:</b> Akbar Ali</p>
-<p><b>Mother:</b> Nasima</p>
-<p><b>Blood:</b> O+</p>
-
-</div>
-
-</div>
-
-</div>
+    fetch("footer.html")
+        .then(res => res.text())
+        .then(data => { document.getElementById("footer").innerHTML = data; });
+</script>
 
 </body>
 </html>
