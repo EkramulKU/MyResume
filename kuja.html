@@ -6,7 +6,6 @@
 <title>KUJA | Ekramul</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -18,11 +17,11 @@ background:#020617;
 color:#e2e8f0;
 }
 
-/* LAYOUT */
+/* WRAPPER FIX */
 .wrapper{
 display:grid;
 grid-template-columns:320px 1fr;
-height:100vh;
+min-height:100vh; /* 🔥 FIX */
 }
 
 /* SIDEBAR */
@@ -31,8 +30,7 @@ background:#064e3b;
 padding:30px 25px;
 position:sticky;
 top:0;
-height:100vh;
-overflow:auto;
+align-self:start; /* 🔥 FIX */
 }
 
 /* LOGO */
@@ -72,7 +70,6 @@ font-size:14px;
 /* CONTENT */
 .content{
 padding:45px;
-overflow-y:auto;
 }
 
 /* CARD */
@@ -103,12 +100,12 @@ padding-left:18px;
 
 .timeline div{
 margin-bottom:22px;
-text-align:left; /* 🔥 FIX */
+text-align:left;
 }
 
 /* ROLE TITLE */
 .timeline b{
-display:block;           /* 🔥 FIX */
+display:block;
 margin-bottom:6px;
 color:#4ade80;
 }
@@ -142,17 +139,15 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media(max-width:768px){
 
 .wrapper{
 grid-template-columns:1fr;
-height:auto; /* 🔥 FIX */
 }
 
 .sidebar{
-position:relative; /* 🔥 FIX */
-height:auto;
+position:relative;
 }
 
 .content{
@@ -171,7 +166,7 @@ padding:20px;
 
 <div class="wrapper">
 
-<!-- LEFT SIDEBAR -->
+<!-- SIDEBAR -->
 <div class="sidebar">
 
 <img src="images/kuja.png">
@@ -179,7 +174,7 @@ padding:20px;
 <h2>KUJA</h2>
 
 <p>
-Khulna University Journalists’ Association (KUJA) is a student-led organization dedicated to promoting ethical journalism, media literacy, and professional communication among students. It organizes training sessions, workshops, and collaborative programs with national media institutions to enhance practical journalism skills and leadership capacity.
+Khulna University Journalists’ Association (KUJA) is a student-led organization dedicated to promoting ethical journalism, media literacy, and professional communication among students. It organizes training sessions, workshops, and collaborative programs with national media institutions.
 </p>
 
 <a href="#" class="btn">🌐 Website</a>
@@ -187,10 +182,9 @@ Khulna University Journalists’ Association (KUJA) is a student-led organizatio
 
 </div>
 
-<!-- RIGHT CONTENT -->
+<!-- CONTENT -->
 <div class="content">
 
-<!-- ROLE -->
 <div class="card">
 <h2 class="title">My Role & Contributions</h2>
 
@@ -199,37 +193,35 @@ Khulna University Journalists’ Association (KUJA) is a student-led organizatio
 <div>
 <b>President (8 Feb 2024 – 11 May 2025)</b>
 <ul>
-<li>Planned and organized high-impact journalism training programs with national media experts.</li>
-<li>Led public relations, partnerships, and press coordination with university administration and newspapers.</li>
-<li>Managed recruitment process, interviewing and selecting 20+ applicants.</li>
-<li>Oversaw annual magazine publication including proofreading, sponsorship, and distribution.</li>
-<li>Led brainstorming sessions with campus journalists across disciplines.</li>
-<li>Presided over multimedia journalism training organized by Press Institute Bangladesh (PIB).</li>
+<li>Planned and organized high-impact journalism training programs.</li>
+<li>Led public relations and partnerships.</li>
+<li>Managed recruitment and interviews.</li>
+<li>Oversaw annual magazine publication.</li>
+<li>Led brainstorming sessions.</li>
+<li>Presided PIB training session.</li>
 </ul>
 </div>
 
 <div>
-<b>Organizing Secretary (22 Jan 2023 – 8 Feb 2024)</b>
+<b>Organizing Secretary (2023–2024)</b>
 <ul>
-<li>Led member selection and disciplinary committees.</li>
-<li>Reviewed and evaluated membership applications.</li>
-<li>Managed event registrations, communication, and participant engagement.</li>
+<li>Led selection committees.</li>
+<li>Reviewed applications.</li>
+<li>Managed events and communication.</li>
 </ul>
 </div>
 
 <div>
-<b>Secretary of Publicity & Publication (17 May 2022 – 22 Jan 2023)</b>
+<b>Secretary of Publicity & Publication (2022–2023)</b>
 <ul>
-<li>Produced press releases and publicity content.</li>
-<li>Managed social media communication strategies.</li>
+<li>Produced press releases and campaigns.</li>
 </ul>
 </div>
 
 <div>
-<b>Member (27 Oct 2020 – 15 May 2025)</b>
+<b>Member (2020–2025)</b>
 <ul>
-<li>Participated in journalism activities and reporting initiatives.</li>
-<li>Developed practical experience in campus media coordination.</li>
+<li>Participated in journalism activities.</li>
 </ul>
 </div>
 
@@ -237,7 +229,6 @@ Khulna University Journalists’ Association (KUJA) is a student-led organizatio
 
 </div>
 
-<!-- GALLERY -->
 <div class="card">
 <h2 class="title">Gallery</h2>
 
