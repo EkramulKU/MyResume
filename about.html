@@ -6,12 +6,11 @@
 <title>About Me</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-/* BODY */
 body{
 margin:0;
 font-family:'Inter',sans-serif;
@@ -21,27 +20,28 @@ color:#e2e8f0;
 
 /* CONTAINER */
 .container{
-max-width:1000px;
+max-width:1100px;
 margin:40px auto;
 padding:20px;
 }
 
 /* HERO */
 .hero{
-text-align:center;
+display:flex;
+gap:25px;
+align-items:center;
 margin-bottom:30px;
 }
 
 .hero img{
 width:140px;
 height:140px;
-border-radius:50%;
+border-radius:12px;
 object-fit:cover;
-border:3px solid #22c55e;
 }
 
 .hero h1{
-margin-top:15px;
+margin:0;
 color:#4ade80;
 }
 
@@ -54,26 +54,65 @@ color:#94a3b8;
 background:#065f46;
 padding:30px;
 border-radius:14px;
+margin-bottom:25px;
 line-height:1.8;
 }
 
-/* TEXT */
 .card p{
-margin-bottom:18px;
 text-align:justify;
 }
 
-/* SECTION TITLE */
-.section-title{
+/* SECTION */
+.title{
 color:#4ade80;
 margin-bottom:15px;
 font-size:22px;
 }
 
+/* LIST */
+ul{
+padding-left:20px;
+}
+li{
+margin-bottom:6px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+/* FOOT SECTION */
+.bottom{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+margin-top:30px;
+}
+
+.social a{
+margin-right:10px;
+font-size:18px;
+color:white;
+}
+
+.links a{
+display:inline-block;
+margin-right:10px;
+padding:8px 15px;
+background:#22c55e;
+color:black;
+border-radius:6px;
+text-decoration:none;
+}
+
 /* MOBILE */
 @media(max-width:768px){
-.container{padding:15px;}
-.card{padding:20px;}
+.grid{grid-template-columns:1fr;}
+.hero{flex-direction:column;}
 }
 
 </style>
@@ -82,7 +121,6 @@ font-size:22px;
 
 <body>
 
-<!-- HEADER -->
 <div id="header"></div>
 
 <div class="container">
@@ -90,51 +128,134 @@ font-size:22px;
 <!-- HERO -->
 <div class="hero">
 <img src="images/profile.jpg">
+
+<div>
 <h1>Ekramul Haque</h1>
-<p>Environmental Researcher & Journalist</p>
+<p>Environmental Researcher | Journalist | Data & GIS Enthusiast</p>
+<p>Currently preparing for government, university officer, and fact-checking roles</p>
+</div>
 </div>
 
 <!-- ABOUT -->
 <div class="card">
-
-<h2 class="section-title">About Me</h2>
+<h2 class="title">About Me</h2>
 
 <p>
-Ekramul Haque is an environmental researcher and journalist based in Khulna, Bangladesh. He is currently pursuing a Master of Science in Forestry at Khulna University, where his research focuses on land use and land cover dynamics, environmental change, and conservation policy analysis. His academic work integrates remote sensing and GIS techniques, particularly using Google Earth Engine and ArcGIS Pro, to assess ecological transformations in sensitive ecosystems such as the Sundarbans.
+Ekramul Haque is an environmental researcher and journalist based in Khulna, Bangladesh. He is currently pursuing a Master of Science in Forestry at Khulna University, focusing on land use and land cover dynamics, environmental monitoring, and conservation policy. His research integrates advanced geospatial technologies including Google Earth Engine and ArcGIS Pro to analyze ecological changes, particularly within the Sundarbans Ecologically Critical Area.
 </p>
 
 <p>
-Alongside his academic pursuits, Ekramul actively contributes to journalism, working with several national newspapers in Bangladesh. His reporting primarily covers environmental issues, climate change, forest conservation, and socio-ecological challenges. Through his writing, he aims to bridge the gap between scientific research and public awareness, translating complex environmental data into accessible narratives.
+Alongside his academic work, he is actively engaged in journalism, contributing to multiple national newspapers. His reporting focuses on environmental issues, climate change, forestry, and socio-ecological challenges. Through his writing, he aims to make scientific knowledge accessible to the public and support evidence-based decision-making.
 </p>
 
 <p>
-Ekramul has gained hands-on field experience through research collaborations, including work with Friendship NGO, where he contributed to mangrove ecosystem studies in the coastal region of Bangladesh. His fieldwork includes data collection, community engagement, and environmental monitoring, strengthening his understanding of real-world ecological challenges.
-</p>
-
-<p>
-He has also played significant leadership roles in student organizations. As the President of the Khulna University Journalists’ Association (KUJA), he organized national-level journalism training programs, led media coordination efforts, and managed editorial and publication activities. His leadership extended to fostering collaboration among campus journalists and promoting ethical media practices.
-</p>
-
-<p>
-His technical expertise includes GIS and remote sensing, data analysis, and environmental research methods. He is proficient in tools such as ArcGIS Pro, Google Earth Engine, and Microsoft Office, along with programming knowledge in Python and C++. His interdisciplinary skill set enables him to combine scientific analysis with effective communication.
-</p>
-
-<p>
-Ekramul completed his Bachelor of Science in Forestry from Khulna University and is expected to complete his Master's degree in 2026. His long-term research interests include environmental monitoring, forest and climate interactions, and sustainable resource management. He is particularly interested in using geospatial technologies to support evidence-based environmental decision-making.
-</p>
-
-<p>
-Through a combination of research, journalism, and leadership, Ekramul Haque continues to build a multidisciplinary career focused on environmental sustainability, scientific communication, and public engagement.
+He is currently preparing for competitive government positions, fact-checking roles, and first-class officer positions in universities, aiming to build a career that combines research, policy, and communication.
 </p>
 
 </div>
 
+<!-- EDUCATION -->
+<div class="card">
+<h2 class="title">Education</h2>
+
+<ul>
+<li>MS in Forestry, Khulna University (Expected 2026)</li>
+<li>BSc in Forestry, Khulna University (CGPA 3.22)</li>
+<li>HSC, Govt Azizul Haque College (GPA 5.00)</li>
+<li>SSC, BIAM Model School (GPA 5.00)</li>
+</ul>
+
 </div>
 
-<!-- FOOTER -->
+<!-- RESEARCH -->
+<div class="card">
+<h2 class="title">Research & Dissertation</h2>
+
+<ul>
+<li><b>Sundarbans LULC Study (Ongoing)</b> – Remote sensing & GIS based analysis (2000–2025)</li>
+<li><b>Madhupur Forest Study</b> – Forest cover change detection using Landsat & Sentinel</li>
+</ul>
+
+</div>
+
+<!-- EXPERIENCE -->
+<div class="card">
+<h2 class="title">Work Experience</h2>
+
+<ul>
+<li>Sub-Editor – Education Times</li>
+<li>Correspondent – Daily Janakantha</li>
+<li>Correspondent – ShareBiz</li>
+<li>Correspondent – Naya Shatabdi</li>
+<li>Correspondent – Barta Bichitra</li>
+<li>Correspondent – Alokito Vor</li>
+</ul>
+
+</div>
+
+<!-- LEADERSHIP -->
+<div class="card">
+<h2 class="title">Leadership & Activities</h2>
+
+<ul>
+<li>President – KUJA</li>
+<li>President – KU Writers’ Society</li>
+<li>General Secretary – FWTC</li>
+<li>Coordinator – Genesis Foundation</li>
+</ul>
+
+</div>
+
+<!-- SKILLS -->
+<div class="card">
+<h2 class="title">Skills</h2>
+
+<ul>
+<li>GIS & Remote Sensing (ArcGIS, GEE)</li>
+<li>Journalism & Research Writing</li>
+<li>Python, C++</li>
+<li>MS Office, Canva</li>
+</ul>
+
+</div>
+
+<!-- PERSONAL -->
+<div class="card">
+<h2 class="title">Personal Information</h2>
+
+<ul>
+<li>Father: Akbar Ali</li>
+<li>Mother: Nasima</li>
+<li>DOB: 04 June 2000</li>
+<li>Nationality: Bangladeshi</li>
+<li>Blood Group: O+</li>
+</ul>
+
+</div>
+
+<!-- FOOT -->
+<div class="bottom">
+
+<div class="social">
+<h3>Connect</h3>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+
+<div class="links">
+<h3>Explore</h3>
+<a href="research.html">Research</a>
+<a href="articles.html">Articles</a>
+<a href="cv.html">CV</a>
+</div>
+
+</div>
+
+</div>
+
 <div id="footer"></div>
 
-<!-- LOAD HEADER FOOTER -->
 <script>
 fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
 fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
