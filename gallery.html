@@ -142,7 +142,7 @@ let defaultCategories = [
 "Club","Campus","GIS","School","College","Ekramul's Photo"
 ];
 
-fetch(`https://cdn.contentful.com/spaces/${ca2wujfe3emd}/entries?access_token=${e44CFNyOf4TaY2Qnze4Vr18ny7EGnPR9XYH-9oemanQ}&content_type=gallery&include=1`)
+fetch(`https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=gallery&include=1`)
 .then(res=>res.json())
 .then(data=>{
 
@@ -265,10 +265,7 @@ closeImg();
 
 </script>
 
-<script>
-fetch("./header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
-fetch("./footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
-</script>
+<script src="header.js"></script>
 
 </body>
 </html>
